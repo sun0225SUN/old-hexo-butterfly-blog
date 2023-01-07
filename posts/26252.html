@@ -1,0 +1,1645 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="dark"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>初识C语言 | 小孙同学</title><meta name="keywords" content="C语言"><meta name="author" content="小孙同学"><meta name="copyright" content="小孙同学"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#0d0d0d"><meta name="description" content="自己整理的C语言基础学习笔记，参考了挺多资料的，适合梳理知识框架，进而攻克各个知识点。 这是第一篇，初窥门径：认识C语言。  什么是C语言C语言是一门计算机语言——&gt;计算机语言是什么？——&gt;人和计算机交流的语言（C、C++、Python….）  语言的发展二进制语言——&gt;硬件（0、1）   ！！!太复杂需要查手册 汇编语言——&gt;整理合并助记   ！！!同样复杂 B语言——&amp;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="初识C语言">
+<meta property="og:url" content="https://sunguoqi.com/posts/26252.html">
+<meta property="og:site_name" content="小孙同学">
+<meta property="og:description" content="自己整理的C语言基础学习笔记，参考了挺多资料的，适合梳理知识框架，进而攻克各个知识点。 这是第一篇，初窥门径：认识C语言。  什么是C语言C语言是一门计算机语言——&gt;计算机语言是什么？——&gt;人和计算机交流的语言（C、C++、Python….）  语言的发展二进制语言——&gt;硬件（0、1）   ！！!太复杂需要查手册 汇编语言——&gt;整理合并助记   ！！!同样复杂 B语言——&amp;">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://i.loli.net/2021/03/11/8ZBAvYNPkxahpI5.jpg">
+<meta property="article:published_time" content="2021-02-22T04:00:00.000Z">
+<meta property="article:modified_time" content="2022-01-10T17:14:42.669Z">
+<meta property="article:author" content="小孙同学">
+<meta property="article:tag" content="C语言">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.loli.net/2021/03/11/8ZBAvYNPkxahpI5.jpg"><link rel="shortcut icon" href="/"><link rel="canonical" href="https://sunguoqi.com/posts/26252"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//hm.baidu.com"/><link rel="preconnect" href="//s4.cnzz.com"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="manifest" href="/manifest.json"/><meta name="msapplication-TileColor" content="#ffffff"/><link rel="apple-touch-icon" sizes="180x180" href="/images/siteicon/apple-touch-icon.png"/><link rel="icon" type="image/png" sizes="32x32" href="/images/siteicon/favicon-32x32.png"/><link rel="icon" type="image/png" sizes="16x16" href="/images/siteicon/favicon-16x16.png"/><link rel="mask-icon" href="/images/siteicon/safari-pinned-tab.svg" color="#5bbad5"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.10.5/dist/instantsearch.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/instantsearch.js@2.10.5/dist/instantsearch.min.js" defer></script><script>var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?eb7ddd29e27906244e3cbd3f6b97dc44";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script><script async="async" data-pjax="data-pjax" src="https://s4.cnzz.com/z_stat.php?id=1280204826&amp;web_id=1280204826"></script><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: {"appId":"5C3XXH4EVO","apiKey":"b6895f5bd998a9ed8fc54ca3419ee782","indexName":"search","hits":{"per_page":6},"languages":{"input_placeholder":"搜索文章","hits_empty":"找不到您查询的内容：${query}","hits_stats":"找到 ${hits} 条结果，用时 ${time} 毫秒"}},
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: {"limitDay":365,"position":"top","messagePrev":"It has been","messageNext":"days since the last update, the content of the article may be outdated."},
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":250},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"你已切换为繁体","cht_to_chs":"你已切换为简体","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#49b1f5","bgDark":"#121212","position":"top-center"},
+  source: {
+    jQuery: 'https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js',
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+    },
+    fancybox: {
+      js: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css'
+    }
+  },
+  isPhotoFigcaption: true,
+  islazyload: false,
+  isanchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '初识C语言',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2022-01-11 01:14:42'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          const now = new Date()
+          const hour = now.getHours()
+          const isNight = hour <= 6 || hour >= 18
+          if (t === undefined) isNight ? activateDarkMode() : activateLightMode()
+          else if (t === 'light') activateLightMode()
+          else activateDarkMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const fontSizeVal = saveToLocal.get('global-font-size')
+    if (fontSizeVal !== undefined) {
+      document.documentElement.style.setProperty('--global-font-size', fontSizeVal + 'px')
+    }
+    
+    const detectApple = () => {
+      if (GLOBAL_CONFIG_SITE.isHome && /iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    document.addEventListener('pjax:complete', detectApple)})(window)</script><link rel="stylesheet" href="//at.alicdn.com/t/font_2936154_tjif7y18l3j.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css"><style type="text/css">.app-refresh{position:fixed;top:-2.2rem;left:0;right:0;z-index:99999;padding:0 1rem;font-size:15px;height:2.2rem;transition:all .3s ease}.app-refresh-wrap{display:flex;color:#fff;height:100%;align-items:center;justify-content:center}.app-refresh-wrap a{color:#fff;text-decoration:underline;cursor:pointer}</style><link rel="stylesheet" href="/css/custom.css"  media="defer" onload="this.media='all'"><!-- hexo injector head_end start --><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Zfour/Butterfly-swiper/swiper/swiper.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Zfour/Butterfly-swiper/swiper/swiperstyle.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Zfour/Butterfly-card-history/baiduhistory/css/main.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-butterfly-clock/lib/clock.min.css"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" media="print" onload="this.media='screen'"><!-- hexo injector head_end end --><meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="小孙同学" type="application/atom+xml">
+</head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="iron-container iron-circle"><div class="iron-box1 iron-circle iron-center"></div><div class="iron-box2 iron-circle iron-center"></div><div class="iron-box3 iron-circle iron-center"></div><div class="iron-box4 iron-circle iron-center"></div><div class="iron-box5 iron-circle iron-center"></div><div class="iron-box6 iron-circle"><div class="iron-coil" style="--i: 0"></div><div class="iron-coil" style="--i: 1"></div><div class="iron-coil" style="--i: 2"></div><div class="iron-coil" style="--i: 3"></div><div class="iron-coil" style="--i: 4"></div><div class="iron-coil" style="--i: 5"></div><div class="iron-coil" style="--i: 6"></div><div class="iron-coil" style="--i: 7"></div></div></div></div><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/images/avatar.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">文章</div><div class="length-num">56</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">标签</div><div class="length-num">24</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">分类</div><div class="length-num">9</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-zhuye-"></use></svg><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-gonglve2"></use></svg><span> 文章</span><i class="fas fa-chevron-down expand hide"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/categories/"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-wenzhang"></use></svg><span> 分类</span></a></li><li><a class="site-page child" href="/tags/"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-biaoqian3"></use></svg><span> 标签</span></a></li><li><a class="site-page child" href="/archives/"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-dakaqiandao"></use></svg><span> 时间轴</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-tiyu"></use></svg><span> 生活</span><i class="fas fa-chevron-down expand hide"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/books/"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-lianxi"></use></svg><span> 书单</span></a></li><li><a class="site-page child" target="_blank" rel="noopener" href="https://720yun.com/t/0fbjvdyuru0?scene_id=18586179"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-GLOBE"></use></svg><span> 地图</span></a></li><li><a class="site-page child" target="_blank" rel="noopener" href="https://ssh-music.vercel.app/"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-yinle11"></use></svg><span> 音乐</span></a></li><li><a class="site-page child" target="_blank" rel="noopener" href="https://box.sunguoqi.com/shici"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-task_"></use></svg><span> 诗词</span></a></li><li><a class="site-page child" href="/movies/"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-dianshiju1"></use></svg><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-jiudian"></use></svg><span> 小黑屋</span><i class="fas fa-chevron-down expand hide"></i></a><ul class="menus_item_child"><li><a class="site-page child" target="_blank" rel="noopener" href="https://travellings.link/"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-fenxiang1"></use></svg><span> 任意门</span></a></li><li><a class="site-page child" target="_blank" rel="noopener" href="https://box.sunguoqi.com/kongtiao"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-kongtiao"></use></svg><span> 小空调</span></a></li><li><a class="site-page child" target="_blank" rel="noopener" href="https://sun0225sun.github.io/home/"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-diannao"></use></svg><span> 云电脑</span></a></li><li><a class="site-page child" target="_blank" rel="noopener" href="https://box.sunguoqi.com/wenan"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-zixun3"></use></svg><span> 文案馆</span></a></li><li><a class="site-page child" target="_blank" rel="noopener" href="https://box.sunguoqi.com/love"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-shoucang2"></use></svg><span> 收藏馆</span></a></li><li><a class="site-page child" target="_blank" rel="noopener" href="https://box.sunguoqi.com/games"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-youxi1"></use></svg><span> 游戏厅</span></a></li><li><a class="site-page child" href="/charts/"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-chanpin"></use></svg><span> 统计室</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-dengji"></use></svg><span> 友人帐</span></a></div><div class="menus_item"><a class="site-page" href="/comments/"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-liuyan"></use></svg><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-zhanghaoguanli"></use></svg><span> 关于我</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://i.loli.net/2021/03/11/8ZBAvYNPkxahpI5.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" onclick="btf.scrollToDest(0, 500)" data-title="小孙同学，祝您今天愉快">初识C语言</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="iconfont icon-sousuo3"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-zhuye-"></use></svg><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-gonglve2"></use></svg><span> 文章</span><i class="fas fa-chevron-down expand hide"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/categories/"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-wenzhang"></use></svg><span> 分类</span></a></li><li><a class="site-page child" href="/tags/"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-biaoqian3"></use></svg><span> 标签</span></a></li><li><a class="site-page child" href="/archives/"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-dakaqiandao"></use></svg><span> 时间轴</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-tiyu"></use></svg><span> 生活</span><i class="fas fa-chevron-down expand hide"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/books/"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-lianxi"></use></svg><span> 书单</span></a></li><li><a class="site-page child" target="_blank" rel="noopener" href="https://720yun.com/t/0fbjvdyuru0?scene_id=18586179"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-GLOBE"></use></svg><span> 地图</span></a></li><li><a class="site-page child" target="_blank" rel="noopener" href="https://ssh-music.vercel.app/"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-yinle11"></use></svg><span> 音乐</span></a></li><li><a class="site-page child" target="_blank" rel="noopener" href="https://box.sunguoqi.com/shici"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-task_"></use></svg><span> 诗词</span></a></li><li><a class="site-page child" href="/movies/"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-dianshiju1"></use></svg><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-jiudian"></use></svg><span> 小黑屋</span><i class="fas fa-chevron-down expand hide"></i></a><ul class="menus_item_child"><li><a class="site-page child" target="_blank" rel="noopener" href="https://travellings.link/"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-fenxiang1"></use></svg><span> 任意门</span></a></li><li><a class="site-page child" target="_blank" rel="noopener" href="https://box.sunguoqi.com/kongtiao"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-kongtiao"></use></svg><span> 小空调</span></a></li><li><a class="site-page child" target="_blank" rel="noopener" href="https://sun0225sun.github.io/home/"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-diannao"></use></svg><span> 云电脑</span></a></li><li><a class="site-page child" target="_blank" rel="noopener" href="https://box.sunguoqi.com/wenan"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-zixun3"></use></svg><span> 文案馆</span></a></li><li><a class="site-page child" target="_blank" rel="noopener" href="https://box.sunguoqi.com/love"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-shoucang2"></use></svg><span> 收藏馆</span></a></li><li><a class="site-page child" target="_blank" rel="noopener" href="https://box.sunguoqi.com/games"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-youxi1"></use></svg><span> 游戏厅</span></a></li><li><a class="site-page child" href="/charts/"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-chanpin"></use></svg><span> 统计室</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-dengji"></use></svg><span> 友人帐</span></a></div><div class="menus_item"><a class="site-page" href="/comments/"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-liuyan"></use></svg><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-zhanghaoguanli"></use></svg><span> 关于我</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">初识C语言</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2021-02-22T04:00:00.000Z" title="发表于 2021-02-22 12:00:00">2021-02-22</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2022-01-10T17:14:42.669Z" title="更新于 2022-01-11 01:14:42">2022-01-11</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/C%E8%AF%AD%E8%A8%80%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">C语言学习笔记</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">4.1k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>14分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="初识C语言"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span><span class="post-meta-separator">|</span><span class="post-meta-commentcount"><i class="far fa-comments fa-fw post-meta-icon"></i><span class="post-meta-label">评论数:</span><a href="/posts/26252.html#post-comment"><span id="twikoo-count"></span></a></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><p>自己整理的C语言基础学习笔记，参考了挺多资料的，适合梳理知识框架，进而攻克各个知识点。</p>
+<p>这是第一篇，初窥门径：认识C语言。</p>
+<hr>
+<h1 id="什么是C语言"><a href="#什么是C语言" class="headerlink" title="什么是C语言"></a><strong>什么是C语言</strong></h1><p>C语言是一门计算机语言——&gt;计算机语言是什么？——&gt;人和计算机交流的语言（C、C++、Python….）</p>
+<hr>
+<h1 id="语言的发展"><a href="#语言的发展" class="headerlink" title="语言的发展"></a><strong>语言的发展</strong></h1><p>二进制语言——&gt;硬件（0、1）   ！！!太复杂需要查手册</p>
+<p>汇编语言——&gt;整理合并助记   ！！!同样复杂</p>
+<p>B语言——&gt;C语言，C++ … ——&gt;高级语言</p>
+<p>（低级到搞基，哦不，低级到高级）</p>
+<hr>
+<h1 id="C语言的发展"><a href="#C语言的发展" class="headerlink" title="C语言的发展"></a>C语言的发展</h1><p>C语言——&gt;不成熟——&gt;成熟——&gt;流行</p>
+<p>标准的制定，C89/C90——C99——C11</p>
+<p>编译器：MSVS、GCC</p>
+<hr>
+<h1 id="C语言的优势"><a href="#C语言的优势" class="headerlink" title="C语言的优势"></a>C语言的优势</h1><ol>
+<li><p>效率高</p>
+<p>C语言是编译型语言，目前流行的还有解释型语言，像python，JavaScript等。</p>
+<p><strong>编译型语言就像做好了一桌子菜，就开吃。</strong></p>
+<p><strong>解释型语言就像吃火锅，边做边吃。</strong></p>
+</li>
+<li><p>灵活度高</p>
+<p>可以直接操作硬件，语法简单，约束性少造就C的灵活性。</p>
+</li>
+<li><p>可移植性高</p>
+<p>C生万物，C的可移植性很高。</p>
+</li>
+</ol>
+<hr>
+<h1 id="第一个C语言程序"><a href="#第一个C语言程序" class="headerlink" title="第一个C语言程序"></a>第一个C语言程序</h1><ol>
+<li>新建项目——&gt;空项目/控制台 ——&gt;新建源文件，后缀名.cpp改成.c</li>
+<li>敲代码。</li>
+</ol>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span>				<span class="comment">//#是一个引用的标志，include是英语引用的意思</span></span></span><br><span class="line">								<span class="comment">//&lt;stdio.h&gt;是库函数中的一个函数</span></span><br><span class="line">								<span class="comment">//格式化输入输出函数，standard+input+output缩写而成.h是头文件后缀</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span>					<span class="comment">//主函数</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;Hello World!\n&quot;</span>);	<span class="comment">//printf();函数是格式化打印的意思，print是打印的意思</span></span><br><span class="line">    							<span class="comment">//printf中的f有的地方说是format格式化的意思，也有的地方说是function函数的意思</span></span><br><span class="line">    							<span class="comment">//\n是转义字符，表示换行</span></span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;					<span class="comment">//return 0表示函数返回值为0</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h1 id="标识符"><a href="#标识符" class="headerlink" title="标识符"></a>标识符</h1><p>&emsp;&emsp;C语言规定，标识符可以是字母<code>(A～Z，a～z)</code>、数字<code>(0～9)</code>、下划线<code>_</code>组成的字符串，并且第一个字符必须是<strong>字母或下划线</strong>。在使用标识符时还有注意以下几点：</p>
+<blockquote>
+<ol>
+<li>标识符的长度最好不要超过8位，因为在某些版本的C中规定标识符前8位有效，当两个标识符前8位相同时，则被认为是同一个标识符。</li>
+<li>标识符是严格区分大小写的。</li>
+<li>标识符最好选择有意义的英文单词组成做到”见名知意”，不要使用中文。</li>
+<li>标识符不能是C语言的关键字（语言系统之前定好的标识符，比如int，char等等，后面学到就懂了）</li>
+</ol>
+</blockquote>
+<hr>
+<h1 id="常量和变量"><a href="#常量和变量" class="headerlink" title="常量和变量"></a>常量和变量</h1><h2 id="常量：固定不变的量"><a href="#常量：固定不变的量" class="headerlink" title="常量：固定不变的量"></a>常量：固定不变的量</h2><ol>
+<li>字面常量<ul>
+<li>整型常量</li>
+<li>实型常量</li>
+<li>字符常量</li>
+<li>字符串常量</li>
+<li>符号常量</li>
+</ul>
+</li>
+<li>const修饰的常变量    </li>
+<li>#define定义的标识符常量</li>
+<li>enum枚举常量</li>
+</ol>
+<hr>
+<h2 id="变量：变化的量"><a href="#变量：变化的量" class="headerlink" title="变量：变化的量"></a>变量：变化的量</h2><ul>
+<li><p>变量运用</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> a, b;<span class="comment">//变量定义，数据类型+变量名;//int a=b=c=0；这样定义不合法。</span></span><br><span class="line">    </span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">&quot;%d%d&quot;</span>,&amp;a,&amp;b);<span class="comment">//scanf格式化输入函数，取地址</span></span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li><p>注意：当局部变量和全局变量重名时，局部变量优先使用。</p>
+</li>
+<li><p>变量的作用域</p>
+<blockquote>
+<p>作用域（scope），程序设计概念，通常来说，一段程序代码中所用到的名字并不总是有效/可用的<br>而限定这个名字的可用性的代码范围就是这个名字的作用域。</p>
+</blockquote>
+<p><strong>局部变量：</strong>在函数内部定义的变量，它的作用域也仅限于函数内部，出了函数就不能使用了。</p>
+<p><strong>全局变量：</strong>全局变量的默认作用域是整个程序，也就是所有的代码文件，包括源文件（<code>.c</code>文件）和头文件（<code>.h</code>文件）。如果给全局变量加上 <strong>static</strong> 关键字，它的作用域就变成了当前文件，在其它文件中就无效了。</p>
+<p><strong>内部定义/外部定义</strong>：全局变量的作用域是整个工程。</p>
+</li>
+<li><p>生命周期</p>
+<blockquote>
+<p>变量的生命周期指的是变量的创建到变量的销毁之间的一个时间段</p>
+</blockquote>
+<ol>
+<li>   局部变量的生命周期是：进入作用域生命周期开始，出作用域生命周期结束。</li>
+<li>   全局变量的生命周期是：整个程序的生命周期。</li>
+</ol>
+</li>
+</ul>
+<hr>
+<h1 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">graph TD</span><br><span class="line">A(数据类型)--&gt;B1(基本类型)</span><br><span class="line">A--&gt;B2(指针类型)</span><br><span class="line">A--&gt;B3(构造类型)</span><br><span class="line">A--&gt;B4(空类型)</span><br><span class="line">B1--&gt;C1(整数类型)</span><br><span class="line">B1--&gt;C2(浮点数类型)</span><br><span class="line">B1--&gt;C3(字符类型)</span><br><span class="line">B1--&gt;C4(布尔类型)</span><br><span class="line">B1--&gt;C5(枚举类型)</span><br><span class="line">B3--&gt;D1(数组类型)</span><br><span class="line">B3--&gt;D2(结构类型)</span><br><span class="line">B3--&gt;D3(联合类型)</span><br></pre></td></tr></table></figure>
+<p>浮点型，整型，字符型，字符串型…</p>
+<p>%f，%lf,    %d  ,    %c,    %s, ……..</p>
+<p>因为现实生活中的数据存在不同的大小之分，所以存在这么多数据类型，每种数据类型所占内存大小不同。</p>
+<hr>
+<h1 id="sizeof运算符"><a href="#sizeof运算符" class="headerlink" title="sizeof运算符"></a>sizeof运算符</h1><p>用sizeof运算符计算不同的类型所占的内存大小。</p>
+<p>sizeof的三种使用方式</p>
+<ul>
+<li>sizeof（类型）、sizeof（对象）、sizeof 对象</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th align="center">数据类型</th>
+<th align="center">所占内存（32位/64位）</th>
+<th align="center">取值范围</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">char</td>
+<td align="center">1个字节</td>
+<td align="center">-128~127</td>
+</tr>
+<tr>
+<td align="center">unsigned char</td>
+<td align="center">1个字节</td>
+<td align="center">0~255</td>
+</tr>
+<tr>
+<td align="center">char*（指针变量）</td>
+<td align="center">4个字节/（8个字节）</td>
+<td align="center">-2147483648~-2147483647</td>
+</tr>
+<tr>
+<td align="center">short</td>
+<td align="center">2个字节</td>
+<td align="center">-32768~32767</td>
+</tr>
+<tr>
+<td align="center">unsigned short</td>
+<td align="center">2个字节</td>
+<td align="center">0~65535</td>
+</tr>
+<tr>
+<td align="center">int</td>
+<td align="center">4个字节</td>
+<td align="center">-2147483648~-2147483647</td>
+</tr>
+<tr>
+<td align="center">unsigned int</td>
+<td align="center">4个字节</td>
+<td align="center">0~4294967295</td>
+</tr>
+<tr>
+<td align="center">long</td>
+<td align="center">4个字节/（8个字节）</td>
+<td align="center">-2147483648~-2147483647/</td>
+</tr>
+<tr>
+<td align="center">unsigned long</td>
+<td align="center">4个字节/（8个字节）</td>
+<td align="center">0~4294967295</td>
+</tr>
+<tr>
+<td align="center">long long</td>
+<td align="center">8个字节</td>
+<td align="center">-9223372036854775808~9223372036854775807</td>
+</tr>
+<tr>
+<td align="center">unsigned long long</td>
+<td align="center">8个字节</td>
+<td align="center">0~18446744073709551615</td>
+</tr>
+<tr>
+<td align="center">float</td>
+<td align="center">4个字节</td>
+<td align="center">-2<sup>128</sup> ~ -2<sup>128</sup></td>
+</tr>
+<tr>
+<td align="center">double</td>
+<td align="center">8个字节</td>
+<td align="center">-2<sup>1024</sup> ~2<sup>1024</sup></td>
+</tr>
+</tbody></table>
+<hr>
+<h1 id="字符"><a href="#字符" class="headerlink" title="字符"></a>字符</h1><table>
+<thead>
+<tr>
+<th align="center">ASCII值</th>
+<th align="center">控制字符</th>
+<th align="center">ASCII值</th>
+<th align="center">控制字符</th>
+<th align="center">ASCII值</th>
+<th align="center">控制字符</th>
+<th align="center">ASCII值</th>
+<th align="center">控制字符</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">0</td>
+<td align="center">NUT</td>
+<td align="center">32</td>
+<td align="center">(space)</td>
+<td align="center">64</td>
+<td align="center">@</td>
+<td align="center">96</td>
+<td align="center">、</td>
+</tr>
+<tr>
+<td align="center">1</td>
+<td align="center">SOH</td>
+<td align="center">33</td>
+<td align="center">!</td>
+<td align="center">65</td>
+<td align="center">A</td>
+<td align="center">97</td>
+<td align="center">a</td>
+</tr>
+<tr>
+<td align="center">2</td>
+<td align="center">STX</td>
+<td align="center">34</td>
+<td align="center">“</td>
+<td align="center">66</td>
+<td align="center">B</td>
+<td align="center">98</td>
+<td align="center">b</td>
+</tr>
+<tr>
+<td align="center">3</td>
+<td align="center">ETX</td>
+<td align="center">35</td>
+<td align="center">#</td>
+<td align="center">67</td>
+<td align="center">C</td>
+<td align="center">99</td>
+<td align="center">c</td>
+</tr>
+<tr>
+<td align="center">4</td>
+<td align="center">EOT</td>
+<td align="center">36</td>
+<td align="center">$</td>
+<td align="center">68</td>
+<td align="center">D</td>
+<td align="center">100</td>
+<td align="center">d</td>
+</tr>
+<tr>
+<td align="center">5</td>
+<td align="center">ENQ</td>
+<td align="center">37</td>
+<td align="center">%</td>
+<td align="center">69</td>
+<td align="center">E</td>
+<td align="center">101</td>
+<td align="center">e</td>
+</tr>
+<tr>
+<td align="center">6</td>
+<td align="center">ACK</td>
+<td align="center">38</td>
+<td align="center">&amp;</td>
+<td align="center">70</td>
+<td align="center">F</td>
+<td align="center">102</td>
+<td align="center">f</td>
+</tr>
+<tr>
+<td align="center">7</td>
+<td align="center">BEL</td>
+<td align="center">39</td>
+<td align="center">‘</td>
+<td align="center">71</td>
+<td align="center">G</td>
+<td align="center">103</td>
+<td align="center">g</td>
+</tr>
+<tr>
+<td align="center">8</td>
+<td align="center">BS</td>
+<td align="center">40</td>
+<td align="center">(</td>
+<td align="center">72</td>
+<td align="center">H</td>
+<td align="center">104</td>
+<td align="center">h</td>
+</tr>
+<tr>
+<td align="center">9</td>
+<td align="center">HT</td>
+<td align="center">41</td>
+<td align="center">)</td>
+<td align="center">73</td>
+<td align="center">I</td>
+<td align="center">105</td>
+<td align="center">i</td>
+</tr>
+<tr>
+<td align="center">10</td>
+<td align="center">LF</td>
+<td align="center">42</td>
+<td align="center">*</td>
+<td align="center">74</td>
+<td align="center">J</td>
+<td align="center">106</td>
+<td align="center">j</td>
+</tr>
+<tr>
+<td align="center">11</td>
+<td align="center">VT</td>
+<td align="center">43</td>
+<td align="center">+</td>
+<td align="center">75</td>
+<td align="center">K</td>
+<td align="center">107</td>
+<td align="center">k</td>
+</tr>
+<tr>
+<td align="center">12</td>
+<td align="center">FF</td>
+<td align="center">44</td>
+<td align="center">,</td>
+<td align="center">76</td>
+<td align="center">L</td>
+<td align="center">108</td>
+<td align="center">l</td>
+</tr>
+<tr>
+<td align="center">13</td>
+<td align="center">CR</td>
+<td align="center">45</td>
+<td align="center">-</td>
+<td align="center">77</td>
+<td align="center">M</td>
+<td align="center">109</td>
+<td align="center">m</td>
+</tr>
+<tr>
+<td align="center">14</td>
+<td align="center">SO</td>
+<td align="center">46</td>
+<td align="center">.</td>
+<td align="center">78</td>
+<td align="center">N</td>
+<td align="center">110</td>
+<td align="center">n</td>
+</tr>
+<tr>
+<td align="center">15</td>
+<td align="center">SI</td>
+<td align="center">47</td>
+<td align="center">/</td>
+<td align="center">79</td>
+<td align="center">O</td>
+<td align="center">111</td>
+<td align="center">o</td>
+</tr>
+<tr>
+<td align="center">16</td>
+<td align="center">DLE</td>
+<td align="center">48</td>
+<td align="center">0</td>
+<td align="center">80</td>
+<td align="center">P</td>
+<td align="center">112</td>
+<td align="center">p</td>
+</tr>
+<tr>
+<td align="center">17</td>
+<td align="center">DCI</td>
+<td align="center">49</td>
+<td align="center">1</td>
+<td align="center">81</td>
+<td align="center">Q</td>
+<td align="center">113</td>
+<td align="center">q</td>
+</tr>
+<tr>
+<td align="center">18</td>
+<td align="center">DC2</td>
+<td align="center">50</td>
+<td align="center">2</td>
+<td align="center">82</td>
+<td align="center">R</td>
+<td align="center">114</td>
+<td align="center">r</td>
+</tr>
+<tr>
+<td align="center">19</td>
+<td align="center">DC3</td>
+<td align="center">51</td>
+<td align="center">3</td>
+<td align="center">83</td>
+<td align="center">S</td>
+<td align="center">115</td>
+<td align="center">s</td>
+</tr>
+<tr>
+<td align="center">20</td>
+<td align="center">DC4</td>
+<td align="center">52</td>
+<td align="center">4</td>
+<td align="center">84</td>
+<td align="center">T</td>
+<td align="center">116</td>
+<td align="center">t</td>
+</tr>
+<tr>
+<td align="center">21</td>
+<td align="center">NAK</td>
+<td align="center">53</td>
+<td align="center">5</td>
+<td align="center">85</td>
+<td align="center">U</td>
+<td align="center">117</td>
+<td align="center">u</td>
+</tr>
+<tr>
+<td align="center">22</td>
+<td align="center">SYN</td>
+<td align="center">54</td>
+<td align="center">6</td>
+<td align="center">86</td>
+<td align="center">V</td>
+<td align="center">118</td>
+<td align="center">v</td>
+</tr>
+<tr>
+<td align="center">23</td>
+<td align="center">TB</td>
+<td align="center">55</td>
+<td align="center">7</td>
+<td align="center">87</td>
+<td align="center">W</td>
+<td align="center">119</td>
+<td align="center">w</td>
+</tr>
+<tr>
+<td align="center">24</td>
+<td align="center">CAN</td>
+<td align="center">56</td>
+<td align="center">8</td>
+<td align="center">88</td>
+<td align="center">X</td>
+<td align="center">120</td>
+<td align="center">x</td>
+</tr>
+<tr>
+<td align="center">25</td>
+<td align="center">EM</td>
+<td align="center">57</td>
+<td align="center">9</td>
+<td align="center">89</td>
+<td align="center">Y</td>
+<td align="center">121</td>
+<td align="center">y</td>
+</tr>
+<tr>
+<td align="center">26</td>
+<td align="center">SUB</td>
+<td align="center">58</td>
+<td align="center">:</td>
+<td align="center">90</td>
+<td align="center">Z</td>
+<td align="center">122</td>
+<td align="center">z</td>
+</tr>
+<tr>
+<td align="center">27</td>
+<td align="center">ESC</td>
+<td align="center">59</td>
+<td align="center">;</td>
+<td align="center">91</td>
+<td align="center">[</td>
+<td align="center">123</td>
+<td align="center">{</td>
+</tr>
+<tr>
+<td align="center">28</td>
+<td align="center">FS</td>
+<td align="center">60</td>
+<td align="center">&lt;</td>
+<td align="center">92</td>
+<td align="center">/</td>
+<td align="center">124</td>
+<td align="center">|</td>
+</tr>
+<tr>
+<td align="center">29</td>
+<td align="center">GS</td>
+<td align="center">61</td>
+<td align="center">=</td>
+<td align="center">93</td>
+<td align="center">]</td>
+<td align="center">125</td>
+<td align="center">}</td>
+</tr>
+<tr>
+<td align="center">30</td>
+<td align="center">RS</td>
+<td align="center">62</td>
+<td align="center">&gt;</td>
+<td align="center">94</td>
+<td align="center">^</td>
+<td align="center">126</td>
+<td align="center">`</td>
+</tr>
+<tr>
+<td align="center">31</td>
+<td align="center">US</td>
+<td align="center">63</td>
+<td align="center">?</td>
+<td align="center">95</td>
+<td align="center">_</td>
+<td align="center">127</td>
+<td align="center">DEL</td>
+</tr>
+</tbody></table>
+<hr>
+<h1 id="字符串"><a href="#字符串" class="headerlink" title="字符串"></a>字符串</h1><blockquote>
+<p>由双引号（Double Quote）引起来的一串字符称为字符串字面值（String Literal），或者简称字符串。</p>
+<p>注：字符串的结束标志是一个\0的转义字符。在计算字符串长度的时候\0是结束标志，不算作字符串内容。</p>
+</blockquote>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span> <span class="params">(<span class="keyword">void</span>)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">char</span> arr1[]=<span class="string">&quot;abc&quot;</span>;</span><br><span class="line">	<span class="keyword">char</span> arr2[]=&#123;<span class="string">&#x27;a&#x27;</span>,<span class="string">&#x27;b&#x27;</span>,<span class="string">&#x27;c&#x27;</span>&#125;;</span><br><span class="line">	</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;%s\n&quot;</span>,arr1[]);</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;%s\n&quot;</span>,arr2[]);</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//字符串末尾默认有\0,字符串结束标志，程序遇到\0停止。</span></span><br><span class="line"><span class="comment">//arr1[]比arr2[]多\0</span></span><br><span class="line"><span class="comment">//arr1[]长度为3；arr2[]长度为随机值</span></span><br><span class="line"><span class="comment">//stren计算长度，需要引用头文件string</span></span><br></pre></td></tr></table></figure>
+
+<hr>
+<h1 id="转义字符"><a href="#转义字符" class="headerlink" title="转义字符"></a>转义字符</h1><table>
+<thead>
+<tr>
+<th align="center">转义字符</th>
+<th align="center">含义</th>
+<th align="center"><em>ASCII</em>码（<em>16/10</em>进制）</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center"><em>\o</em></td>
+<td align="center">空字符*(NULL)*</td>
+<td align="center"><em>00H/0</em></td>
+</tr>
+<tr>
+<td align="center"><em>\n</em></td>
+<td align="center">换行符*(LF)*</td>
+<td align="center"><em>0AH/10</em></td>
+</tr>
+<tr>
+<td align="center"><em>\r</em></td>
+<td align="center">回车符*(CR)*</td>
+<td align="center"><em>0DH/13</em></td>
+</tr>
+<tr>
+<td align="center"><em>\t</em></td>
+<td align="center">水平制表符*(HT)*</td>
+<td align="center"><em>09H/9</em></td>
+</tr>
+<tr>
+<td align="center"><em>\v</em></td>
+<td align="center">垂直制表*(VT)*</td>
+<td align="center"><em>0B/11</em></td>
+</tr>
+<tr>
+<td align="center"><em>\a</em></td>
+<td align="center">响铃*(BEL)*</td>
+<td align="center"><em>07/7</em></td>
+</tr>
+<tr>
+<td align="center"><em>\b</em></td>
+<td align="center">退格符*(BS)*</td>
+<td align="center"><em>08H/8</em></td>
+</tr>
+<tr>
+<td align="center"><em>\f</em></td>
+<td align="center">换页符*(FF)*</td>
+<td align="center"><em>0CH/12</em></td>
+</tr>
+<tr>
+<td align="center"><em>\’</em></td>
+<td align="center">单引号</td>
+<td align="center"><em>27H/39</em></td>
+</tr>
+<tr>
+<td align="center"><em>\”</em></td>
+<td align="center">双引号</td>
+<td align="center"><em>22H/34</em></td>
+</tr>
+<tr>
+<td align="center">*\*</td>
+<td align="center">反斜杠</td>
+<td align="center"><em>5CH/92</em></td>
+</tr>
+<tr>
+<td align="center"><em>?</em></td>
+<td align="center">问号字符</td>
+<td align="center"><em>3F</em><em>/63</em></td>
+</tr>
+<tr>
+<td align="center"><em>\ddd</em></td>
+<td align="center">任意字符</td>
+<td align="center">三位八进制</td>
+</tr>
+<tr>
+<td align="center"><em>\xhh</em></td>
+<td align="center">任意字符</td>
+<td align="center">二位十六进制</td>
+</tr>
+</tbody></table>
+<ul>
+<li><p>特殊</p>
+<p>??+ —— 三字母符号   ??</p>
+<p>把斜杠转义掉，\\表示一个斜杠，打印电脑存盘的路径</p>
+</li>
+<li><p>strlen(“c:\test\32\test.c”)输出结果</p>
+<p>\t表示一个字符，转义字符</p>
+<p>\32(\ddd)表示一个八进制的=3*8+2=26</p>
+<p>\xddd十六进制数字</p>
+</li>
+</ul>
+<hr>
+<h1 id="运算符"><a href="#运算符" class="headerlink" title="运算符"></a>运算符</h1><h2 id="算数运算符"><a href="#算数运算符" class="headerlink" title="算数运算符"></a>算数运算符</h2><table>
+<thead>
+<tr>
+<th align="center"><strong>运算符</strong></th>
+<th align="center"><strong>描述</strong></th>
+<th align="center"><strong>实例</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center"><strong>+</strong></td>
+<td align="center">两个数相加</td>
+<td align="center">A+B 将得到 23</td>
+</tr>
+<tr>
+<td align="center"><strong>-</strong></td>
+<td align="center">一个数减另一个数</td>
+<td align="center">A-B 将得到 13</td>
+</tr>
+<tr>
+<td align="center">*****</td>
+<td align="center">两个数相乘</td>
+<td align="center">A*B 将得到 90</td>
+</tr>
+<tr>
+<td align="center"><strong>/</strong></td>
+<td align="center">分子除以分母</td>
+<td align="center">A/B 将得到 3.6</td>
+</tr>
+<tr>
+<td align="center"><strong>%</strong></td>
+<td align="center">余数运算符，整除后的余数</td>
+<td align="center">B%A 将得到 3</td>
+</tr>
+<tr>
+<td align="center"><strong>++</strong></td>
+<td align="center">自增运算符，整数值增加 1</td>
+<td align="center">A++ 将得到 19</td>
+</tr>
+<tr>
+<td align="center"><strong>–</strong></td>
+<td align="center">自减运算符，整数值减少 1</td>
+<td align="center">A– 将得到 17</td>
+</tr>
+</tbody></table>
+<h2 id="赋值运算符"><a href="#赋值运算符" class="headerlink" title="赋值运算符"></a>赋值运算符</h2><table>
+<thead>
+<tr>
+<th align="center"><strong>运算符</strong></th>
+<th align="center"><strong>描述</strong></th>
+<th align="center"><strong>实例</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center"><strong>=</strong></td>
+<td align="center">简单的赋值运算符，把右边操作数的值赋给左边操作数</td>
+<td align="center">C = A + B 将把 A + B 的值赋给 C</td>
+</tr>
+<tr>
+<td align="center"><strong>+=</strong></td>
+<td align="center">加且赋值运算符，把右边操作数加上左边操作数的结果赋值给左边操作数</td>
+<td align="center">C += A 相当于 C = C + A</td>
+</tr>
+<tr>
+<td align="center"><strong>-=</strong></td>
+<td align="center">减且赋值运算符，把左边操作数减去右边操作数的结果赋值给左边操作数</td>
+<td align="center">C -= A 相当于 C = C - A</td>
+</tr>
+<tr>
+<td align="center">***=**</td>
+<td align="center">乘且赋值运算符，把右边操作数乘以左边操作数的结果赋值给左边操作数</td>
+<td align="center">C *= A 相当于 C = C * A</td>
+</tr>
+<tr>
+<td align="center"><strong>/=</strong></td>
+<td align="center">除且赋值运算符，把左边操作数除以右边操作数的结果赋值给左边操作数</td>
+<td align="center">C /= A 相当于 C = C / A</td>
+</tr>
+<tr>
+<td align="center"><strong>%=</strong></td>
+<td align="center">求余数且赋值运算符，求两个操作数的模赋值给左边操作数，浮点数不适用取余数。</td>
+<td align="center">C %= A 相当于 C = C % A</td>
+</tr>
+</tbody></table>
+<h2 id="优先级"><a href="#优先级" class="headerlink" title="优先级"></a>优先级</h2><p>&emsp;&emsp;基本的优先级需要记住：指针最优，单目运算优于双目运算。如正负号。先乘除（模），后加减。先算术运算，后移位运算，最后位运算。请特别注意：1 &lt;&lt; 3 + 2 &amp; 7等价于 (1 &lt;&lt; (3 + 2))&amp;7.逻辑运算最后计算。</p>
+<p> &emsp;&emsp;<strong>C语言常用运算符的优先级口诀是：“单算关逻条赋逗”；如果加入位运算符，完整口诀是：“单算移关与，异或逻条赋”。</strong></p>
+<blockquote>
+<ul>
+<li> “单”表示单目运算符：逻辑非(!),按位取反(~),自增(++),自减(–),取地址(&amp;),取值(*)；</li>
+<li>“算”表示算术运算符：乘、除和求余(*,/,%)级别高于加减(+,-)；</li>
+<li>“移”表示按位左移(&lt;&lt;)和位右移(&gt;&gt;)；</li>
+<li>“关”表示关系运算符：大小关系(&gt;,&gt;=,&lt;,&lt;=)级别高于相等不相等关系(==,!=)；</li>
+<li>“与”表示按位与(&amp;)；</li>
+<li>“异”表示按位异或(^)；</li>
+<li>“或”表示按位或(|)；</li>
+<li>“逻”表示逻辑运算符：逻辑与(&amp;&amp;)级别高于逻辑或(||)；</li>
+<li>“条”表示条件运算符(? :)；</li>
+<li>“赋”表示赋值运算符(=,+=,-=,*=,/=,%=,&gt;&gt;=,&lt;&lt;=,&amp;=,^=, |=,!=)；</li>
+<li>另，逗号运算符(,) 级别最低，口诀中没有表述，需另加记忆..</li>
+</ul>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th align="center">优先级</th>
+<th align="center">运算符</th>
+<th align="center">名称或含义</th>
+<th align="center">使用形式</th>
+<th align="center">结合方向</th>
+<th align="center">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center"><strong>1</strong></td>
+<td align="center">后置++</td>
+<td align="center">后置自增运算符</td>
+<td align="center">变量名++</td>
+<td align="center">左到右</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center"></td>
+<td align="center">后置–</td>
+<td align="center">后置自减运算符</td>
+<td align="center">变量名–</td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center"></td>
+<td align="center">[ ]</td>
+<td align="center">数组下标</td>
+<td align="center">数组名[整型表达式]</td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center"></td>
+<td align="center">( )</td>
+<td align="center">圆括号</td>
+<td align="center">（表达式）/函数名(形参表)</td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center"></td>
+<td align="center"><strong>.</strong></td>
+<td align="center">成员选择（对象）</td>
+<td align="center">对象.成员名</td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center"></td>
+<td align="center">-&gt;</td>
+<td align="center">成员选择（指针）</td>
+<td align="center">对象指针-&gt;成员名</td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center"><strong>2</strong></td>
+<td align="center">-</td>
+<td align="center">负号运算符</td>
+<td align="center">-表达式</td>
+<td align="center">右到左</td>
+<td align="center">单目运算符</td>
+</tr>
+<tr>
+<td align="center"></td>
+<td align="center">(类型)</td>
+<td align="center">强制类型转换</td>
+<td align="center">(数据类型)表达式</td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center"></td>
+<td align="center">前置++</td>
+<td align="center">前置自增运算符</td>
+<td align="center">++变量名</td>
+<td align="center"></td>
+<td align="center">单目运算符</td>
+</tr>
+<tr>
+<td align="center"></td>
+<td align="center">前置–</td>
+<td align="center">前置自减运算符</td>
+<td align="center">–变量名</td>
+<td align="center"></td>
+<td align="center">单目运算符</td>
+</tr>
+<tr>
+<td align="center"></td>
+<td align="center">*</td>
+<td align="center">取值运算符</td>
+<td align="center">*指针表达式</td>
+<td align="center"></td>
+<td align="center">单目运算符</td>
+</tr>
+<tr>
+<td align="center"></td>
+<td align="center">&amp;</td>
+<td align="center">取地址运算符</td>
+<td align="center">&amp;左值表达式</td>
+<td align="center"></td>
+<td align="center">单目运算符</td>
+</tr>
+<tr>
+<td align="center"></td>
+<td align="center">!</td>
+<td align="center">逻辑非运算符</td>
+<td align="center">!表达式</td>
+<td align="center"></td>
+<td align="center">单目运算符</td>
+</tr>
+<tr>
+<td align="center"></td>
+<td align="center">~</td>
+<td align="center">按位取反运算符</td>
+<td align="center">~表达式</td>
+<td align="center"></td>
+<td align="center">单目运算符</td>
+</tr>
+<tr>
+<td align="center"></td>
+<td align="center">sizeof</td>
+<td align="center">长度运算符</td>
+<td align="center">sizeof 表达式/sizeof(类型)</td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center"><strong>3</strong></td>
+<td align="center">/</td>
+<td align="center">除</td>
+<td align="center">表达式/表达式</td>
+<td align="center">左到右</td>
+<td align="center">双目运算符</td>
+</tr>
+<tr>
+<td align="center"></td>
+<td align="center">*</td>
+<td align="center">乘</td>
+<td align="center">表达式*表达式</td>
+<td align="center"></td>
+<td align="center">双目运算符</td>
+</tr>
+<tr>
+<td align="center"></td>
+<td align="center">%</td>
+<td align="center">余数（取模）</td>
+<td align="center">整型表达式%整型表达式</td>
+<td align="center"></td>
+<td align="center">双目运算符</td>
+</tr>
+<tr>
+<td align="center"><strong>4</strong></td>
+<td align="center">+</td>
+<td align="center">加</td>
+<td align="center">表达式+表达式</td>
+<td align="center">左到右</td>
+<td align="center">双目运算符</td>
+</tr>
+<tr>
+<td align="center"></td>
+<td align="center">-</td>
+<td align="center">减</td>
+<td align="center">表达式-表达式</td>
+<td align="center"></td>
+<td align="center">双目运算符</td>
+</tr>
+<tr>
+<td align="center"><strong>5</strong></td>
+<td align="center">&lt;&lt;</td>
+<td align="center">左移</td>
+<td align="center">表达式&lt;&lt;表达式</td>
+<td align="center">左到右</td>
+<td align="center">双目运算符</td>
+</tr>
+<tr>
+<td align="center"></td>
+<td align="center">&gt;&gt;</td>
+<td align="center">右移</td>
+<td align="center">表达式&gt;&gt;表达式</td>
+<td align="center"></td>
+<td align="center">双目运算符</td>
+</tr>
+<tr>
+<td align="center"><strong>6</strong></td>
+<td align="center">&gt;</td>
+<td align="center">大于</td>
+<td align="center">表达式&gt;表达式</td>
+<td align="center">左到右</td>
+<td align="center">双目运算符</td>
+</tr>
+<tr>
+<td align="center"></td>
+<td align="center">&gt;=</td>
+<td align="center">大于等于</td>
+<td align="center">表达式&gt;=表达式</td>
+<td align="center"></td>
+<td align="center">双目运算符</td>
+</tr>
+<tr>
+<td align="center"></td>
+<td align="center">&lt;</td>
+<td align="center">小于</td>
+<td align="center">表达式&lt;表达式</td>
+<td align="center"></td>
+<td align="center">双目运算符</td>
+</tr>
+<tr>
+<td align="center"></td>
+<td align="center">&lt;=</td>
+<td align="center">小于等于</td>
+<td align="center">表达式&lt;=表达式</td>
+<td align="center"></td>
+<td align="center">双目运算符</td>
+</tr>
+<tr>
+<td align="center"><strong>7</strong></td>
+<td align="center">==</td>
+<td align="center">等于</td>
+<td align="center">表达式==表达式</td>
+<td align="center">左到右</td>
+<td align="center">双目运算符</td>
+</tr>
+<tr>
+<td align="center"></td>
+<td align="center">!=</td>
+<td align="center">不等于</td>
+<td align="center">表达式!= 表达式</td>
+<td align="center"></td>
+<td align="center">双目运算符</td>
+</tr>
+<tr>
+<td align="center"><strong>8</strong></td>
+<td align="center">&amp;</td>
+<td align="center">按位与</td>
+<td align="center">整型表达式&amp;整型表达式</td>
+<td align="center">左到右</td>
+<td align="center">双目运算符</td>
+</tr>
+<tr>
+<td align="center"><strong>9</strong></td>
+<td align="center">^</td>
+<td align="center">按位异或</td>
+<td align="center">整型表达式^整型表达式</td>
+<td align="center">左到右</td>
+<td align="center">双目运算符</td>
+</tr>
+<tr>
+<td align="center"><strong>10</strong></td>
+<td align="center">|</td>
+<td align="center">按位或</td>
+<td align="center">整型表达式|整型表达式</td>
+<td align="center">左到右</td>
+<td align="center">双目运算符</td>
+</tr>
+<tr>
+<td align="center"><strong>11</strong></td>
+<td align="center">&amp;&amp;</td>
+<td align="center">逻辑与</td>
+<td align="center">表达式&amp;&amp;表达式</td>
+<td align="center">左到右</td>
+<td align="center">双目运算符</td>
+</tr>
+<tr>
+<td align="center"><strong>12</strong></td>
+<td align="center">||</td>
+<td align="center">逻辑或</td>
+<td align="center">表达式||表达式</td>
+<td align="center">左到右</td>
+<td align="center">双目运算符</td>
+</tr>
+<tr>
+<td align="center"><strong>13</strong></td>
+<td align="center">?:</td>
+<td align="center">条件运算符</td>
+<td align="center">表达式1? 表达式2: 表达式3</td>
+<td align="center">右到左</td>
+<td align="center">三目运算符</td>
+</tr>
+<tr>
+<td align="center"><strong>14</strong></td>
+<td align="center">=</td>
+<td align="center">赋值运算符</td>
+<td align="center">变量=表达式</td>
+<td align="center">右到左</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center"></td>
+<td align="center">/=</td>
+<td align="center">除后赋值</td>
+<td align="center">变量/=表达式</td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center"></td>
+<td align="center">*=</td>
+<td align="center">乘后赋值</td>
+<td align="center">变量*=表达式</td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center"></td>
+<td align="center">%=</td>
+<td align="center">取模后赋值</td>
+<td align="center">变量%=表达式</td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center"></td>
+<td align="center">+=</td>
+<td align="center">加后赋值</td>
+<td align="center">变量+=表达式</td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center"></td>
+<td align="center">-=</td>
+<td align="center">减后赋值</td>
+<td align="center">变量-=表达式</td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center"></td>
+<td align="center">&lt;&lt;=</td>
+<td align="center">左移后赋值</td>
+<td align="center">变量&lt;&lt;=表达式</td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center"></td>
+<td align="center">&gt;&gt;=</td>
+<td align="center">右移后赋值</td>
+<td align="center">变量&gt;&gt;=表达式</td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center"></td>
+<td align="center">&amp;=</td>
+<td align="center">按位与后赋值</td>
+<td align="center">变量&amp;=表达式</td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center"></td>
+<td align="center">^=</td>
+<td align="center">按位异或后赋值</td>
+<td align="center">变量^=表达式</td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center"></td>
+<td align="center">|=</td>
+<td align="center">按位或后赋值</td>
+<td align="center">变量|=表达式</td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center"><strong>15</strong></td>
+<td align="center">,</td>
+<td align="center">逗号运算符</td>
+<td align="center">表达式,表达式,…</td>
+<td align="center">左到右</td>
+<td align="center">从左向右顺序运算</td>
+</tr>
+</tbody></table>
+<hr>
+<h1 id="类型转换"><a href="#类型转换" class="headerlink" title="类型转换"></a>类型转换</h1><p>&emsp;&emsp;当一个运算符的几个操作数类型不同时会发生什么情况？</p>
+<p>&emsp;&emsp;当一个运算符的几个操作数类型不同时，编译器需要将他们转化为相同的数据类型才能运算，通常情况下，编译器会将占用坑位小的数据类型转换成占用坑位大的来运算，这样做是为了确保计算精度。</p>
+<p>&emsp;&emsp;除此之外，我们还可以进行强制转换，比如（int）2.0便将浮点型的数据2.0转换成了整型数据2，那么int（2.5）或者int（2.9）等于多少呢？其实结果同样也为2，C语言内部的做法是直接去掉小数，而不是四舍五入。</p>
+<hr>
+<h1 id="注释"><a href="#注释" class="headerlink" title="注释"></a>注释</h1><p>&emsp;&emsp;<strong>注释的意思：</strong>我之前听过一个老师说注释是<code>注销</code>和<code>解释</code>的的意思，注销指的是让一段代码失效，解释就是解释这段代码的意思。</p>
+<p>（也许词典上并没有注销的一层含义，但用在编程上再恰当不过了）</p>
+<p>&emsp;<strong>&emsp;注释的作用：</strong>方便代码的可读性和直观性，代码中有不需要的代码可以直接删除，也可以注释起来，谨防日后需要。</p>
+<p><strong>&emsp;&emsp;注释风格：</strong><code>/*.....*/</code> 一段      <code>//</code>一行</p>
+<hr>
+<h1 id="关于vs2019编译器中scanf函数不安全报错信息的解决方案"><a href="#关于vs2019编译器中scanf函数不安全报错信息的解决方案" class="headerlink" title="关于vs2019编译器中scanf函数不安全报错信息的解决方案"></a>关于vs2019编译器中scanf函数不安全报错信息的解决方案</h1><p>&emsp;&emsp;刚用vs2019编译器的时候会遇到这样的报错信息 <code>error C4996: ‘scanf’: This function or variable may be unsafe. Consider using scanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details. </code></p>
+<h2 id="使用scanf-s函数-不建议"><a href="#使用scanf-s函数-不建议" class="headerlink" title="使用scanf_s函数(不建议)"></a>使用<code>scanf_s</code>函数(不建议)</h2><p>&emsp;&emsp;编译器建议使用scanf_s函数，但是这是微软的编译器特有的，如果移植到别的编译器里，那么平台的通用性将会变差。</p>
+<h2 id="在文件前面的上（每次都加，麻烦）"><a href="#在文件前面的上（每次都加，麻烦）" class="headerlink" title="在文件前面的上（每次都加，麻烦）"></a>在文件前面的上（每次都加，麻烦）</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">#define _CRT_SECURE_NO_WARNINGS 1</span><br></pre></td></tr></table></figure>
+
+<p>&emsp;&emsp;这样可以停止报错，但是每次创建文件都要加也是很烦。（当然还有的方法是修改文件属性里的宏定义，一样的道理）</p>
+<h2 id="通过文件长期修改（一劳永逸，推荐）"><a href="#通过文件长期修改（一劳永逸，推荐）" class="headerlink" title="通过文件长期修改（一劳永逸，推荐）"></a>通过文件长期修改（一劳永逸，推荐）</h2><p>&emsp;&emsp;&emsp;建议使用这种解决方案。每次创建文件时，系统自动添加方法二的代码。<br>&emsp;&emsp;``D:\Visual Studio 2019\Common7\IDE\VC\vcprojectitems`</p>
+<p>&emsp;&emsp;需要注意的是不同版本这个文件的位置有所不同，我们可以直接搜索目标文件<code>newc++file.cpp</code></p>
+<p>&emsp;&emsp;<code>用其他编辑器打开（通常用Notepad++）</code>   加入 ``#define _CRT_SECURE_NO_WARNINGS 1`后保存。</p>
+<p><img src="https://img-blog.csdnimg.cn/img_convert/9086b2391560b6118ac5537b88cd919b.png" alt="img"></p>
+</article><div class="post-copyright"><div class="post-copyright__title"><span class="post-copyright-info"><h>初识C语言</h></span></div><div class="post-copyright__type"><span class="post-copyright-info"><a href="https://sunguoqi.com/posts/26252.html">https://sunguoqi.com/posts/26252.html</a></span></div><div class="post-copyright-m"><div class="post-copyright-m-info"><div class="post-copyright-a"><h>作者</h><div class="post-copyright-cc-info"><h>小孙同学</h></div></div><div class="post-copyright-c"><h>发布于</h><div class="post-copyright-cc-info"><h>2021-02-22</h></div></div><div class="post-copyright-u"><h>更新于</h><div class="post-copyright-cc-info"><h>2022-01-11</h></div></div><div class="post-copyright-c"><h>许可协议</h><div class="post-copyright-cc-info"><a class="icon" rel="noopener" target="_blank" title="Creative Commons" href="https://creativecommons.org/"><i class="fab fa-creative-commons"></i></a><a rel="noopener" target="_blank" title="CC BY-NC-SA 4.0" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a></div></div></div></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/C%E8%AF%AD%E8%A8%80/">C语言</a></div><div class="post_share"><div class="social-share" data-image="https://i.loli.net/2021/03/11/8ZBAvYNPkxahpI5.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><div class="post-reward"><div class="reward-button button--animated"><i class="fas fa-qrcode"></i> 打赏</div><div class="reward-main"><ul class="reward-all"><li class="reward-item"><a href="/images/wechatpay.png" target="_blank"><img class="post-qr-code-img" src="/images/wechatpay.png" alt="wechat"/></a><div class="post-qr-code-desc">wechat</div></li><li class="reward-item"><a href="/images/alipay.png" target="_blank"><img class="post-qr-code-img" src="/images/alipay.png" alt="alipay"/></a><div class="post-qr-code-desc">alipay</div></li></ul></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/posts/41653.html"><img class="prev-cover" src="https://i.loli.net/2021/03/11/4YW8Gh5QKeZuSd9.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">用for循环语句实现在屏幕上打印特殊图案编程题目的解法</div></div></a></div><div class="next-post pull-right"><a href="/posts/839.html"><img class="next-cover" src="https://i.loli.net/2021/03/11/vSWjqXGbLazUTZ3.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">2021 未来可期</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/posts/28271.html" title="C语言实例练习（上）"><img class="cover" src="https://i.loli.net/2021/03/11/FvLNfo6T9A4lZC7.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-03-02</div><div class="title">C语言实例练习（上）</div></div></a></div><div><a href="/posts/52563.html" title="C语言实现简单的图书馆小程序"><img class="cover" src="https://i.loli.net/2021/03/11/1JaS4HO3o8ftZgy.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-03-03</div><div class="title">C语言实现简单的图书馆小程序</div></div></a></div><div><a href="/posts/16393.html" title="C语言实现智能三子棋"><img class="cover" src="https://i.loli.net/2021/03/11/GVxRpJzlLEvofNA.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-02-24</div><div class="title">C语言实现智能三子棋</div></div></a></div><div><a href="/posts/16693.html" title="C语言实现三子棋"><img class="cover" src="https://i.loli.net/2021/03/11/GVxRpJzlLEvofNA.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-02-24</div><div class="title">C语言实现三子棋</div></div></a></div><div><a href="/posts/48112.html" title="C语言实现扫雷小游戏（下）"><img class="cover" src="https://i.loli.net/2021/03/11/F2tNq3ndEHXATl7.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-02-27</div><div class="title">C语言实现扫雷小游戏（下）</div></div></a></div><div><a href="/posts/18417.html" title="C语言实现扫雷小游戏（上）"><img class="cover" src="https://i.loli.net/2021/03/11/F2tNq3ndEHXATl7.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-02-26</div><div class="title">C语言实现扫雷小游戏（上）</div></div></a></div></div></div><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="twikoo-wrap"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/images/avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">小孙同学</div><div class="author-info__description">一个理性的浪漫主义者</div></div><div class="card-info-data"><div class="card-info-data-item is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">56</div></a></div><div class="card-info-data-item is-center"><a href="/tags/"><div class="headline">标签</div><div class="length-num">24</div></a></div><div class="card-info-data-item is-center"><a href="/categories/"><div class="headline">分类</div><div class="length-num">9</div></a></div></div><a class="button--animated" id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/sun0225SUN"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://twitter.com/sun0225SUN" target="_blank" title="twitter"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-shejiaotubiao-20"></use></svg></a><a class="social-icon" href="https://gitee.com/sun0225/photos/raw/master/img/202108111357613.jpg" target="_blank" title="weixin"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-weixin2"></use></svg></a><a class="social-icon" href="https://github.com/sun0225SUN" target="_blank" title="GitHub"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-GitHub"></use></svg></a><a class="social-icon" href="https://weibo.com/p/1005057392882465/home?from=page_100505&amp;mod=TAB#place" target="_blank" title="weibo"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-weibo1"></use></svg></a><a class="social-icon" href="https://blog.csdn.net/weixin_50915462?spm=1010.2135.3001.5421" target="_blank" title="csdn"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-csdn"></use></svg></a></div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AFC%E8%AF%AD%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text">什么是C语言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%AF%AD%E8%A8%80%E7%9A%84%E5%8F%91%E5%B1%95"><span class="toc-number">2.</span> <span class="toc-text">语言的发展</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#C%E8%AF%AD%E8%A8%80%E7%9A%84%E5%8F%91%E5%B1%95"><span class="toc-number">3.</span> <span class="toc-text">C语言的发展</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#C%E8%AF%AD%E8%A8%80%E7%9A%84%E4%BC%98%E5%8A%BF"><span class="toc-number">4.</span> <span class="toc-text">C语言的优势</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AC%AC%E4%B8%80%E4%B8%AAC%E8%AF%AD%E8%A8%80%E7%A8%8B%E5%BA%8F"><span class="toc-number">5.</span> <span class="toc-text">第一个C语言程序</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%A0%87%E8%AF%86%E7%AC%A6"><span class="toc-number">6.</span> <span class="toc-text">标识符</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%B8%B8%E9%87%8F%E5%92%8C%E5%8F%98%E9%87%8F"><span class="toc-number">7.</span> <span class="toc-text">常量和变量</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B8%B8%E9%87%8F%EF%BC%9A%E5%9B%BA%E5%AE%9A%E4%B8%8D%E5%8F%98%E7%9A%84%E9%87%8F"><span class="toc-number">7.1.</span> <span class="toc-text">常量：固定不变的量</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%98%E9%87%8F%EF%BC%9A%E5%8F%98%E5%8C%96%E7%9A%84%E9%87%8F"><span class="toc-number">7.2.</span> <span class="toc-text">变量：变化的量</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="toc-number">8.</span> <span class="toc-text">数据类型</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#sizeof%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="toc-number">9.</span> <span class="toc-text">sizeof运算符</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AD%97%E7%AC%A6"><span class="toc-number">10.</span> <span class="toc-text">字符</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2"><span class="toc-number">11.</span> <span class="toc-text">字符串</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%BD%AC%E4%B9%89%E5%AD%97%E7%AC%A6"><span class="toc-number">12.</span> <span class="toc-text">转义字符</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="toc-number">13.</span> <span class="toc-text">运算符</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AE%97%E6%95%B0%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="toc-number">13.1.</span> <span class="toc-text">算数运算符</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%B5%8B%E5%80%BC%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="toc-number">13.2.</span> <span class="toc-text">赋值运算符</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BC%98%E5%85%88%E7%BA%A7"><span class="toc-number">13.3.</span> <span class="toc-text">优先级</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2"><span class="toc-number">14.</span> <span class="toc-text">类型转换</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%B3%A8%E9%87%8A"><span class="toc-number">15.</span> <span class="toc-text">注释</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%85%B3%E4%BA%8Evs2019%E7%BC%96%E8%AF%91%E5%99%A8%E4%B8%ADscanf%E5%87%BD%E6%95%B0%E4%B8%8D%E5%AE%89%E5%85%A8%E6%8A%A5%E9%94%99%E4%BF%A1%E6%81%AF%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88"><span class="toc-number">16.</span> <span class="toc-text">关于vs2019编译器中scanf函数不安全报错信息的解决方案</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8scanf-s%E5%87%BD%E6%95%B0-%E4%B8%8D%E5%BB%BA%E8%AE%AE"><span class="toc-number">16.1.</span> <span class="toc-text">使用scanf_s函数(不建议)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9C%A8%E6%96%87%E4%BB%B6%E5%89%8D%E9%9D%A2%E7%9A%84%E4%B8%8A%EF%BC%88%E6%AF%8F%E6%AC%A1%E9%83%BD%E5%8A%A0%EF%BC%8C%E9%BA%BB%E7%83%A6%EF%BC%89"><span class="toc-number">16.2.</span> <span class="toc-text">在文件前面的上（每次都加，麻烦）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%80%9A%E8%BF%87%E6%96%87%E4%BB%B6%E9%95%BF%E6%9C%9F%E4%BF%AE%E6%94%B9%EF%BC%88%E4%B8%80%E5%8A%B3%E6%B0%B8%E9%80%B8%EF%BC%8C%E6%8E%A8%E8%8D%90%EF%BC%89"><span class="toc-number">16.3.</span> <span class="toc-text">通过文件长期修改（一劳永逸，推荐）</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/posts/2022811.html" title="冥冥之中，自有注定，但行好事，莫问前程！"><img src="https://cdn.jsdelivr.net/gh/sun0225SUN/photos/images/202208112334431.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="冥冥之中，自有注定，但行好事，莫问前程！"/></a><div class="content"><a class="title" href="/posts/2022811.html" title="冥冥之中，自有注定，但行好事，莫问前程！">冥冥之中，自有注定，但行好事，莫问前程！</a><time datetime="2022-08-11T12:00:00.000Z" title="发表于 2022-08-11 20:00:00">2022-08-11</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/20220225.html" title="人生21岁，版本更新日志！"><img src="https://cdn.jsdelivr.net/gh/sun0225SUN/photos/images/202202251932444.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="人生21岁，版本更新日志！"/></a><div class="content"><a class="title" href="/posts/20220225.html" title="人生21岁，版本更新日志！">人生21岁，版本更新日志！</a><time datetime="2022-02-25T12:00:00.000Z" title="发表于 2022-02-25 20:00:00">2022-02-25</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/fiddler.html" title="我终于学废用Fiddler抓包了！"><img src="https://cdn.jsdelivr.net/gh/sun0225SUN/photos/images/202201241655128.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="我终于学废用Fiddler抓包了！"/></a><div class="content"><a class="title" href="/posts/fiddler.html" title="我终于学废用Fiddler抓包了！">我终于学废用Fiddler抓包了！</a><time datetime="2022-01-24T09:00:00.000Z" title="发表于 2022-01-24 17:00:00">2022-01-24</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/4243.html" title="零基础快速上手云服务器"><img src="https://cdn.jsdelivr.net/gh/sun0225SUN/photos/images/202112171758778.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="零基础快速上手云服务器"/></a><div class="content"><a class="title" href="/posts/4243.html" title="零基础快速上手云服务器">零基础快速上手云服务器</a><time datetime="2022-01-09T04:00:00.000Z" title="发表于 2022-01-09 12:00:00">2022-01-09</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/33414.html" title="给GitHub首页添加一个有趣的贪吃蛇小动画"><img src="https://cdn.jsdelivr.net/gh/sun0225SUN/photos/images/202112311009126.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="给GitHub首页添加一个有趣的贪吃蛇小动画"/></a><div class="content"><a class="title" href="/posts/33414.html" title="给GitHub首页添加一个有趣的贪吃蛇小动画">给GitHub首页添加一个有趣的贪吃蛇小动画</a><time datetime="2022-01-08T16:00:00.000Z" title="发表于 2022-01-09 00:00:00">2022-01-09</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div id="workboard"></div><script async="async" src="/js/runtime.js"></script><div class="copyright">&copy;2021 - 2022 By 小孙同学</div><div class="footer_custom_text"><a href="https://sunguoqi.com/"><img class=""icp-icon"" src=""><a target="_blank" rel="noopener" href="http://beian.miit.gov.cn/"><img class="icp-icon" src=""><span>备案号：皖ICP备2021010058号&nbsp;&nbsp;</span></a><a target="_blank" rel="noopener" href="http://www.beian.gov.cn/portal/registerSystemInfo?spm=5176.19720258.J_9220772140.112.678b2c4afdwoRs"><img class="icp-icon" src="https://cdn.jsdelivr.net/gh/sun0225SUN/photos/images/202108190042278.png"><span>皖公网安备34040302000393号</span></a></div><p id="ghbdages"><a class="github-badge" target="_blank" href="https://hexo.io/" style="margin-inline:5px"><img src="https://img.shields.io/badge/Frame-Hexo-blue?style=flat&amp;logo=hexo"/></a><a class="github-badge" target="_blank" href="https://butterfly.js.org/" style="margin-inline:5px"><img src="https://img.shields.io/badge/Theme-Butterfly-6513df?style=flat&amp;logo=bitdefender"/></a><a class="github-badge" target="_blank" href="https://www.jsdelivr.com/" style="margin-inline:5px"><img src="https://img.shields.io/badge/CDN-jsDelivr-orange?style=flat&amp;logo=jsDelivr"/></a><a class="github-badge" target="_blank" href="https://coding.net/" style="margin-inline:5px"><img src="https://img.shields.io/badge/Hosted-Coding-0cedbe?style=flat&amp;logo=Codio"/></a><a class="github-badge" target="_blank" href="https://github.com/" style="margin-inline:5px"><img src="https://img.shields.io/badge/Source-Github-d021d6?style=flat&amp;logo=GitHub"/></a><a class="github-badge" target="_blank" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" style="margin-inline:5px"><img src="https://img.shields.io/badge/Copyright-BY--NC--SA%204.0-d42328?style=flat&amp;logo=Claris"/></a></p></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="font-plus" type="button" title="放大字体"><i class="fas fa-plus"></i></button><button id="font-minus" type="button" title="缩小字体"><i class="fas fa-minus"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="chat_btn" type="button" title="与我聊天"><i class="fas fa-sms"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="algolia-search"><div class="search-dialog"><div class="search-dialog__title" id="algolia-search-title">Algolia</div><div id="algolia-input-panel"><div id="algolia-search-input"></div></div><hr/><div id="algolia-search-results"><div id="algolia-hits"></div><div id="algolia-pagination"></div><div id="algolia-stats"></div></div><span class="search-close-button"><i class="fas fa-times"></i></span></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page/instantpage.min.js" type="module"></script><script src="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.js"></script><script>function panguFn () {
+  if (typeof pangu === 'object') pangu.autoSpacingPage()
+  else {
+    getScript('https://cdn.jsdelivr.net/npm/pangu/dist/browser/pangu.min.js')
+      .then(() => {
+        pangu.autoSpacingPage()
+      })
+  }
+}
+
+function panguInit () {
+  if (false){
+    GLOBAL_CONFIG_SITE.isPost && panguFn()
+  } else {
+    panguFn()
+  }
+}
+
+document.addEventListener('DOMContentLoaded', panguInit)</script><script src="/js/search/algolia.js"></script><script>var preloader = {
+  endLoading: () => {
+    document.body.style.overflow = 'auto';
+    document.getElementById('loading-box').classList.add("loaded")
+  },
+  initLoading: () => {
+    document.body.style.overflow = '';
+    document.getElementById('loading-box').classList.remove("loaded")
+
+  }
+}
+window.addEventListener('load',preloader.endLoading())</script><div class="js-pjax"><script>(()=>{
+  const $countDom = document.getElementById('twikoo-count')
+  const init = () => {
+    twikoo.init(Object.assign({
+      el: '#twikoo-wrap',
+      envId: 'https://vercel.sunguoqi.com/',
+      region: ''
+    }, null))
+  }
+
+  const getCount = () => {
+    twikoo.getCommentsCount({
+      envId: 'https://vercel.sunguoqi.com/',
+      region: '',
+      urls: [window.location.pathname],
+      includeReply: false
+    }).then(function (res) {
+      $countDom.innerText = res[0].count
+    }).catch(function (err) {
+      console.error(err);
+    });
+  }
+
+  const loadTwikoo = (bool = false) => {
+    if (typeof twikoo === 'object') {
+      init()
+      bool && $countDom && setTimeout(getCount,0)
+    } else {
+      getScript('https://cdn.jsdelivr.net/npm/twikoo/dist/twikoo.all.min.js').then(()=> {
+        init()
+        bool && $countDom && setTimeout(getCount,0)
+      })
+    }
+  }
+
+  if ('Twikoo' === 'Twikoo' || !false) {
+    if (false) btf.loadComment(document.getElementById('twikoo-wrap'), loadTwikoo)
+    else loadTwikoo(true)
+  } else {
+    window.loadOtherComment = () => {
+      loadTwikoo()
+    }
+  }
+})()</script></div><script>window.addEventListener('load', () => {
+  const changeContent = (content) => {
+    if (content === '') return content
+
+    content = content.replace(/<img.*?src="(.*?)"?[^\>]+>/ig, '[图片]') // replace image link
+    content = content.replace(/<a[^>]+?href=["']?([^"']+)["']?[^>]*>([^<]+)<\/a>/gi, '[链接]') // replace url
+    content = content.replace(/<pre><code>.*?<\/pre>/gi, '[代码]') // replace code
+    content = content.replace(/<[^>]+>/g,"") // remove html tag
+
+    if (content.length > 150) {
+      content = content.substring(0,150) + '...'
+    }
+    return content
+  }
+
+  const getComment = () => {
+    const runTwikoo = () => {
+      twikoo.getRecentComments({
+        envId: 'https://vercel.sunguoqi.com/',
+        region: '',
+        pageSize: 5,
+        includeReply: true
+      }).then(function (res) {
+        const twikooArray = res.map(e => {
+          return {
+            'content': changeContent(e.comment),
+            'avatar': e.avatar,
+            'nick': e.nick,
+            'url': e.url + '#' + e.id,
+            'date': new Date(e.created).toISOString()
+          }
+        })
+
+        saveToLocal.set('twikoo-newest-comments', JSON.stringify(twikooArray), 10/(60*24))
+        generateHtml(twikooArray)
+      }).catch(function (err) {
+        const $dom = document.querySelector('#card-newest-comments .aside-list')
+        $dom.innerHTML= "无法获取评论，请确认相关配置是否正确"
+      })
+    }
+
+    if (typeof twikoo === 'object') {
+      runTwikoo()
+    } else {
+      getScript('https://cdn.jsdelivr.net/npm/twikoo/dist/twikoo.all.min.js').then(runTwikoo)
+    }
+  }
+
+  const generateHtml = array => {
+    let result = ''
+
+    if (array.length) {
+      for (let i = 0; i < array.length; i++) {
+        result += '<div class=\'aside-list-item\'>'
+
+        if (true) {
+          const name = 'src'
+          result += `<a href='${array[i].url}' class='thumbnail'><img ${name}='${array[i].avatar}' alt='${array[i].nick}'></a>`
+        }
+        
+        result += `<div class='content'>
+        <a class='comment' href='${array[i].url}'>${array[i].content}</a>
+        <div class='name'><span>${array[i].nick} / </span><time datetime="${array[i].date}">${btf.diffDate(array[i].date, true)}</time></div>
+        </div></div>`
+      }
+    } else {
+      result += '没有评论'
+    }
+
+    let $dom = document.querySelector('#card-newest-comments .aside-list')
+    $dom.innerHTML= result
+    window.lazyLoadInstance && window.lazyLoadInstance.update()
+    window.pjax && window.pjax.refresh($dom)
+  }
+
+  const newestCommentInit = () => {
+    if (document.querySelector('#card-newest-comments .aside-list')) {
+      const data = saveToLocal.get('twikoo-newest-comments')
+      if (data) {
+        generateHtml(JSON.parse(data))
+      } else {
+        getComment()
+      }
+    }
+  }
+
+  newestCommentInit()
+  document.addEventListener('pjax:complete', newestCommentInit)
+})</script><script async src="//at.alicdn.com/t/font_2761907_kffukm2d5os.js"></script><script src="https://widget.qweather.net/simple/static/js/he-simple-common.js?v=2.0"></script><script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.js"></script><script src="https://myhkw.cn/api/player/162713484765" id="myhk" key="162713484765" m="1"></script><div class="app-refresh" id="app-refresh"> <div class="app-refresh-wrap"> <label>✨ 小孙同学更新啦 👉</label> <a href="javascript:void(0)" onclick="location.reload()">✨ 点击刷新 ✨</a> </div></div><script>function showNotification(){if(GLOBAL_CONFIG.Snackbar){var t="light"===document.documentElement.getAttribute("data-theme")?GLOBAL_CONFIG.Snackbar.bgLight:GLOBAL_CONFIG.Snackbar.bgDark,e=GLOBAL_CONFIG.Snackbar.position;Snackbar.show({text:"已更新最新版本",backgroundColor:t,duration:5e5,pos:e,actionText:"点击刷新",actionTextColor:"#fff",onActionClick:function(t){location.reload()}})}else{var o=`top: 0; background: ${"light"===document.documentElement.getAttribute("data-theme")?"#49b1f5":"#1f1f1f"};`;document.getElementById("app-refresh").style.cssText=o}}"serviceWorker"in navigator&&(navigator.serviceWorker.controller&&navigator.serviceWorker.addEventListener("controllerchange",function(){showNotification()}),window.addEventListener("load",function(){navigator.serviceWorker.register("/sw.js")}));</script><script defer src="/live2d-widget/autoload.js"></script><script async src="//at.alicdn.com/t/font_2264842_3izu8i5eoc2.js"></script><script async data-pjax src="/js/randombg.js"></script><script async src="/js/diytitle.js"></script><script async src="/js/weather.js"></script><script async src="/js/grayscale.js"></script><canvas class="fireworks" mobile="false"></canvas><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/fireworks.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = false;
+POWERMODE.mobile = true;
+document.body.addEventListener('input', POWERMODE);
+</script><script src="//code.tidio.co/xsgiwox79ontxmujvwby4loey9vmxt2u.js" async="async"></script><script>function onTidioChatApiReady() {
+  window.tidioChatApi.hide();
+  window.tidioChatApi.on("close", function() {
+    window.tidioChatApi.hide();
+  });
+}
+if (window.tidioChatApi) {
+  window.tidioChatApi.on("ready", onTidioChatApiReady);
+} else {
+  document.addEventListener("tidioChat-ready", onTidioChatApiReady);
+}
+
+var chatBtnFn = () => {
+  document.getElementById("chat_btn").addEventListener("click", function(){
+    window.tidioChatApi.show();
+    window.tidioChatApi.open();
+  });
+}
+chatBtnFn()
+</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script><script src="https://cdn.jsdelivr.net/gh/metowolf/MetingJS@1.2/dist/Meting.min.js"></script><script src="https://cdn.jsdelivr.net/npm/pjax/pjax.min.js"></script><script>let pjaxSelectors = [
+  'title',
+  '#config-diff',
+  '#body-wrap',
+  '#rightside-config-hide',
+  '#rightside-config-show',
+  '#web_bg',
+  '.js-pjax'
+]
+
+if (false) {
+  pjaxSelectors.unshift('meta[property="og:image"]', 'meta[property="og:title"]', 'meta[property="og:url"]')
+}
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+
+  // removeEventListener scroll 
+  window.removeEventListener('scroll', window.tocScrollFn)
+  window.removeEventListener('scroll', scrollCollect)
+
+  typeof preloader === 'object' && preloader.initLoading()
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof chatBtnFn === 'function' && chatBtnFn()
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // Analytics
+  if (false) {
+    MtaH5.pgv()
+  }
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+
+  typeof preloader === 'object' && preloader.endLoading()
+})
+
+document.addEventListener('pjax:error', (e) => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><div class="app-refresh" id="app-refresh" style="position: fixed;top: -2.2rem;left: 0;right: 0;z-index: 99999;padding: 0 1rem;font-size: 15px;height: 2.2rem;transition: all 0.3s ease;"><div class="app-refresh-wrap" style=" display: flex;color: #fff;height: 100%;align-items: center;justify-content: center;"><label>✨小孙同学更新啦！👉</label><a href="javascript:void(0)" onclick="location.reload()"><span style="color: #fff;text-decoration: underline;cursor: pointer;">🍭查看新品🍬</span></a></div></div><script>if ('serviceWorker' in navigator) {
+if (navigator.serviceWorker.controller) {
+navigator.serviceWorker.addEventListener('controllerchange', function() {
+showNotification()
+})
+}
+window.addEventListener('load', function() {
+navigator.serviceWorker.register('/sw.js')
+})
+}
+function showNotification() {
+if (GLOBAL_CONFIG.Snackbar) {
+var snackbarBg =
+document.documentElement.getAttribute('data-theme') === 'light' ?
+GLOBAL_CONFIG.Snackbar.bgLight :
+GLOBAL_CONFIG.Snackbar.bgDark
+var snackbarPos = GLOBAL_CONFIG.Snackbar.position
+Snackbar.show({
+text: '✨小孙同学更新啦！👉',
+backgroundColor: snackbarBg,
+duration: 500000,
+pos: snackbarPos,
+actionText: '🍭查看新品🍬',
+actionTextColor: '#fff',
+onActionClick: function(e) {
+location.reload()
+},
+})
+} else {
+var showBg =
+document.documentElement.getAttribute('data-theme') === 'light' ?
+'#49b1f5' :
+'#1f1f1f'
+var cssText = `top: 0; background: ${showBg};`
+document.getElementById('app-refresh').style.cssText = cssText
+}
+}</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div><!-- hexo injector body_end start --> <script data-pjax>if(document.getElementById('recent-posts') && location.pathname =='/'){
+    
+    var parent = document.getElementById('recent-posts');
+    var child = '<div class="recent-post-item" style="height: auto;width: 100%"><div class="blog-slider swiper-container-fade swiper-container-horizontal" id="swiper_container"><div class="blog-slider__wrp swiper-wrapper" style="transition-duration: 0ms"><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms"><div class="blog-slider__img"><img src="https://i.loli.net/2021/03/11/CNYazt2SgD3pL9v.jpg" alt="https://i.loli.net/2021/03/11/CNYazt2SgD3pL9v.jpg"/></div><div class="blog-slider__content"><span class="blog-slider__code">2021-03-05</span><a class="blog-slider__title" href="posts/54163.html">如何拥有一个属于自己的网站</a><div class="blog-slider__text">利用Hexo+GitHub Pages搭建一个属于自己的网站</div><a class="blog-slider__button" href="posts/54163.html">详情</a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms"><div class="blog-slider__img"><img src="https://cdn.jsdelivr.net/gh/sun0225SUN/photos/images/202108300119743.jpg" alt="https://cdn.jsdelivr.net/gh/sun0225SUN/photos/images/202108300119743.jpg"/></div><div class="blog-slider__content"><span class="blog-slider__code">2021-08-30</span><a class="blog-slider__title" href="posts/36473.html">Github首页美化教程</a><div class="blog-slider__text">代码可以不会敲，但是逼格一定要高！</div><a class="blog-slider__button" href="posts/36473.html">详情</a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms"><div class="blog-slider__img"><img src="https://i.loli.net/2021/03/11/817fOHu4X2bvhtx.jpg" alt="https://i.loli.net/2021/03/11/817fOHu4X2bvhtx.jpg"/></div><div class="blog-slider__content"><span class="blog-slider__code">2021-03-04</span><a class="blog-slider__title" href="posts/20843.html">你的浏览器，何必是浏览器</a><div class="blog-slider__text">浏览器的各种功能及其相关使用技巧总结。</div><a class="blog-slider__button" href="posts/20843.html">详情</a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms"><div class="blog-slider__img"><img src="https://cdn.jsdelivr.net/gh/sun0225SUN/photos/images/202112311132337.jpg" alt="https://cdn.jsdelivr.net/gh/sun0225SUN/photos/images/202112311132337.jpg"/></div><div class="blog-slider__content"><span class="blog-slider__code">2021-12-31</span><a class="blog-slider__title" href="posts/cuiqingcai.html">21年终总结&&关于我自学爬虫的点滴经历</a><div class="blog-slider__text">静静寻觅生活的美好！</div><a class="blog-slider__button" href="posts/cuiqingcai.html">详情</a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms"><div class="blog-slider__img"><img src="https://i.loli.net/2021/03/11/E28jk6UPACdMxGb.jpg" alt="https://i.loli.net/2021/03/11/E28jk6UPACdMxGb.jpg"/></div><div class="blog-slider__content"><span class="blog-slider__code">2021-02-14</span><a class="blog-slider__title" href="posts/7723.html">情人节表白专用代码</a><div class="blog-slider__text">如果你觉的我是一个有趣的人，我想那是最好不过的了</div><a class="blog-slider__button" href="posts/7723.html">详情</a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms"><div class="blog-slider__img"><img src="https://i.loli.net/2021/04/06/kFRXTx1rJ4giWPt.jpg" alt="https://i.loli.net/2021/04/06/kFRXTx1rJ4giWPt.jpg"/></div><div class="blog-slider__content"><span class="blog-slider__code">2021-04-25</span><a class="blog-slider__title" href="posts/34712.html">抖音火爆表白小程序（C#语言实现）</a><div class="blog-slider__text">小姐姐，我喜欢你很久了，做我女朋友好不好！</div><a class="blog-slider__button" href="posts/34712.html">详情</a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms"><div class="blog-slider__img"><img src="https://cdn.jsdelivr.net/gh/sun0225SUN/photos/images/202108300435148.jpg" alt="https://cdn.jsdelivr.net/gh/sun0225SUN/photos/images/202108300435148.jpg"/></div><div class="blog-slider__content"><span class="blog-slider__code">2021-08-19</span><a class="blog-slider__title" href="posts/38126.html">安装小孙同学</a><div class="blog-slider__text">安装小孙同学app，获得更好的浏览体验。</div><a class="blog-slider__button" href="posts/38126.html">详情</a></div></div></div><div class="blog-slider__pagination swiper-pagination-clickable swiper-pagination-bullets"></div></div></div>';
+    console.log('已挂载swiper')
+    parent.insertAdjacentHTML("afterbegin",child)}
+     </script>
+<script data-pjax src="https://cdn.jsdelivr.net/gh/Zfour/Butterfly-swiper/swiper/swiper.min.js"></script>
+<script data-pjax src="https://cdn.jsdelivr.net/gh/Zfour/Butterfly-swiper@0.18/swiper/swiperindex.js"></script>
+<style></style><script data-pjax>function history_calendar_injector_config(){
+                var parent_div_git = document.getElementsByClassName('sticky_layout')[0];
+                var item_html = '<div class="card-widget card-history"><div class="card-content"><div class="item-headline"><i class="fas fa-clock fa-spin"></i><span>那年今日</span></div><div id="history-baidu" style="height: 100px;overflow: hidden"><div class="history_swiper-container" id="history-container" style="width: 100%;height: 100%"><div class="swiper-wrapper" id="history_container_wrapper" style="height:20px"></div></div></div></div>';
+                console.log('已挂载history_calendar')
+                // parent_div_git.innerHTML=item_html+parent_div_git.innerHTML // 无报错，但不影响使用(支持pjax跳转)
+                parent_div_git.insertAdjacentHTML("afterbegin",item_html) // 有报错，但不影响使用(支持pjax跳转)
+            }if( document.getElementsByClassName('sticky_layout')[0] && (location.pathname ==='/'|| '/' ==='all')){
+
+            history_calendar_injector_config()
+        } </script><script data-pjax src="https://cdn.jsdelivr.net/gh/Zfour/Butterfly-card-history/baiduhistory/js/main.js"></script><script data-pjax>
+  function butterfly_clock_injector_config(){
+    var parent_div_git = document.getElementsByClassName('sticky_layout')[0];
+    var item_html = '<div class="card-widget card-clock"><div class="card-glass"><div class="card-background"><div class="card-content"><div id="hexo_electric_clock"><img class="entered loading" id="card-clock-loading" src="/img/loading.gif" style="height: 120px; width: 100%;" data-ll-status="loading"/></div></div></div></div></div>';
+    console.log('已挂载butterfly_clock')
+    parent_div_git.insertAdjacentHTML("afterbegin",item_html)
+    }
+  var elist = 'null'.split(',');
+  var cpage = location.pathname;
+  var epage = '/';
+  var flag = 0;
+
+  for (var i=0;i<elist.length;i++){
+    if (cpage.includes(elist[i])){
+      flag++;
+    }
+  }
+
+  if ((epage ==='all')&&(flag == 0)){
+    butterfly_clock_injector_config();
+  }
+  else if (epage === cpage){
+    butterfly_clock_injector_config();
+  }
+  </script><script src="https://pv.sohu.com/cityjson?ie=utf-8"></script><script data-pjax src="https://cdn.jsdelivr.net/npm/hexo-butterfly-clock/lib/clock.min.js"></script><div class="js-pjax"><script async="async">var arr = document.getElementsByClassName('recent-post-item');
+for(var i = 0;i<arr.length;i++){
+    arr[i].classList.add('wow');
+    arr[i].classList.add('animate__zoomIn');
+    arr[i].setAttribute('data-wow-duration', '1s');
+    arr[i].setAttribute('data-wow-delay', '0s');
+    arr[i].setAttribute('data-wow-offset', '100');
+    arr[i].setAttribute('data-wow-iteration', '1');
+  }</script><script async="async">var arr = document.getElementsByClassName('card-widget');
+for(var i = 0;i<arr.length;i++){
+    arr[i].classList.add('wow');
+    arr[i].classList.add('animate__zoomIn');
+    arr[i].setAttribute('data-wow-duration', '1s');
+    arr[i].setAttribute('data-wow-delay', '0s');
+    arr[i].setAttribute('data-wow-offset', '100');
+    arr[i].setAttribute('data-wow-iteration', '1');
+  }</script><script async="async">var arr = document.getElementsByClassName('bbTimeList container');
+for(var i = 0;i<arr.length;i++){
+    arr[i].classList.add('wow');
+    arr[i].classList.add('animate__zoomIn');
+    arr[i].setAttribute('data-wow-duration', '1s');
+    arr[i].setAttribute('data-wow-delay', '0s');
+    arr[i].setAttribute('data-wow-offset', '100');
+    arr[i].setAttribute('data-wow-iteration', '1');
+  }</script><script async="async">var arr = document.getElementsByClassName('flink-list-card');
+for(var i = 0;i<arr.length;i++){
+    arr[i].classList.add('wow');
+    arr[i].classList.add('animate__flipInY');
+    arr[i].setAttribute('data-wow-duration', '2s');
+    arr[i].setAttribute('data-wow-delay', '0s');
+    arr[i].setAttribute('data-wow-offset', '100');
+    arr[i].setAttribute('data-wow-iteration', '1');
+  }</script></div><script defer src="https://cdn.jsdelivr.net/gh/graingert/wow@1.3.0/dist/wow.min.js"></script><script defer src="https://cdn.jsdelivr.net/npm/hexo-butterfly-wowjs/lib/wow_init.min.js"></script><!-- hexo injector body_end end --></body></html>

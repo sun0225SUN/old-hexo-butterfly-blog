@@ -1,0 +1,717 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="dark"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>First Django App！ | 小孙同学</title><meta name="keywords" content="Python,Django,Web 开发"><meta name="author" content="小孙同学"><meta name="copyright" content="小孙同学"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#0d0d0d"><meta name="description" content="个人学习笔记，参考django官方文档：https:&#x2F;&#x2F;docs.djangoproject.com&#x2F;zh-hans&#x2F;3.2&#x2F;  一、First Django APP&amp;emsp;&amp;emsp;上篇笔记从零创建了一个django项目，一个项目肯定是由多个模块组成的，比方说一个电商项目，包括支付模块，商品展示模块，商家用户聊天模块等等，这些模块便可称之为一个应用。 &amp;emsp;&amp;emsp;本篇笔记继续">
+<meta property="og:type" content="article">
+<meta property="og:title" content="First Django App！">
+<meta property="og:url" content="https://sunguoqi.com/posts/4904.html">
+<meta property="og:site_name" content="小孙同学">
+<meta property="og:description" content="个人学习笔记，参考django官方文档：https:&#x2F;&#x2F;docs.djangoproject.com&#x2F;zh-hans&#x2F;3.2&#x2F;  一、First Django APP&amp;emsp;&amp;emsp;上篇笔记从零创建了一个django项目，一个项目肯定是由多个模块组成的，比方说一个电商项目，包括支付模块，商品展示模块，商家用户聊天模块等等，这些模块便可称之为一个应用。 &amp;emsp;&amp;emsp;本篇笔记继续">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/sun0225SUN/photos/images/202112062042725.jpg">
+<meta property="article:published_time" content="2021-12-09T07:00:00.000Z">
+<meta property="article:modified_time" content="2022-01-10T17:14:42.677Z">
+<meta property="article:author" content="小孙同学">
+<meta property="article:tag" content="Python">
+<meta property="article:tag" content="Django">
+<meta property="article:tag" content="Web 开发">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/sun0225SUN/photos/images/202112062042725.jpg"><link rel="shortcut icon" href="/"><link rel="canonical" href="https://sunguoqi.com/posts/4904"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//hm.baidu.com"/><link rel="preconnect" href="//s4.cnzz.com"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="manifest" href="/manifest.json"/><meta name="msapplication-TileColor" content="#ffffff"/><link rel="apple-touch-icon" sizes="180x180" href="/images/siteicon/apple-touch-icon.png"/><link rel="icon" type="image/png" sizes="32x32" href="/images/siteicon/favicon-32x32.png"/><link rel="icon" type="image/png" sizes="16x16" href="/images/siteicon/favicon-16x16.png"/><link rel="mask-icon" href="/images/siteicon/safari-pinned-tab.svg" color="#5bbad5"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.10.5/dist/instantsearch.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/instantsearch.js@2.10.5/dist/instantsearch.min.js" defer></script><script>var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?eb7ddd29e27906244e3cbd3f6b97dc44";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script><script async="async" data-pjax="data-pjax" src="https://s4.cnzz.com/z_stat.php?id=1280204826&amp;web_id=1280204826"></script><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: {"appId":"5C3XXH4EVO","apiKey":"b6895f5bd998a9ed8fc54ca3419ee782","indexName":"search","hits":{"per_page":6},"languages":{"input_placeholder":"搜索文章","hits_empty":"找不到您查询的内容：${query}","hits_stats":"找到 ${hits} 条结果，用时 ${time} 毫秒"}},
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: {"limitDay":365,"position":"top","messagePrev":"It has been","messageNext":"days since the last update, the content of the article may be outdated."},
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":250},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"你已切换为繁体","cht_to_chs":"你已切换为简体","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#49b1f5","bgDark":"#121212","position":"top-center"},
+  source: {
+    jQuery: 'https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js',
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+    },
+    fancybox: {
+      js: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css'
+    }
+  },
+  isPhotoFigcaption: true,
+  islazyload: false,
+  isanchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'First Django App！',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2022-01-11 01:14:42'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          const now = new Date()
+          const hour = now.getHours()
+          const isNight = hour <= 6 || hour >= 18
+          if (t === undefined) isNight ? activateDarkMode() : activateLightMode()
+          else if (t === 'light') activateLightMode()
+          else activateDarkMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const fontSizeVal = saveToLocal.get('global-font-size')
+    if (fontSizeVal !== undefined) {
+      document.documentElement.style.setProperty('--global-font-size', fontSizeVal + 'px')
+    }
+    
+    const detectApple = () => {
+      if (GLOBAL_CONFIG_SITE.isHome && /iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    document.addEventListener('pjax:complete', detectApple)})(window)</script><link rel="stylesheet" href="//at.alicdn.com/t/font_2936154_tjif7y18l3j.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css"><style type="text/css">.app-refresh{position:fixed;top:-2.2rem;left:0;right:0;z-index:99999;padding:0 1rem;font-size:15px;height:2.2rem;transition:all .3s ease}.app-refresh-wrap{display:flex;color:#fff;height:100%;align-items:center;justify-content:center}.app-refresh-wrap a{color:#fff;text-decoration:underline;cursor:pointer}</style><link rel="stylesheet" href="/css/custom.css"  media="defer" onload="this.media='all'"><!-- hexo injector head_end start --><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Zfour/Butterfly-swiper/swiper/swiper.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Zfour/Butterfly-swiper/swiper/swiperstyle.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Zfour/Butterfly-card-history/baiduhistory/css/main.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-butterfly-clock/lib/clock.min.css"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" media="print" onload="this.media='screen'"><!-- hexo injector head_end end --><meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="小孙同学" type="application/atom+xml">
+</head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="iron-container iron-circle"><div class="iron-box1 iron-circle iron-center"></div><div class="iron-box2 iron-circle iron-center"></div><div class="iron-box3 iron-circle iron-center"></div><div class="iron-box4 iron-circle iron-center"></div><div class="iron-box5 iron-circle iron-center"></div><div class="iron-box6 iron-circle"><div class="iron-coil" style="--i: 0"></div><div class="iron-coil" style="--i: 1"></div><div class="iron-coil" style="--i: 2"></div><div class="iron-coil" style="--i: 3"></div><div class="iron-coil" style="--i: 4"></div><div class="iron-coil" style="--i: 5"></div><div class="iron-coil" style="--i: 6"></div><div class="iron-coil" style="--i: 7"></div></div></div></div><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/images/avatar.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">文章</div><div class="length-num">56</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">标签</div><div class="length-num">24</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">分类</div><div class="length-num">9</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-zhuye-"></use></svg><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-gonglve2"></use></svg><span> 文章</span><i class="fas fa-chevron-down expand hide"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/categories/"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-wenzhang"></use></svg><span> 分类</span></a></li><li><a class="site-page child" href="/tags/"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-biaoqian3"></use></svg><span> 标签</span></a></li><li><a class="site-page child" href="/archives/"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-dakaqiandao"></use></svg><span> 时间轴</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-tiyu"></use></svg><span> 生活</span><i class="fas fa-chevron-down expand hide"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/books/"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-lianxi"></use></svg><span> 书单</span></a></li><li><a class="site-page child" target="_blank" rel="noopener" href="https://720yun.com/t/0fbjvdyuru0?scene_id=18586179"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-GLOBE"></use></svg><span> 地图</span></a></li><li><a class="site-page child" target="_blank" rel="noopener" href="https://ssh-music.vercel.app/"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-yinle11"></use></svg><span> 音乐</span></a></li><li><a class="site-page child" target="_blank" rel="noopener" href="https://box.sunguoqi.com/shici"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-task_"></use></svg><span> 诗词</span></a></li><li><a class="site-page child" href="/movies/"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-dianshiju1"></use></svg><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-jiudian"></use></svg><span> 小黑屋</span><i class="fas fa-chevron-down expand hide"></i></a><ul class="menus_item_child"><li><a class="site-page child" target="_blank" rel="noopener" href="https://travellings.link/"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-fenxiang1"></use></svg><span> 任意门</span></a></li><li><a class="site-page child" target="_blank" rel="noopener" href="https://box.sunguoqi.com/kongtiao"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-kongtiao"></use></svg><span> 小空调</span></a></li><li><a class="site-page child" target="_blank" rel="noopener" href="https://sun0225sun.github.io/home/"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-diannao"></use></svg><span> 云电脑</span></a></li><li><a class="site-page child" target="_blank" rel="noopener" href="https://box.sunguoqi.com/wenan"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-zixun3"></use></svg><span> 文案馆</span></a></li><li><a class="site-page child" target="_blank" rel="noopener" href="https://box.sunguoqi.com/love"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-shoucang2"></use></svg><span> 收藏馆</span></a></li><li><a class="site-page child" target="_blank" rel="noopener" href="https://box.sunguoqi.com/games"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-youxi1"></use></svg><span> 游戏厅</span></a></li><li><a class="site-page child" href="/charts/"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-chanpin"></use></svg><span> 统计室</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-dengji"></use></svg><span> 友人帐</span></a></div><div class="menus_item"><a class="site-page" href="/comments/"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-liuyan"></use></svg><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-zhanghaoguanli"></use></svg><span> 关于我</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://cdn.jsdelivr.net/gh/sun0225SUN/photos/images/202112062042725.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" onclick="btf.scrollToDest(0, 500)" data-title="小孙同学，祝您今天愉快">投票应用</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="iconfont icon-sousuo3"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-zhuye-"></use></svg><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-gonglve2"></use></svg><span> 文章</span><i class="fas fa-chevron-down expand hide"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/categories/"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-wenzhang"></use></svg><span> 分类</span></a></li><li><a class="site-page child" href="/tags/"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-biaoqian3"></use></svg><span> 标签</span></a></li><li><a class="site-page child" href="/archives/"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-dakaqiandao"></use></svg><span> 时间轴</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-tiyu"></use></svg><span> 生活</span><i class="fas fa-chevron-down expand hide"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/books/"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-lianxi"></use></svg><span> 书单</span></a></li><li><a class="site-page child" target="_blank" rel="noopener" href="https://720yun.com/t/0fbjvdyuru0?scene_id=18586179"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-GLOBE"></use></svg><span> 地图</span></a></li><li><a class="site-page child" target="_blank" rel="noopener" href="https://ssh-music.vercel.app/"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-yinle11"></use></svg><span> 音乐</span></a></li><li><a class="site-page child" target="_blank" rel="noopener" href="https://box.sunguoqi.com/shici"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-task_"></use></svg><span> 诗词</span></a></li><li><a class="site-page child" href="/movies/"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-dianshiju1"></use></svg><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-jiudian"></use></svg><span> 小黑屋</span><i class="fas fa-chevron-down expand hide"></i></a><ul class="menus_item_child"><li><a class="site-page child" target="_blank" rel="noopener" href="https://travellings.link/"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-fenxiang1"></use></svg><span> 任意门</span></a></li><li><a class="site-page child" target="_blank" rel="noopener" href="https://box.sunguoqi.com/kongtiao"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-kongtiao"></use></svg><span> 小空调</span></a></li><li><a class="site-page child" target="_blank" rel="noopener" href="https://sun0225sun.github.io/home/"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-diannao"></use></svg><span> 云电脑</span></a></li><li><a class="site-page child" target="_blank" rel="noopener" href="https://box.sunguoqi.com/wenan"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-zixun3"></use></svg><span> 文案馆</span></a></li><li><a class="site-page child" target="_blank" rel="noopener" href="https://box.sunguoqi.com/love"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-shoucang2"></use></svg><span> 收藏馆</span></a></li><li><a class="site-page child" target="_blank" rel="noopener" href="https://box.sunguoqi.com/games"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-youxi1"></use></svg><span> 游戏厅</span></a></li><li><a class="site-page child" href="/charts/"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-chanpin"></use></svg><span> 统计室</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-dengji"></use></svg><span> 友人帐</span></a></div><div class="menus_item"><a class="site-page" href="/comments/"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-liuyan"></use></svg><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-zhanghaoguanli"></use></svg><span> 关于我</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">First Django App！</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2021-12-09T07:00:00.000Z" title="发表于 2021-12-09 15:00:00">2021-12-09</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2022-01-10T17:14:42.677Z" title="更新于 2022-01-11 01:14:42">2022-01-11</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Django-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">Django 学习笔记</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">5.2k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>21分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="First Django App！"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span><span class="post-meta-separator">|</span><span class="post-meta-commentcount"><i class="far fa-comments fa-fw post-meta-icon"></i><span class="post-meta-label">评论数:</span><a href="/posts/4904.html#post-comment"><span id="twikoo-count"></span></a></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><blockquote>
+<p>个人学习笔记，参考django官方文档：<a target="_blank" rel="noopener" href="https://docs.djangoproject.com/zh-hans/3.2/">https://docs.djangoproject.com/zh-hans/3.2/</a></p>
+</blockquote>
+<h1 id="一、First-Django-APP"><a href="#一、First-Django-APP" class="headerlink" title="一、First Django APP"></a>一、First Django APP</h1><p>&emsp;&emsp;上篇笔记从零创建了一个django项目，一个项目肯定是由多个模块组成的，比方说一个电商项目，包括支付模块，商品展示模块，商家用户聊天模块等等，这些模块便可称之为一个应用。</p>
+<p>&emsp;&emsp;本篇笔记继续跟着django官方文档创建了一个投票的应用。</p>
+<p>&emsp;&emsp;它由两部分组成：</p>
+<ul>
+<li>一个让人们查看和投票的公共站点。</li>
+<li>一个让你能添加、修改和删除投票的管理站点。</li>
+</ul>
+<p>&emsp;&emsp;在项目目录下，执行下面这行命令，创建一个应用。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python manage.py startapp polls</span><br></pre></td></tr></table></figure>
+<p>&emsp;&emsp;此时app目录如下，各文件的作用在使用中揭晓。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">polls/</span><br><span class="line">    __init__.py</span><br><span class="line">    admin.py</span><br><span class="line">    apps.py</span><br><span class="line">    migrations/</span><br><span class="line">        __init__.py</span><br><span class="line">    models.py</span><br><span class="line">    tests.py</span><br><span class="line">    views.py</span><br></pre></td></tr></table></figure>
+
+<h1 id="二、挂载-app"><a href="#二、挂载-app" class="headerlink" title="二、挂载 app"></a>二、挂载 app</h1><p>&emsp;&emsp;app创建完成，需要把app加载到整个项目上。</p>
+<p>&emsp;&emsp;为了避免项目名称和其他的一些模块名冲突，可以将<code>&#39;polls&#39;,</code>写成，<code>polls.apps.PollsConfig,</code>注意格式，字符串列表需要用<code>,</code>分开。</p>
+<p><code>settings.py</code></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">INSTALLED_APPS = [</span><br><span class="line">    &#x27;polls&#x27;,</span><br><span class="line"></span><br><span class="line">    &#x27;django.contrib.admin&#x27;,</span><br><span class="line">    &#x27;django.contrib.auth&#x27;,</span><br><span class="line">    &#x27;django.contrib.contenttypes&#x27;,</span><br><span class="line">    &#x27;django.contrib.sessions&#x27;,</span><br><span class="line">    &#x27;django.contrib.messages&#x27;,</span><br><span class="line">    &#x27;django.contrib.staticfiles&#x27;,</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+
+<h1 id="三、编写model层"><a href="#三、编写model层" class="headerlink" title="三、编写model层"></a>三、编写model层</h1><p>&emsp;&emsp;model层，是Django的数据管理层，负责和数据库交互，编写model层就是设计应用所需要的数据表，得益于Django的ORM模块，我们不必写SQL语句就可以操作数据表。</p>
+<p>&emsp;&emsp;model层里的一个类就是一个数据表，一行就是一个对象，一列就是一个对象的一个属性。</p>
+<p><code>polls/models.py</code></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># django框架的接口模块，默认已经引入</span></span><br><span class="line"><span class="keyword">from</span> django.db <span class="keyword">import</span> models</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># Create your models here.</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 创建了一个“问题”类（表），表里有两个字段。</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Question</span>(<span class="params">models.Model</span>):</span></span><br><span class="line">    <span class="comment"># 问题描述字段</span></span><br><span class="line">    question_text = models.CharField(max_length=<span class="number">200</span>)</span><br><span class="line">    <span class="comment"># 创建日期字段</span></span><br><span class="line">    pub_date = models.DateTimeField(<span class="string">&#x27;date published&#x27;</span>)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># python魔法方法，显示调用该对象的时候的返回内容</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__str__</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="keyword">return</span> self.question_text</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 创建了一个选项类（表），表中包含三个字段。</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Choice</span>(<span class="params">models.Model</span>):</span></span><br><span class="line">    <span class="comment"># 这个表里定义了一个外键字段，因为一个问题可以有多个选项，每个问题对应每个问题的选项。</span></span><br><span class="line">    question = models.ForeignKey(Question, on_delete=models.CASCADE)</span><br><span class="line">    <span class="comment"># 选项描述字段</span></span><br><span class="line">    choice_text = models.CharField(max_length=<span class="number">200</span>)</span><br><span class="line">    <span class="comment"># 是否选取字段</span></span><br><span class="line">    votes = models.IntegerField(default=<span class="number">0</span>)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># python魔法方法，显示调用该对象的时候的返回内容</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__str__</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="keyword">return</span> self.choice_text</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>&emsp;&emsp;model层写好了，数据表创建好了吗，并没有，我们还需要执行以下命令。</p>
+<p><code>生成中间文件</code></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python manage.py makemigrations polls</span><br></pre></td></tr></table></figure>
+
+<p><code>日志如下</code></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">polls\migrations\0001_initial.py</span><br><span class="line">  - Create model Question</span><br><span class="line">  - Create model Choice</span><br></pre></td></tr></table></figure>
+
+<p>&emsp;&emsp;django为我们生成了一个<code>0001_initial.py</code>，他是一个中间文件，执行迁移数据库的命令后，django会依赖这个文件去帮我们创建数据库表。</p>
+<p><code>迁移数据</code></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python manage.py migrate</span><br></pre></td></tr></table></figure>
+
+<p><code>日志如下</code></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">  Apply all migrations: admin, auth, contenttypes, polls, sessions</span><br><span class="line">Running migrations:</span><br><span class="line">  Applying polls.0001_initial... OK</span><br></pre></td></tr></table></figure>
+
+<p>&emsp;&emsp;查看生成的表，撒花。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/sun0225SUN/photos/images/202112062211624.jpg"></p>
+<h2 id="1、使用Django可视化管理数据"><a href="#1、使用Django可视化管理数据" class="headerlink" title="1、使用Django可视化管理数据"></a>1、使用Django可视化管理数据</h2><p>&emsp;&emsp;表已经创建好了，如何使用django自带的后台可视化管理数据呢，这需要我们注册一下。（选项类也要注册到里面去，后面会用到）</p>
+<p><code>polls/admin.py</code></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># django的接口，默认已经引入。</span></span><br><span class="line"><span class="keyword">from</span> django.contrib <span class="keyword">import</span> admin</span><br><span class="line"></span><br><span class="line"><span class="comment"># 引入我们自己写的数据表（类）</span></span><br><span class="line"><span class="keyword">from</span> .models <span class="keyword">import</span> Question</span><br><span class="line"></span><br><span class="line"><span class="comment"># 注册以下就可以交给django后台管理啦！</span></span><br><span class="line"><span class="comment"># Register your models here.</span></span><br><span class="line">admin.site.register(Question)</span><br></pre></td></tr></table></figure>
+
+<h2 id="2、启动项目"><a href="#2、启动项目" class="headerlink" title="2、启动项目"></a>2、启动项目</h2><p>&emsp;&emsp;重新启动下项目，看下Django后台可不可以编辑我们的数据表。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">python manage.py runserver</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>进入：<a target="_blank" rel="noopener" href="http://127.0.0.1:8000/admin/">http://127.0.0.1:8000/admin/</a></p>
+<p><img src="https://cdn.jsdelivr.net/gh/sun0225SUN/photos/images/202112062226232.jpg"></p>
+<h1 id="四、编写view层"><a href="#四、编写view层" class="headerlink" title="四、编写view层"></a>四、编写view层</h1><p>&emsp;&emsp;数据我们已经创建好了，也可以进行基本的CRUD操作了，接下来就是前端显示了对吧。view就是干这个的。</p>
+<p>&emsp;&emsp;view层可以和数据库交互，处理前端显示，但有些东西是不需要和数据库交互就可以显示的。</p>
+<p>&emsp;&emsp;所以我们先写一个<code>Hello World</code>展示在前端，然后再和model层结合，写两个吧，方便引入路由器的概念。</p>
+<p><code>polls/views.py</code></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># # Django的接口，默认已引入，这是一个渲染的函数，后面经常用。</span></span><br><span class="line"><span class="keyword">from</span> django.shortcuts <span class="keyword">import</span> render</span><br><span class="line"><span class="comment"># 引入 HttpResponse 来处理HTTp响应</span></span><br><span class="line"><span class="keyword">from</span> django.shortcuts <span class="keyword">import</span> HttpResponse</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">index</span>(<span class="params">request</span>):</span></span><br><span class="line">    <span class="keyword">return</span> HttpResponse(<span class="string">&quot;&lt;h1&gt;Hello world!&lt;/h1&gt;&quot;</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">hello</span>(<span class="params">request</span>):</span></span><br><span class="line">    <span class="keyword">return</span> HttpResponse(<span class="string">&quot;&lt;h1&gt;Hello Django!&lt;/h1&gt;&quot;</span>)</span><br></pre></td></tr></table></figure>
+<p>&emsp;&emsp;写了两个视图函数，我们需要把他显示在前端，但是有两个，我们改如何分别显示他们呢？</p>
+<p>&emsp;&emsp;路由器。</p>
+<h1 id="五、编写路由器"><a href="#五、编写路由器" class="headerlink" title="五、编写路由器"></a>五、编写路由器</h1><p>&emsp;&emsp;类比于电脑前的路由器，电脑前的路由器是把局域网内的（WIFI信号内）的网络请求，打包成一个数据包发出去的，然后再把响应发回来。</p>
+<p>&emsp;&emsp;同理，我们配置下Django的路由，就可以让每个视图，各回各家，各找各妈了。</p>
+<p>在 <code>polls</code> 目录下创建一个新的文件<code>urls.py</code></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment"># path 就是处理路径的一个模块</span></span><br><span class="line"><span class="keyword">from</span> django.urls <span class="keyword">import</span> path</span><br><span class="line"></span><br><span class="line"><span class="comment"># 引入我们自己写的视图函数，不引入的话路由器怎么知道改管理谁的视图呢？</span></span><br><span class="line"><span class="keyword">from</span> . <span class="keyword">import</span> views</span><br><span class="line"></span><br><span class="line"><span class="comment"># 配置路由规则，各回各家，各找各妈！</span></span><br><span class="line">urlpatterns = [</span><br><span class="line">    path(<span class="string">&#x27;index&#x27;</span>, views.index, name=<span class="string">&#x27;index&#x27;</span>),</span><br><span class="line">    path(<span class="string">&#x27;hello&#x27;</span>, views.hello, name=<span class="string">&#x27;hello&#x27;</span>),</span><br><span class="line">]</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="1、挂载路由"><a href="#1、挂载路由" class="headerlink" title="1、挂载路由"></a>1、挂载路由</h2><p>&emsp;&emsp;路由管理我们写好了，但是这只是一个app的路由管理，整个项目是还需要一个路由管理的，所以我们需要将我们写的这个应用的路由文件挂载到项目的路由管理上去。</p>
+<p><code>mysite/urls.py</code></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;&quot;&quot;mysite URL Configuration</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">The `urlpatterns` list routes URLs to views. For more information please see:</span></span><br><span class="line"><span class="string">    https://docs.djangoproject.com/en/3.2/topics/http/urls/</span></span><br><span class="line"><span class="string">Examples:</span></span><br><span class="line"><span class="string">Function views</span></span><br><span class="line"><span class="string">    1. Add an import:  from my_app import views</span></span><br><span class="line"><span class="string">    2. Add a URL to urlpatterns:  path(&#x27;&#x27;, views.home, name=&#x27;home&#x27;)</span></span><br><span class="line"><span class="string">Class-based views</span></span><br><span class="line"><span class="string">    1. Add an import:  from other_app.views import Home</span></span><br><span class="line"><span class="string">    2. Add a URL to urlpatterns:  path(&#x27;&#x27;, Home.as_view(), name=&#x27;home&#x27;)</span></span><br><span class="line"><span class="string">Including another URLconf</span></span><br><span class="line"><span class="string">    1. Import the include() function: from django.urls import include, path</span></span><br><span class="line"><span class="string">    2. Add a URL to urlpatterns:  path(&#x27;blog/&#x27;, include(&#x27;blog.urls&#x27;))</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="comment"># django的后台管理模块，默认已经引入</span></span><br><span class="line"><span class="keyword">from</span> django.contrib <span class="keyword">import</span> admin</span><br><span class="line"><span class="comment"># 路径处理模块，默认已经引入path，我们需要引入一个include模块，因为我们要引入app自己的路由规则</span></span><br><span class="line"><span class="keyword">from</span> django.urls <span class="keyword">import</span> path, include</span><br><span class="line"></span><br><span class="line">urlpatterns = [</span><br><span class="line">    path(<span class="string">&#x27;admin/&#x27;</span>, admin.site.urls),</span><br><span class="line">    <span class="comment"># 引入polls应用的url路由配置文件。</span></span><br><span class="line">    path(<span class="string">&#x27;polls/&#x27;</span>, include(<span class="string">&#x27;polls.urls&#x27;</span>)),</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+
+<h2 id="2、启动项目-1"><a href="#2、启动项目-1" class="headerlink" title="2、启动项目"></a>2、启动项目</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python manage.py runserver</span><br></pre></td></tr></table></figure>
+
+<p>&emsp;&emsp;这时候我们可以启动项目，查看下我们的路由和视图是否可以正常工作。按照我们编写的逻辑。</p>
+<p>&emsp;&emsp;访问<a target="_blank" rel="noopener" href="http://127.0.0.1:8000/polls/index">http://127.0.0.1:8000/polls/index</a> 会显示<code>Hello world!</code>，并且是一级标题</p>
+<p>&emsp;&emsp;访问<a target="_blank" rel="noopener" href="http://127.0.0.1:8000/polls/hello">http://127.0.0.1:8000/polls/hello</a> 会显示<code>Hello Django!</code>，同样是一级标题</p>
+<p>&emsp;&emsp;很好，项目正常运行了！</p>
+<p><img src="https://cdn.jsdelivr.net/gh/sun0225SUN/photos/images/202112062346626.jpg"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/sun0225SUN/photos/images/202112062347492.jpg"></p>
+<h1 id="六、编写模板"><a href="#六、编写模板" class="headerlink" title="六、编写模板"></a>六、编写模板</h1><p>&emsp;&emsp;从<code>&lt;h1&gt;&lt;/h1&gt;</code>一级标题可以正常显示我们知道，我们完全可以return一个HTML文档，当然我们最好把它分离出来，因为写在这个文件里不方便修改，也有点臃肿。</p>
+<p>&emsp;&emsp;在<code>polls</code>根目录下创建<code>templates</code>文件夹，然后在此目录创建一个<code>index.html</code>文件。</p>
+<p><code>templates/index.html</code></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!doctype <span class="meta-keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">&quot;en&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">&quot;UTF-8&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">&quot;viewport&quot;</span></span></span><br><span class="line"><span class="tag">          <span class="attr">content</span>=<span class="string">&quot;width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">http-equiv</span>=<span class="string">&quot;X-UA-Compatible&quot;</span> <span class="attr">content</span>=<span class="string">&quot;ie=edge&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>Document<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">h1</span>&gt;</span>Hello Django!<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>更改视图函数</strong></p>
+<p><code>polls/views.py</code></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Django的接口，默认已引入，这是一个渲染的函数，后面经常用。</span></span><br><span class="line"><span class="keyword">from</span> django.shortcuts <span class="keyword">import</span> render</span><br><span class="line"><span class="comment"># 引入 HttpResponse 来处理HTTp响应</span></span><br><span class="line"><span class="keyword">from</span> django.shortcuts <span class="keyword">import</span> HttpResponse</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">index</span>(<span class="params">request</span>):</span></span><br><span class="line">    <span class="keyword">return</span> HttpResponse(<span class="string">&quot;&lt;h1&gt;Hello world!&lt;/h1&gt;&quot;</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">hello</span>(<span class="params">request</span>):</span></span><br><span class="line">    <span class="keyword">return</span> render(request, <span class="string">&#x27;index.html&#x27;</span>,context=<span class="literal">None</span>)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>&emsp;&emsp;测试，程序正常。</p>
+<p>&emsp;&emsp;因为我们这里用到了<code>index.html</code>文件，使用<code>render</code>函数更加方便。</p>
+<p>&emsp;&emsp;但有个小问题，就是我们的内容是写死在HTML文件的，我们有办法让HTML的文件跟着我们的程序改变吗，有的，就是Django的插值语法。</p>
+<p>&emsp;&emsp;我们把<code>&lt;h1&gt;</code>标签里的内容改成。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line"><span class="tag">&lt;<span class="name">h1</span>&gt;</span>Hello &#123;&#123;name&#125;&#125;!<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+
+<p>&emsp;&emsp;name就是一个变量，随着变量值的不同，HTML就响应不同的内容了。</p>
+<p>&emsp;&emsp;在视图函数里加入name变量。</p>
+<p><code>polls/views.py</code></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># # Django的接口，默认已引入，这是一个渲染的函数，后面经常用。</span></span><br><span class="line"><span class="keyword">from</span> django.shortcuts <span class="keyword">import</span> render</span><br><span class="line"><span class="comment"># 引入 HttpResponse 来处理HTTp响应</span></span><br><span class="line"><span class="keyword">from</span> django.shortcuts <span class="keyword">import</span> HttpResponse</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">index</span>(<span class="params">request</span>):</span></span><br><span class="line">    <span class="keyword">return</span> HttpResponse(<span class="string">&quot;&lt;h1&gt;Hello world!&lt;/h1&gt;&quot;</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">hello</span>(<span class="params">request</span>):</span></span><br><span class="line">    name = <span class="string">&quot;小孙同学&quot;</span></span><br><span class="line">    <span class="keyword">return</span> render(request, <span class="string">&#x27;index.html&#x27;</span>, context=&#123;<span class="string">&#x27;name&#x27;</span>: name&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>&emsp;&emsp;<code>context</code>就是变量和模板交接的东西。专业名称叫做<code>上下文</code></p>
+<p>&emsp;&emsp;测试一下，我们可以写动态的数据啦！</p>
+<p><img src="https://cdn.jsdelivr.net/gh/sun0225SUN/photos/images/202112070018196.jpg"></p>
+<h1 id="七、写点有用的视图"><a href="#七、写点有用的视图" class="headerlink" title="七、写点有用的视图"></a>七、写点有用的视图</h1><p>&emsp;&emsp;上面虽然写了两个视图，打通了前端，但是没有和后端交互。把我们写的视图注释掉，继续跟着官方文档写点有用的视图吧。</p>
+<p><code>polls/views.py</code></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Django自带的渲染函数，默认已经引入</span></span><br><span class="line"><span class="keyword">from</span> django.shortcuts <span class="keyword">import</span> render</span><br><span class="line"><span class="comment"># 引入我们写的数据表</span></span><br><span class="line"><span class="keyword">from</span> .models <span class="keyword">import</span> Question</span><br><span class="line"></span><br><span class="line"><span class="comment"># 写了一个和后端交互的视图</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">index</span>(<span class="params">request</span>):</span></span><br><span class="line">    <span class="comment"># 按照时间逆序排列，查询前五个数据表中存在的投票，存储为列表</span></span><br><span class="line">    latest_question_list = Question.objects.order_by(<span class="string">&#x27;-pub_date&#x27;</span>)[:<span class="number">5</span>]</span><br><span class="line">    <span class="comment"># 上下文</span></span><br><span class="line">    context = &#123;</span><br><span class="line">        <span class="string">&#x27;latest_question_list&#x27;</span>: latest_question_list</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment"># 返回渲染好的页面</span></span><br><span class="line">    <span class="keyword">return</span> render(request, <span class="string">&#x27;index.html&#x27;</span>, context)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p><code>templates/index.html</code></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!doctype <span class="meta-keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">&quot;en&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">&quot;UTF-8&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">&quot;viewport&quot;</span></span></span><br><span class="line"><span class="tag">          <span class="attr">content</span>=<span class="string">&quot;width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">http-equiv</span>=<span class="string">&quot;X-UA-Compatible&quot;</span> <span class="attr">content</span>=<span class="string">&quot;ie=edge&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>Document<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!--先判断是否存在数据，存在则遍历输出，否则返回不存在--&gt;</span></span><br><span class="line">&#123;% if latest_question_list %&#125;</span><br><span class="line"><span class="tag">&lt;<span class="name">ul</span>&gt;</span></span><br><span class="line">    &#123;% for question in latest_question_list %&#125;</span><br><span class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;/polls/&#123;&#123; question.id &#125;&#125;/&quot;</span>&gt;</span>&#123;&#123; question.question_text &#125;&#125;<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">    &#123;% endfor %&#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br><span class="line">&#123;% else %&#125;</span><br><span class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span>没有可用的投票。<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">&#123;% endif %&#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>&emsp;&emsp;重启应用。<br>访问<code>http://127.0.0.1:8000/polls/</code></p>
+<p><img src="https://cdn.jsdelivr.net/gh/sun0225SUN/photos/images/202112082155564.jpg"></p>
+<p>访问<code>http://127.0.0.1:8000/admin/</code>为应用增加加几个投票。</p>
+<p>访问<code>http://127.0.0.1:8000/polls/</code>正常显示</p>
+<p><img src="https://cdn.jsdelivr.net/gh/sun0225SUN/photos/images/202112091506881.jpg"></p>
+<h1 id="八、路由分发的进阶"><a href="#八、路由分发的进阶" class="headerlink" title="八、路由分发的进阶"></a>八、路由分发的进阶</h1><p>&emsp;&emsp;上面写了几个投票，他是一个超链接， <code>href</code>值指向的是这个投票对应的详情。所以我们需要定义一个新的视图函数<code>detail</code>(名字自拟)来显示详情。<br><code>polls/views.py</code></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Django自带的渲染函数，默认已经引入</span></span><br><span class="line"><span class="keyword">from</span> django.shortcuts <span class="keyword">import</span> render</span><br><span class="line"><span class="comment"># 引入我们写的数据表</span></span><br><span class="line"><span class="keyword">from</span> .models <span class="keyword">import</span> Question</span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> django.shortcuts <span class="keyword">import</span> HttpResponse</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 写了一个和后端交互的视图</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">index</span>(<span class="params">request</span>):</span></span><br><span class="line">    <span class="comment"># 按照时间逆序排列，查询前五个数据表中存在的投票，存储为列表</span></span><br><span class="line">    latest_question_list = Question.objects.order_by(<span class="string">&#x27;-pub_date&#x27;</span>)[:<span class="number">5</span>]</span><br><span class="line">    <span class="comment"># 上下文</span></span><br><span class="line">    context = &#123;</span><br><span class="line">        <span class="string">&#x27;latest_question_list&#x27;</span>: latest_question_list</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment"># 返回渲染好的页面</span></span><br><span class="line">    <span class="keyword">return</span> render(request, <span class="string">&#x27;index.html&#x27;</span>, context)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 显示详情函数</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">detail</span>(<span class="params">request, question_id</span>):</span></span><br><span class="line">    <span class="keyword">return</span> HttpResponse(<span class="string">&quot;你在看问题 %s。&quot;</span> % question_id)</span><br></pre></td></tr></table></figure>
+<p>&emsp;&emsp;定义一个新的视图后，我们需要为这个视图配置url的规则。</p>
+<p>&emsp;&emsp;但是，按照上述的设计，每个详情都应该对应一个<code>URl</code>，那我们是不是要写好多<code>URL</code>？</p>
+<p>&emsp;&emsp;可以是也可以不是，因为这些URL是有规律的，路由分发的路径可以用公式代替。</p>
+<p><code>polls/urls.py</code></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> django.urls <span class="keyword">import</span> path</span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> . <span class="keyword">import</span> views</span><br><span class="line"></span><br><span class="line">urlpatterns = [</span><br><span class="line">    <span class="comment"># ex: /polls/</span></span><br><span class="line">    path(<span class="string">&#x27;&#x27;</span>, views.index, name=<span class="string">&#x27;index&#x27;</span>),</span><br><span class="line">    <span class="comment"># ex: /polls/5/</span></span><br><span class="line">    path(<span class="string">&#x27;&lt;int:question_id&gt;/&#x27;</span>, views.detail, name=<span class="string">&#x27;detail&#x27;</span>),</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+
+
+<p>&emsp;&emsp;重启项目，点进去相应的问题，可以显示内容了，虽然这里只是显示问题几。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/sun0225SUN/photos/images/202112082216677.jpg"></p>
+<h1 id="九、去除模板中的硬编码-URL"><a href="#九、去除模板中的硬编码-URL" class="headerlink" title="九、去除模板中的硬编码 URL"></a>九、去除模板中的硬编码 URL</h1><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;/polls/&#123;&#123; question.id &#125;&#125;/&quot;</span>&gt;</span></span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+<p>&emsp;&emsp;记得这行代码吧，就是写在<code>index.html</code>里的，这里有个问题，这个路径是写死的，一旦我们改了路由地址，我们还需要动模板里面的<code>href</code>值，这样不好。</p>
+<p>&emsp;&emsp;这时候<code>path()</code>函数的第三个参数就起作用了。</p>
+<p><code>polls/urls.py</code></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">path(<span class="string">&#x27;&lt;int:question_id&gt;/&#x27;</span>, views.detail, name=<span class="string">&#x27;detail&#x27;</span>),</span><br></pre></td></tr></table></figure>
+<p>&emsp;&emsp;把模板这样写</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;&#123;% url &#x27;detail&#x27; question.id %&#125;&quot;</span>&gt;</span>&#123;&#123; question.question_text &#125;&#125;<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+<p>&emsp;&emsp;但这样还有一个问题，我们的URL最终是给项目使用的，但一个项目里有多个应用，名字有重名怎么办，所以这就需要我们为应用加一个名字。</p>
+<p><code>poll/urls.py</code></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line">app_name = <span class="string">&#x27;polls&#x27;</span></span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+<p>&emsp;&emsp;把模板这样写</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;&#123;% url &#x27;polls:detail&#x27; question.id %&#125;&quot;</span>&gt;</span>&#123;&#123; question.question_text &#125;&#125;<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+
+<h1 id="十、显示详情"><a href="#十、显示详情" class="headerlink" title="十、显示详情"></a>十、显示详情</h1><p>&emsp;&emsp;当我们点进去一个投票后，可以进入该投票的详情页，然后对其进行选择，之前我们仅仅显示了你在看问题几，现在是时候该细化了。</p>
+<p>&emsp;&emsp;首先，我们在后台为这个投票加几个数据。然后在模板文件夹里创建一个模板<code>detail.html</code>，显示详情。</p>
+<p><strong>新建模板</strong><br><code>detail.html</code></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="meta-keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">&quot;en&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">&quot;UTF-8&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>详情<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">h1</span>&gt;</span>&#123;&#123; question.question_text &#125;&#125;<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">ul</span>&gt;</span></span><br><span class="line">    &#123;% for choice in question.choice_set.all %&#125;</span><br><span class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span>&#123;&#123; choice.choice_text &#125;&#125;<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">    &#123;% endfor %&#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p><strong>更新视图</strong><br><code>polls/views.py</code></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Django自带的渲染函数，默认已经引入</span></span><br><span class="line"><span class="keyword">from</span> django.shortcuts <span class="keyword">import</span> get_object_or_404, render</span><br><span class="line"><span class="comment"># 引入我们写的数据表</span></span><br><span class="line"><span class="keyword">from</span> .models <span class="keyword">import</span> Question</span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> django.shortcuts <span class="keyword">import</span> HttpResponse</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 写了一个和后端交互的视图</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">index</span>(<span class="params">request</span>):</span></span><br><span class="line">    <span class="comment"># 按照时间逆序排列，查询前五个数据表中存在的投票，存储为列表</span></span><br><span class="line">    latest_question_list = Question.objects.order_by(<span class="string">&#x27;-pub_date&#x27;</span>)[:<span class="number">5</span>]</span><br><span class="line">    <span class="comment"># 上下文</span></span><br><span class="line">    context = &#123;</span><br><span class="line">        <span class="string">&#x27;latest_question_list&#x27;</span>: latest_question_list</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment"># 返回渲染好的页面</span></span><br><span class="line">    <span class="keyword">return</span> render(request, <span class="string">&#x27;index.html&#x27;</span>, context)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 显示详情函数</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">detail</span>(<span class="params">request, question_id</span>):</span></span><br><span class="line">    <span class="comment"># 404异常处理</span></span><br><span class="line">    question = get_object_or_404(Question, pk=question_id)</span><br><span class="line">    <span class="keyword">return</span> render(request, <span class="string">&#x27;detail.html&#x27;</span>, &#123;<span class="string">&#x27;question&#x27;</span>: question&#125;)</span><br></pre></td></tr></table></figure>
+<p>&emsp;&emsp;404异常处理需要引用一个，<code>get_object_or_404</code>，emmm，雀食，多写异常处理是好事。<br>测试一下。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/sun0225SUN/photos/images/202112082329464.jpg"></p>
+<h1 id="十一、编写表单"><a href="#十一、编写表单" class="headerlink" title="十一、编写表单"></a>十一、编写表单</h1><p>&emsp;&emsp;我们已经写好的详情页需要显示的内容，但这毕竟是一个选择题，这样写只能展示，但用户没法选择，所以我们需要写一个表单。</p>
+<p><code>detail.html</code></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="meta-keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">&quot;en&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">&quot;UTF-8&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>详情<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">form</span> <span class="attr">method</span>=<span class="string">&quot;post&quot;</span>&gt;</span></span><br><span class="line">    &#123;% csrf_token %&#125;</span><br><span class="line">    <span class="tag">&lt;<span class="name">fieldset</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">legend</span>&gt;</span><span class="tag">&lt;<span class="name">h1</span>&gt;</span>&#123;&#123; question.question_text &#125;&#125;<span class="tag">&lt;/<span class="name">h1</span>&gt;</span><span class="tag">&lt;/<span class="name">legend</span>&gt;</span></span><br><span class="line">        &#123;% if error_message %&#125;<span class="tag">&lt;<span class="name">p</span>&gt;</span><span class="tag">&lt;<span class="name">strong</span>&gt;</span>&#123;&#123; error_message &#125;&#125;<span class="tag">&lt;/<span class="name">strong</span>&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span>&#123;% endif %&#125;</span><br><span class="line">        &#123;% for choice in question.choice_set.all %&#125;</span><br><span class="line">        <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;radio&quot;</span> <span class="attr">name</span>=<span class="string">&quot;choice&quot;</span> <span class="attr">id</span>=<span class="string">&quot;choice&#123;&#123; forloop.counter &#125;&#125;&quot;</span> <span class="attr">value</span>=<span class="string">&quot;&#123;&#123; choice.id &#125;&#125;&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">label</span> <span class="attr">for</span>=<span class="string">&quot;choice&#123;&#123; forloop.counter &#125;&#125;&quot;</span>&gt;</span>&#123;&#123; choice.choice_text &#125;&#125;<span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line">        &#123;% endfor %&#125;</span><br><span class="line">    <span class="tag">&lt;/<span class="name">fieldset</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;submit&quot;</span> <span class="attr">value</span>=<span class="string">&quot;提交&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>&emsp;&emsp;运行项目，表单可以正常显示。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/sun0225SUN/photos/images/202112091351898.jpg"></p>
+<p>&emsp;&emsp;但是这只是前端的表单，我们是需要提交数据到数据库的，目前的这个提交按钮形同虚设，所以我们需要定义一个新的视图函数，然后添加到表单的<code>action</code>属性上。这个视图函数负责接受表单里的数据，然后将其添加到数据库中。</p>
+<p><code>polls/views.py</code></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Django自带的渲染函数，默认已经引入，404处理函数。</span></span><br><span class="line"><span class="keyword">from</span> django.shortcuts <span class="keyword">import</span> get_object_or_404, render</span><br><span class="line"><span class="comment"># 引入我们写的数据表</span></span><br><span class="line"><span class="keyword">from</span> .models <span class="keyword">import</span> *</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 写了一个和后端交互的视图</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">index</span>(<span class="params">request</span>):</span></span><br><span class="line">    <span class="comment"># 按照时间逆序排列，查询前五个数据表中存在的投票，存储为列表</span></span><br><span class="line">    latest_question_list = Question.objects.order_by(<span class="string">&#x27;-pub_date&#x27;</span>)[:<span class="number">5</span>]</span><br><span class="line">    <span class="comment"># 上下文</span></span><br><span class="line">    context = &#123;</span><br><span class="line">        <span class="string">&#x27;latest_question_list&#x27;</span>: latest_question_list</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment"># 返回渲染好的页面</span></span><br><span class="line">    <span class="keyword">return</span> render(request, <span class="string">&#x27;index.html&#x27;</span>, context)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 显示详情函数</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">detail</span>(<span class="params">request, question_id</span>):</span></span><br><span class="line">    <span class="comment"># 404异常处理</span></span><br><span class="line">    question = get_object_or_404(Question, pk=question_id)</span><br><span class="line">    <span class="keyword">return</span> render(request, <span class="string">&#x27;detail.html&#x27;</span>, &#123;<span class="string">&#x27;question&#x27;</span>: question&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 处理投票结果    </span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">vote</span>(<span class="params">request, question_id</span>):</span></span><br><span class="line">    question = get_object_or_404(Question, pk=question_id)</span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        selected_choice = question.choice_set.get(pk=request.POST[<span class="string">&#x27;choice&#x27;</span>])</span><br><span class="line">    <span class="keyword">except</span> (KeyError, Choice.DoesNotExist):</span><br><span class="line">        <span class="comment"># 重新显示问题投票表单。</span></span><br><span class="line">        <span class="keyword">return</span> render(request, <span class="string">&#x27;polls/detail.html&#x27;</span>, &#123;</span><br><span class="line">            <span class="string">&#x27;question&#x27;</span>: question,</span><br><span class="line">            <span class="string">&#x27;error_message&#x27;</span>: <span class="string">&quot;您没有选择任何一个选项。&quot;</span>,</span><br><span class="line">        &#125;)</span><br></pre></td></tr></table></figure>
+<p>为其配置url规则<br><code>polls/urls.py</code></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line">    <span class="comment"># ex: /polls/5/vote/</span></span><br><span class="line">    path(<span class="string">&#x27;&lt;int:question_id&gt;/vote/&#x27;</span>, views.vote, name=<span class="string">&#x27;vote&#x27;</span>),</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+<p>&emsp;&emsp;当我们选择了选项，下面就是显示投票结果了，所以我们还需要定义一个视图，来显示投票结果。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">results</span>(<span class="params">request, question_id</span>):</span></span><br><span class="line">    question = get_object_or_404(Question, pk=question_id)</span><br><span class="line">    <span class="keyword">return</span> render(request, <span class="string">&#x27;results.html&#x27;</span>, &#123;<span class="string">&#x27;question&#x27;</span>: question&#125;)</span><br></pre></td></tr></table></figure>
+<p>&emsp;&emsp;我们需要定义显示结果的模板文件。<br><code>results.html</code></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="meta-keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">&quot;en&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">&quot;UTF-8&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>答案<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">h1</span>&gt;</span>&#123;&#123; question.question_text &#125;&#125;<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">ul</span>&gt;</span></span><br><span class="line">&#123;% for choice in question.choice_set.all %&#125;</span><br><span class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span>&#123;&#123; choice.choice_text &#125;&#125; -- &#123;&#123; choice.votes &#125;&#125; vote&#123;&#123; choice.votes|pluralize &#125;&#125;<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">&#123;% endfor %&#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;&#123;% url &#x27;polls:detail&#x27; question.id %&#125;&quot;</span>&gt;</span>再次投票?<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>&emsp;&emsp;为其匹配路由规则。<br><code>polls/urls.py</code></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line">    <span class="comment"># ex: /polls/5/results/</span></span><br><span class="line">    path(<span class="string">&#x27;&lt;int:question_id&gt;/results/&#x27;</span>, views.results, name=<span class="string">&#x27;results&#x27;</span>),</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+<p>&emsp;&emsp;当我们投完票后，我们就可以指定相应的路由地址来查看投票结果了。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/sun0225SUN/photos/images/202112091403253.jpg"></p>
+<p>&emsp;&emsp;但是这样非常不智能，我们的需求是，当我们投完票后就可以自动跳转到相应的路由地址查看投票结果。</p>
+<p>&emsp;&emsp;我们需要在投完票后添加这个功能，所以我们需要更改<code>vote</code>这个视图函数来实现这个功能。<br><code>polls/views.py</code></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">vote</span>(<span class="params">request, question_id</span>):</span></span><br><span class="line">    question = get_object_or_404(Question, pk=question_id)</span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        selected_choice = question.choice_set.get(pk=request.POST[<span class="string">&#x27;choice&#x27;</span>])</span><br><span class="line">    <span class="keyword">except</span> (KeyError, Choice.DoesNotExist):</span><br><span class="line">        <span class="comment"># Redisplay the question voting form.</span></span><br><span class="line">        <span class="keyword">return</span> render(request, <span class="string">&#x27;detail.html&#x27;</span>, &#123;</span><br><span class="line">            <span class="string">&#x27;question&#x27;</span>: question,</span><br><span class="line">            <span class="string">&#x27;error_message&#x27;</span>: <span class="string">&quot;You didn&#x27;t select a choice.&quot;</span>,</span><br><span class="line">        &#125;)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        selected_choice.votes += <span class="number">1</span></span><br><span class="line">        selected_choice.save()</span><br><span class="line">        <span class="keyword">return</span> HttpResponseRedirect(reverse(<span class="string">&#x27;polls:results&#x27;</span>, args=(question.<span class="built_in">id</span>,)))</span><br></pre></td></tr></table></figure>
+<p>&emsp;&emsp;值得注意的是，因为我们这里引用了<code>HttpResponseRedirect()</code>和<code>reverse()</code>函数，所以我们需要从相应的模块里引入他们。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> django.urls <span class="keyword">import</span> reverse</span><br><span class="line"><span class="keyword">from</span> django.shortcuts <span class="keyword">import</span>  HttpResponseRedirect</span><br></pre></td></tr></table></figure>
+<p>&emsp;&emsp;到此，简易的投票功能就已经实现了，不谈及样式问题，官方还有一个优化，就是使用通用视图。</p>
+<h1 id="十二、通用视图"><a href="#十二、通用视图" class="headerlink" title="十二、通用视图"></a>十二、通用视图</h1><p>&emsp;&emsp;改良可做可不做，下面的代码会少一点，但我觉得上面的代码更容易理解。</p>
+<h2 id="1、改良-URLconf"><a href="#1、改良-URLconf" class="headerlink" title="1、改良 URLconf"></a>1、改良 URLconf</h2><p><code>polls/urls.py</code></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> django.urls <span class="keyword">import</span> path</span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> . <span class="keyword">import</span> views</span><br><span class="line"></span><br><span class="line">app_name = <span class="string">&#x27;polls&#x27;</span></span><br><span class="line">urlpatterns = [</span><br><span class="line">    path(<span class="string">&#x27;&#x27;</span>, views.IndexView.as_view(), name=<span class="string">&#x27;index&#x27;</span>),</span><br><span class="line">    path(<span class="string">&#x27;&lt;int:pk&gt;/&#x27;</span>, views.DetailView.as_view(), name=<span class="string">&#x27;detail&#x27;</span>),</span><br><span class="line">    path(<span class="string">&#x27;&lt;int:pk&gt;/results/&#x27;</span>, views.ResultsView.as_view(), name=<span class="string">&#x27;results&#x27;</span>),</span><br><span class="line">    path(<span class="string">&#x27;&lt;int:question_id&gt;/vote/&#x27;</span>, views.vote, name=<span class="string">&#x27;vote&#x27;</span>),</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+<p>&emsp;&emsp;注意，第二个和第三个匹配准则中，路径字符串中匹配模式的名称已经由 <code>&lt;question_id&gt; </code>改为 <code>&lt;pk&gt;</code>。</p>
+<h2 id="2、改良视图"><a href="#2、改良视图" class="headerlink" title="2、改良视图"></a>2、改良视图</h2><p>&emsp;&emsp;在视图中，我们是通过get方法获取数据表中的数据然后赋值给一个变量（对象），但我们也可以直接把数据表搬到视图中，这应该就是所谓的通用视图吧。</p>
+<p>&emsp;&emsp;删除旧的 index, detail, 和 results 视图，并用 Django 的通用视图代替。<br><code>polls/urls.py</code></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> django.http <span class="keyword">import</span> HttpResponseRedirect</span><br><span class="line"><span class="keyword">from</span> django.shortcuts <span class="keyword">import</span> get_object_or_404, render</span><br><span class="line"><span class="keyword">from</span> django.urls <span class="keyword">import</span> reverse</span><br><span class="line"><span class="keyword">from</span> django.views <span class="keyword">import</span> generic</span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> .models <span class="keyword">import</span> Choice, Question</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">IndexView</span>(<span class="params">generic.ListView</span>):</span></span><br><span class="line">    template_name = <span class="string">&#x27;index.html&#x27;</span></span><br><span class="line">    context_object_name = <span class="string">&#x27;latest_question_list&#x27;</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">get_queryset</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="string">&quot;&quot;&quot;返回最近五个已发布的问题。&quot;&quot;&quot;</span></span><br><span class="line">        <span class="keyword">return</span> Question.objects.order_by(<span class="string">&#x27;-pub_date&#x27;</span>)[:<span class="number">5</span>]</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">DetailView</span>(<span class="params">generic.DetailView</span>):</span></span><br><span class="line">    model = Question</span><br><span class="line">    template_name = <span class="string">&#x27;detail.html&#x27;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ResultsView</span>(<span class="params">generic.DetailView</span>):</span></span><br><span class="line">    model = Question</span><br><span class="line">    template_name = <span class="string">&#x27;results.html&#x27;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">vote</span>(<span class="params">request, question_id</span>):</span></span><br><span class="line">    ... <span class="comment"># 和之前一样，不用改。</span></span><br></pre></td></tr></table></figure></article><div class="post-copyright"><div class="post-copyright__title"><span class="post-copyright-info"><h>First Django App！</h></span></div><div class="post-copyright__type"><span class="post-copyright-info"><a href="https://sunguoqi.com/posts/4904.html">https://sunguoqi.com/posts/4904.html</a></span></div><div class="post-copyright-m"><div class="post-copyright-m-info"><div class="post-copyright-a"><h>作者</h><div class="post-copyright-cc-info"><h>小孙同学</h></div></div><div class="post-copyright-c"><h>发布于</h><div class="post-copyright-cc-info"><h>2021-12-09</h></div></div><div class="post-copyright-u"><h>更新于</h><div class="post-copyright-cc-info"><h>2022-01-11</h></div></div><div class="post-copyright-c"><h>许可协议</h><div class="post-copyright-cc-info"><a class="icon" rel="noopener" target="_blank" title="Creative Commons" href="https://creativecommons.org/"><i class="fab fa-creative-commons"></i></a><a rel="noopener" target="_blank" title="CC BY-NC-SA 4.0" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a></div></div></div></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Python/">Python</a><a class="post-meta__tags" href="/tags/Django/">Django</a><a class="post-meta__tags" href="/tags/Web-%E5%BC%80%E5%8F%91/">Web 开发</a></div><div class="post_share"><div class="social-share" data-image="https://cdn.jsdelivr.net/gh/sun0225SUN/photos/images/202112062042725.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><div class="post-reward"><div class="reward-button button--animated"><i class="fas fa-qrcode"></i> 打赏</div><div class="reward-main"><ul class="reward-all"><li class="reward-item"><a href="/images/wechatpay.png" target="_blank"><img class="post-qr-code-img" src="/images/wechatpay.png" alt="wechat"/></a><div class="post-qr-code-desc">wechat</div></li><li class="reward-item"><a href="/images/alipay.png" target="_blank"><img class="post-qr-code-img" src="/images/alipay.png" alt="alipay"/></a><div class="post-qr-code-desc">alipay</div></li></ul></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/posts/51599.html"><img class="prev-cover" src="https://cdn.jsdelivr.net/gh/sun0225SUN/photos/images/202112062042725.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">Django 自动化测试 &amp;&amp; 静态文件的引入</div></div></a></div><div class="next-post pull-right"><a href="/posts/17846.html"><img class="next-cover" src="https://cdn.jsdelivr.net/gh/sun0225SUN/photos/images/202112061918963.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">Hello Django！</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/posts/17846.html" title="Hello Django！"><img class="cover" src="https://cdn.jsdelivr.net/gh/sun0225SUN/photos/images/202112061918963.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-12-06</div><div class="title">Hello Django！</div></div></a></div><div><a href="/posts/51599.html" title="Django 自动化测试 && 静态文件的引入"><img class="cover" src="https://cdn.jsdelivr.net/gh/sun0225SUN/photos/images/202112062042725.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-12-10</div><div class="title">Django 自动化测试 && 静态文件的引入</div></div></a></div><div><a href="/posts/35809.html" title="Django 自定义后台"><img class="cover" src="https://cdn.jsdelivr.net/gh/sun0225SUN/photos/images/202112062042725.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-12-14</div><div class="title">Django 自定义后台</div></div></a></div><div><a href="/posts/19630.html" title="Django 项目部署"><img class="cover" src="https://cdn.jsdelivr.net/gh/sun0225SUN/photos/images/202112141540851.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-12-15</div><div class="title">Django 项目部署</div></div></a></div></div></div><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="twikoo-wrap"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/images/avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">小孙同学</div><div class="author-info__description">一个理性的浪漫主义者</div></div><div class="card-info-data"><div class="card-info-data-item is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">56</div></a></div><div class="card-info-data-item is-center"><a href="/tags/"><div class="headline">标签</div><div class="length-num">24</div></a></div><div class="card-info-data-item is-center"><a href="/categories/"><div class="headline">分类</div><div class="length-num">9</div></a></div></div><a class="button--animated" id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/sun0225SUN"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://twitter.com/sun0225SUN" target="_blank" title="twitter"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-shejiaotubiao-20"></use></svg></a><a class="social-icon" href="https://gitee.com/sun0225/photos/raw/master/img/202108111357613.jpg" target="_blank" title="weixin"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-weixin2"></use></svg></a><a class="social-icon" href="https://github.com/sun0225SUN" target="_blank" title="GitHub"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-GitHub"></use></svg></a><a class="social-icon" href="https://weibo.com/p/1005057392882465/home?from=page_100505&amp;mod=TAB#place" target="_blank" title="weibo"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-weibo1"></use></svg></a><a class="social-icon" href="https://blog.csdn.net/weixin_50915462?spm=1010.2135.3001.5421" target="_blank" title="csdn"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-csdn"></use></svg></a></div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%80%E3%80%81First-Django-APP"><span class="toc-text">一、First Django APP</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E6%8C%82%E8%BD%BD-app"><span class="toc-text">二、挂载 app</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E7%BC%96%E5%86%99model%E5%B1%82"><span class="toc-text">三、编写model层</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1%E3%80%81%E4%BD%BF%E7%94%A8Django%E5%8F%AF%E8%A7%86%E5%8C%96%E7%AE%A1%E7%90%86%E6%95%B0%E6%8D%AE"><span class="toc-text">1、使用Django可视化管理数据</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2%E3%80%81%E5%90%AF%E5%8A%A8%E9%A1%B9%E7%9B%AE"><span class="toc-text">2、启动项目</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%9B%9B%E3%80%81%E7%BC%96%E5%86%99view%E5%B1%82"><span class="toc-text">四、编写view层</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BA%94%E3%80%81%E7%BC%96%E5%86%99%E8%B7%AF%E7%94%B1%E5%99%A8"><span class="toc-text">五、编写路由器</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1%E3%80%81%E6%8C%82%E8%BD%BD%E8%B7%AF%E7%94%B1"><span class="toc-text">1、挂载路由</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2%E3%80%81%E5%90%AF%E5%8A%A8%E9%A1%B9%E7%9B%AE-1"><span class="toc-text">2、启动项目</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%85%AD%E3%80%81%E7%BC%96%E5%86%99%E6%A8%A1%E6%9D%BF"><span class="toc-text">六、编写模板</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%83%E3%80%81%E5%86%99%E7%82%B9%E6%9C%89%E7%94%A8%E7%9A%84%E8%A7%86%E5%9B%BE"><span class="toc-text">七、写点有用的视图</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%85%AB%E3%80%81%E8%B7%AF%E7%94%B1%E5%88%86%E5%8F%91%E7%9A%84%E8%BF%9B%E9%98%B6"><span class="toc-text">八、路由分发的进阶</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B9%9D%E3%80%81%E5%8E%BB%E9%99%A4%E6%A8%A1%E6%9D%BF%E4%B8%AD%E7%9A%84%E7%A1%AC%E7%BC%96%E7%A0%81-URL"><span class="toc-text">九、去除模板中的硬编码 URL</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8D%81%E3%80%81%E6%98%BE%E7%A4%BA%E8%AF%A6%E6%83%85"><span class="toc-text">十、显示详情</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8D%81%E4%B8%80%E3%80%81%E7%BC%96%E5%86%99%E8%A1%A8%E5%8D%95"><span class="toc-text">十一、编写表单</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8D%81%E4%BA%8C%E3%80%81%E9%80%9A%E7%94%A8%E8%A7%86%E5%9B%BE"><span class="toc-text">十二、通用视图</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1%E3%80%81%E6%94%B9%E8%89%AF-URLconf"><span class="toc-text">1、改良 URLconf</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2%E3%80%81%E6%94%B9%E8%89%AF%E8%A7%86%E5%9B%BE"><span class="toc-text">2、改良视图</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/posts/2022811.html" title="冥冥之中，自有注定，但行好事，莫问前程！"><img src="https://cdn.jsdelivr.net/gh/sun0225SUN/photos/images/202208112334431.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="冥冥之中，自有注定，但行好事，莫问前程！"/></a><div class="content"><a class="title" href="/posts/2022811.html" title="冥冥之中，自有注定，但行好事，莫问前程！">冥冥之中，自有注定，但行好事，莫问前程！</a><time datetime="2022-08-11T12:00:00.000Z" title="发表于 2022-08-11 20:00:00">2022-08-11</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/20220225.html" title="人生21岁，版本更新日志！"><img src="https://cdn.jsdelivr.net/gh/sun0225SUN/photos/images/202202251932444.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="人生21岁，版本更新日志！"/></a><div class="content"><a class="title" href="/posts/20220225.html" title="人生21岁，版本更新日志！">人生21岁，版本更新日志！</a><time datetime="2022-02-25T12:00:00.000Z" title="发表于 2022-02-25 20:00:00">2022-02-25</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/fiddler.html" title="我终于学废用Fiddler抓包了！"><img src="https://cdn.jsdelivr.net/gh/sun0225SUN/photos/images/202201241655128.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="我终于学废用Fiddler抓包了！"/></a><div class="content"><a class="title" href="/posts/fiddler.html" title="我终于学废用Fiddler抓包了！">我终于学废用Fiddler抓包了！</a><time datetime="2022-01-24T09:00:00.000Z" title="发表于 2022-01-24 17:00:00">2022-01-24</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/4243.html" title="零基础快速上手云服务器"><img src="https://cdn.jsdelivr.net/gh/sun0225SUN/photos/images/202112171758778.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="零基础快速上手云服务器"/></a><div class="content"><a class="title" href="/posts/4243.html" title="零基础快速上手云服务器">零基础快速上手云服务器</a><time datetime="2022-01-09T04:00:00.000Z" title="发表于 2022-01-09 12:00:00">2022-01-09</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/33414.html" title="给GitHub首页添加一个有趣的贪吃蛇小动画"><img src="https://cdn.jsdelivr.net/gh/sun0225SUN/photos/images/202112311009126.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="给GitHub首页添加一个有趣的贪吃蛇小动画"/></a><div class="content"><a class="title" href="/posts/33414.html" title="给GitHub首页添加一个有趣的贪吃蛇小动画">给GitHub首页添加一个有趣的贪吃蛇小动画</a><time datetime="2022-01-08T16:00:00.000Z" title="发表于 2022-01-09 00:00:00">2022-01-09</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div id="workboard"></div><script async="async" src="/js/runtime.js"></script><div class="copyright">&copy;2021 - 2022 By 小孙同学</div><div class="footer_custom_text"><a href="https://sunguoqi.com/"><img class=""icp-icon"" src=""><a target="_blank" rel="noopener" href="http://beian.miit.gov.cn/"><img class="icp-icon" src=""><span>备案号：皖ICP备2021010058号&nbsp;&nbsp;</span></a><a target="_blank" rel="noopener" href="http://www.beian.gov.cn/portal/registerSystemInfo?spm=5176.19720258.J_9220772140.112.678b2c4afdwoRs"><img class="icp-icon" src="https://cdn.jsdelivr.net/gh/sun0225SUN/photos/images/202108190042278.png"><span>皖公网安备34040302000393号</span></a></div><p id="ghbdages"><a class="github-badge" target="_blank" href="https://hexo.io/" style="margin-inline:5px"><img src="https://img.shields.io/badge/Frame-Hexo-blue?style=flat&amp;logo=hexo"/></a><a class="github-badge" target="_blank" href="https://butterfly.js.org/" style="margin-inline:5px"><img src="https://img.shields.io/badge/Theme-Butterfly-6513df?style=flat&amp;logo=bitdefender"/></a><a class="github-badge" target="_blank" href="https://www.jsdelivr.com/" style="margin-inline:5px"><img src="https://img.shields.io/badge/CDN-jsDelivr-orange?style=flat&amp;logo=jsDelivr"/></a><a class="github-badge" target="_blank" href="https://coding.net/" style="margin-inline:5px"><img src="https://img.shields.io/badge/Hosted-Coding-0cedbe?style=flat&amp;logo=Codio"/></a><a class="github-badge" target="_blank" href="https://github.com/" style="margin-inline:5px"><img src="https://img.shields.io/badge/Source-Github-d021d6?style=flat&amp;logo=GitHub"/></a><a class="github-badge" target="_blank" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" style="margin-inline:5px"><img src="https://img.shields.io/badge/Copyright-BY--NC--SA%204.0-d42328?style=flat&amp;logo=Claris"/></a></p></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="font-plus" type="button" title="放大字体"><i class="fas fa-plus"></i></button><button id="font-minus" type="button" title="缩小字体"><i class="fas fa-minus"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="chat_btn" type="button" title="与我聊天"><i class="fas fa-sms"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="algolia-search"><div class="search-dialog"><div class="search-dialog__title" id="algolia-search-title">Algolia</div><div id="algolia-input-panel"><div id="algolia-search-input"></div></div><hr/><div id="algolia-search-results"><div id="algolia-hits"></div><div id="algolia-pagination"></div><div id="algolia-stats"></div></div><span class="search-close-button"><i class="fas fa-times"></i></span></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page/instantpage.min.js" type="module"></script><script src="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.js"></script><script>function panguFn () {
+  if (typeof pangu === 'object') pangu.autoSpacingPage()
+  else {
+    getScript('https://cdn.jsdelivr.net/npm/pangu/dist/browser/pangu.min.js')
+      .then(() => {
+        pangu.autoSpacingPage()
+      })
+  }
+}
+
+function panguInit () {
+  if (false){
+    GLOBAL_CONFIG_SITE.isPost && panguFn()
+  } else {
+    panguFn()
+  }
+}
+
+document.addEventListener('DOMContentLoaded', panguInit)</script><script src="/js/search/algolia.js"></script><script>var preloader = {
+  endLoading: () => {
+    document.body.style.overflow = 'auto';
+    document.getElementById('loading-box').classList.add("loaded")
+  },
+  initLoading: () => {
+    document.body.style.overflow = '';
+    document.getElementById('loading-box').classList.remove("loaded")
+
+  }
+}
+window.addEventListener('load',preloader.endLoading())</script><div class="js-pjax"><script>(()=>{
+  const $countDom = document.getElementById('twikoo-count')
+  const init = () => {
+    twikoo.init(Object.assign({
+      el: '#twikoo-wrap',
+      envId: 'https://vercel.sunguoqi.com/',
+      region: ''
+    }, null))
+  }
+
+  const getCount = () => {
+    twikoo.getCommentsCount({
+      envId: 'https://vercel.sunguoqi.com/',
+      region: '',
+      urls: [window.location.pathname],
+      includeReply: false
+    }).then(function (res) {
+      $countDom.innerText = res[0].count
+    }).catch(function (err) {
+      console.error(err);
+    });
+  }
+
+  const loadTwikoo = (bool = false) => {
+    if (typeof twikoo === 'object') {
+      init()
+      bool && $countDom && setTimeout(getCount,0)
+    } else {
+      getScript('https://cdn.jsdelivr.net/npm/twikoo/dist/twikoo.all.min.js').then(()=> {
+        init()
+        bool && $countDom && setTimeout(getCount,0)
+      })
+    }
+  }
+
+  if ('Twikoo' === 'Twikoo' || !false) {
+    if (false) btf.loadComment(document.getElementById('twikoo-wrap'), loadTwikoo)
+    else loadTwikoo(true)
+  } else {
+    window.loadOtherComment = () => {
+      loadTwikoo()
+    }
+  }
+})()</script></div><script>window.addEventListener('load', () => {
+  const changeContent = (content) => {
+    if (content === '') return content
+
+    content = content.replace(/<img.*?src="(.*?)"?[^\>]+>/ig, '[图片]') // replace image link
+    content = content.replace(/<a[^>]+?href=["']?([^"']+)["']?[^>]*>([^<]+)<\/a>/gi, '[链接]') // replace url
+    content = content.replace(/<pre><code>.*?<\/pre>/gi, '[代码]') // replace code
+    content = content.replace(/<[^>]+>/g,"") // remove html tag
+
+    if (content.length > 150) {
+      content = content.substring(0,150) + '...'
+    }
+    return content
+  }
+
+  const getComment = () => {
+    const runTwikoo = () => {
+      twikoo.getRecentComments({
+        envId: 'https://vercel.sunguoqi.com/',
+        region: '',
+        pageSize: 5,
+        includeReply: true
+      }).then(function (res) {
+        const twikooArray = res.map(e => {
+          return {
+            'content': changeContent(e.comment),
+            'avatar': e.avatar,
+            'nick': e.nick,
+            'url': e.url + '#' + e.id,
+            'date': new Date(e.created).toISOString()
+          }
+        })
+
+        saveToLocal.set('twikoo-newest-comments', JSON.stringify(twikooArray), 10/(60*24))
+        generateHtml(twikooArray)
+      }).catch(function (err) {
+        const $dom = document.querySelector('#card-newest-comments .aside-list')
+        $dom.innerHTML= "无法获取评论，请确认相关配置是否正确"
+      })
+    }
+
+    if (typeof twikoo === 'object') {
+      runTwikoo()
+    } else {
+      getScript('https://cdn.jsdelivr.net/npm/twikoo/dist/twikoo.all.min.js').then(runTwikoo)
+    }
+  }
+
+  const generateHtml = array => {
+    let result = ''
+
+    if (array.length) {
+      for (let i = 0; i < array.length; i++) {
+        result += '<div class=\'aside-list-item\'>'
+
+        if (true) {
+          const name = 'src'
+          result += `<a href='${array[i].url}' class='thumbnail'><img ${name}='${array[i].avatar}' alt='${array[i].nick}'></a>`
+        }
+        
+        result += `<div class='content'>
+        <a class='comment' href='${array[i].url}'>${array[i].content}</a>
+        <div class='name'><span>${array[i].nick} / </span><time datetime="${array[i].date}">${btf.diffDate(array[i].date, true)}</time></div>
+        </div></div>`
+      }
+    } else {
+      result += '没有评论'
+    }
+
+    let $dom = document.querySelector('#card-newest-comments .aside-list')
+    $dom.innerHTML= result
+    window.lazyLoadInstance && window.lazyLoadInstance.update()
+    window.pjax && window.pjax.refresh($dom)
+  }
+
+  const newestCommentInit = () => {
+    if (document.querySelector('#card-newest-comments .aside-list')) {
+      const data = saveToLocal.get('twikoo-newest-comments')
+      if (data) {
+        generateHtml(JSON.parse(data))
+      } else {
+        getComment()
+      }
+    }
+  }
+
+  newestCommentInit()
+  document.addEventListener('pjax:complete', newestCommentInit)
+})</script><script async src="//at.alicdn.com/t/font_2761907_kffukm2d5os.js"></script><script src="https://widget.qweather.net/simple/static/js/he-simple-common.js?v=2.0"></script><script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.js"></script><script src="https://myhkw.cn/api/player/162713484765" id="myhk" key="162713484765" m="1"></script><div class="app-refresh" id="app-refresh"> <div class="app-refresh-wrap"> <label>✨ 小孙同学更新啦 👉</label> <a href="javascript:void(0)" onclick="location.reload()">✨ 点击刷新 ✨</a> </div></div><script>function showNotification(){if(GLOBAL_CONFIG.Snackbar){var t="light"===document.documentElement.getAttribute("data-theme")?GLOBAL_CONFIG.Snackbar.bgLight:GLOBAL_CONFIG.Snackbar.bgDark,e=GLOBAL_CONFIG.Snackbar.position;Snackbar.show({text:"已更新最新版本",backgroundColor:t,duration:5e5,pos:e,actionText:"点击刷新",actionTextColor:"#fff",onActionClick:function(t){location.reload()}})}else{var o=`top: 0; background: ${"light"===document.documentElement.getAttribute("data-theme")?"#49b1f5":"#1f1f1f"};`;document.getElementById("app-refresh").style.cssText=o}}"serviceWorker"in navigator&&(navigator.serviceWorker.controller&&navigator.serviceWorker.addEventListener("controllerchange",function(){showNotification()}),window.addEventListener("load",function(){navigator.serviceWorker.register("/sw.js")}));</script><script defer src="/live2d-widget/autoload.js"></script><script async src="//at.alicdn.com/t/font_2264842_3izu8i5eoc2.js"></script><script async data-pjax src="/js/randombg.js"></script><script async src="/js/diytitle.js"></script><script async src="/js/weather.js"></script><script async src="/js/grayscale.js"></script><canvas class="fireworks" mobile="false"></canvas><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/fireworks.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = false;
+POWERMODE.mobile = true;
+document.body.addEventListener('input', POWERMODE);
+</script><script src="//code.tidio.co/xsgiwox79ontxmujvwby4loey9vmxt2u.js" async="async"></script><script>function onTidioChatApiReady() {
+  window.tidioChatApi.hide();
+  window.tidioChatApi.on("close", function() {
+    window.tidioChatApi.hide();
+  });
+}
+if (window.tidioChatApi) {
+  window.tidioChatApi.on("ready", onTidioChatApiReady);
+} else {
+  document.addEventListener("tidioChat-ready", onTidioChatApiReady);
+}
+
+var chatBtnFn = () => {
+  document.getElementById("chat_btn").addEventListener("click", function(){
+    window.tidioChatApi.show();
+    window.tidioChatApi.open();
+  });
+}
+chatBtnFn()
+</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script><script src="https://cdn.jsdelivr.net/gh/metowolf/MetingJS@1.2/dist/Meting.min.js"></script><script src="https://cdn.jsdelivr.net/npm/pjax/pjax.min.js"></script><script>let pjaxSelectors = [
+  'title',
+  '#config-diff',
+  '#body-wrap',
+  '#rightside-config-hide',
+  '#rightside-config-show',
+  '#web_bg',
+  '.js-pjax'
+]
+
+if (false) {
+  pjaxSelectors.unshift('meta[property="og:image"]', 'meta[property="og:title"]', 'meta[property="og:url"]')
+}
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+
+  // removeEventListener scroll 
+  window.removeEventListener('scroll', window.tocScrollFn)
+  window.removeEventListener('scroll', scrollCollect)
+
+  typeof preloader === 'object' && preloader.initLoading()
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof chatBtnFn === 'function' && chatBtnFn()
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // Analytics
+  if (false) {
+    MtaH5.pgv()
+  }
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+
+  typeof preloader === 'object' && preloader.endLoading()
+})
+
+document.addEventListener('pjax:error', (e) => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><div class="app-refresh" id="app-refresh" style="position: fixed;top: -2.2rem;left: 0;right: 0;z-index: 99999;padding: 0 1rem;font-size: 15px;height: 2.2rem;transition: all 0.3s ease;"><div class="app-refresh-wrap" style=" display: flex;color: #fff;height: 100%;align-items: center;justify-content: center;"><label>✨小孙同学更新啦！👉</label><a href="javascript:void(0)" onclick="location.reload()"><span style="color: #fff;text-decoration: underline;cursor: pointer;">🍭查看新品🍬</span></a></div></div><script>if ('serviceWorker' in navigator) {
+if (navigator.serviceWorker.controller) {
+navigator.serviceWorker.addEventListener('controllerchange', function() {
+showNotification()
+})
+}
+window.addEventListener('load', function() {
+navigator.serviceWorker.register('/sw.js')
+})
+}
+function showNotification() {
+if (GLOBAL_CONFIG.Snackbar) {
+var snackbarBg =
+document.documentElement.getAttribute('data-theme') === 'light' ?
+GLOBAL_CONFIG.Snackbar.bgLight :
+GLOBAL_CONFIG.Snackbar.bgDark
+var snackbarPos = GLOBAL_CONFIG.Snackbar.position
+Snackbar.show({
+text: '✨小孙同学更新啦！👉',
+backgroundColor: snackbarBg,
+duration: 500000,
+pos: snackbarPos,
+actionText: '🍭查看新品🍬',
+actionTextColor: '#fff',
+onActionClick: function(e) {
+location.reload()
+},
+})
+} else {
+var showBg =
+document.documentElement.getAttribute('data-theme') === 'light' ?
+'#49b1f5' :
+'#1f1f1f'
+var cssText = `top: 0; background: ${showBg};`
+document.getElementById('app-refresh').style.cssText = cssText
+}
+}</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div><!-- hexo injector body_end start --> <script data-pjax>if(document.getElementById('recent-posts') && location.pathname =='/'){
+    
+    var parent = document.getElementById('recent-posts');
+    var child = '<div class="recent-post-item" style="height: auto;width: 100%"><div class="blog-slider swiper-container-fade swiper-container-horizontal" id="swiper_container"><div class="blog-slider__wrp swiper-wrapper" style="transition-duration: 0ms"><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms"><div class="blog-slider__img"><img src="https://i.loli.net/2021/03/11/CNYazt2SgD3pL9v.jpg" alt="https://i.loli.net/2021/03/11/CNYazt2SgD3pL9v.jpg"/></div><div class="blog-slider__content"><span class="blog-slider__code">2021-03-05</span><a class="blog-slider__title" href="posts/54163.html">如何拥有一个属于自己的网站</a><div class="blog-slider__text">利用Hexo+GitHub Pages搭建一个属于自己的网站</div><a class="blog-slider__button" href="posts/54163.html">详情</a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms"><div class="blog-slider__img"><img src="https://cdn.jsdelivr.net/gh/sun0225SUN/photos/images/202108300119743.jpg" alt="https://cdn.jsdelivr.net/gh/sun0225SUN/photos/images/202108300119743.jpg"/></div><div class="blog-slider__content"><span class="blog-slider__code">2021-08-30</span><a class="blog-slider__title" href="posts/36473.html">Github首页美化教程</a><div class="blog-slider__text">代码可以不会敲，但是逼格一定要高！</div><a class="blog-slider__button" href="posts/36473.html">详情</a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms"><div class="blog-slider__img"><img src="https://i.loli.net/2021/03/11/817fOHu4X2bvhtx.jpg" alt="https://i.loli.net/2021/03/11/817fOHu4X2bvhtx.jpg"/></div><div class="blog-slider__content"><span class="blog-slider__code">2021-03-04</span><a class="blog-slider__title" href="posts/20843.html">你的浏览器，何必是浏览器</a><div class="blog-slider__text">浏览器的各种功能及其相关使用技巧总结。</div><a class="blog-slider__button" href="posts/20843.html">详情</a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms"><div class="blog-slider__img"><img src="https://cdn.jsdelivr.net/gh/sun0225SUN/photos/images/202112311132337.jpg" alt="https://cdn.jsdelivr.net/gh/sun0225SUN/photos/images/202112311132337.jpg"/></div><div class="blog-slider__content"><span class="blog-slider__code">2021-12-31</span><a class="blog-slider__title" href="posts/cuiqingcai.html">21年终总结&&关于我自学爬虫的点滴经历</a><div class="blog-slider__text">静静寻觅生活的美好！</div><a class="blog-slider__button" href="posts/cuiqingcai.html">详情</a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms"><div class="blog-slider__img"><img src="https://i.loli.net/2021/03/11/E28jk6UPACdMxGb.jpg" alt="https://i.loli.net/2021/03/11/E28jk6UPACdMxGb.jpg"/></div><div class="blog-slider__content"><span class="blog-slider__code">2021-02-14</span><a class="blog-slider__title" href="posts/7723.html">情人节表白专用代码</a><div class="blog-slider__text">如果你觉的我是一个有趣的人，我想那是最好不过的了</div><a class="blog-slider__button" href="posts/7723.html">详情</a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms"><div class="blog-slider__img"><img src="https://i.loli.net/2021/04/06/kFRXTx1rJ4giWPt.jpg" alt="https://i.loli.net/2021/04/06/kFRXTx1rJ4giWPt.jpg"/></div><div class="blog-slider__content"><span class="blog-slider__code">2021-04-25</span><a class="blog-slider__title" href="posts/34712.html">抖音火爆表白小程序（C#语言实现）</a><div class="blog-slider__text">小姐姐，我喜欢你很久了，做我女朋友好不好！</div><a class="blog-slider__button" href="posts/34712.html">详情</a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms"><div class="blog-slider__img"><img src="https://cdn.jsdelivr.net/gh/sun0225SUN/photos/images/202108300435148.jpg" alt="https://cdn.jsdelivr.net/gh/sun0225SUN/photos/images/202108300435148.jpg"/></div><div class="blog-slider__content"><span class="blog-slider__code">2021-08-19</span><a class="blog-slider__title" href="posts/38126.html">安装小孙同学</a><div class="blog-slider__text">安装小孙同学app，获得更好的浏览体验。</div><a class="blog-slider__button" href="posts/38126.html">详情</a></div></div></div><div class="blog-slider__pagination swiper-pagination-clickable swiper-pagination-bullets"></div></div></div>';
+    console.log('已挂载swiper')
+    parent.insertAdjacentHTML("afterbegin",child)}
+     </script>
+<script data-pjax src="https://cdn.jsdelivr.net/gh/Zfour/Butterfly-swiper/swiper/swiper.min.js"></script>
+<script data-pjax src="https://cdn.jsdelivr.net/gh/Zfour/Butterfly-swiper@0.18/swiper/swiperindex.js"></script>
+<style></style><script data-pjax>function history_calendar_injector_config(){
+                var parent_div_git = document.getElementsByClassName('sticky_layout')[0];
+                var item_html = '<div class="card-widget card-history"><div class="card-content"><div class="item-headline"><i class="fas fa-clock fa-spin"></i><span>那年今日</span></div><div id="history-baidu" style="height: 100px;overflow: hidden"><div class="history_swiper-container" id="history-container" style="width: 100%;height: 100%"><div class="swiper-wrapper" id="history_container_wrapper" style="height:20px"></div></div></div></div>';
+                console.log('已挂载history_calendar')
+                // parent_div_git.innerHTML=item_html+parent_div_git.innerHTML // 无报错，但不影响使用(支持pjax跳转)
+                parent_div_git.insertAdjacentHTML("afterbegin",item_html) // 有报错，但不影响使用(支持pjax跳转)
+            }if( document.getElementsByClassName('sticky_layout')[0] && (location.pathname ==='/'|| '/' ==='all')){
+
+            history_calendar_injector_config()
+        } </script><script data-pjax src="https://cdn.jsdelivr.net/gh/Zfour/Butterfly-card-history/baiduhistory/js/main.js"></script><script data-pjax>
+  function butterfly_clock_injector_config(){
+    var parent_div_git = document.getElementsByClassName('sticky_layout')[0];
+    var item_html = '<div class="card-widget card-clock"><div class="card-glass"><div class="card-background"><div class="card-content"><div id="hexo_electric_clock"><img class="entered loading" id="card-clock-loading" src="/img/loading.gif" style="height: 120px; width: 100%;" data-ll-status="loading"/></div></div></div></div></div>';
+    console.log('已挂载butterfly_clock')
+    parent_div_git.insertAdjacentHTML("afterbegin",item_html)
+    }
+  var elist = 'null'.split(',');
+  var cpage = location.pathname;
+  var epage = '/';
+  var flag = 0;
+
+  for (var i=0;i<elist.length;i++){
+    if (cpage.includes(elist[i])){
+      flag++;
+    }
+  }
+
+  if ((epage ==='all')&&(flag == 0)){
+    butterfly_clock_injector_config();
+  }
+  else if (epage === cpage){
+    butterfly_clock_injector_config();
+  }
+  </script><script src="https://pv.sohu.com/cityjson?ie=utf-8"></script><script data-pjax src="https://cdn.jsdelivr.net/npm/hexo-butterfly-clock/lib/clock.min.js"></script><div class="js-pjax"><script async="async">var arr = document.getElementsByClassName('recent-post-item');
+for(var i = 0;i<arr.length;i++){
+    arr[i].classList.add('wow');
+    arr[i].classList.add('animate__zoomIn');
+    arr[i].setAttribute('data-wow-duration', '1s');
+    arr[i].setAttribute('data-wow-delay', '0s');
+    arr[i].setAttribute('data-wow-offset', '100');
+    arr[i].setAttribute('data-wow-iteration', '1');
+  }</script><script async="async">var arr = document.getElementsByClassName('card-widget');
+for(var i = 0;i<arr.length;i++){
+    arr[i].classList.add('wow');
+    arr[i].classList.add('animate__zoomIn');
+    arr[i].setAttribute('data-wow-duration', '1s');
+    arr[i].setAttribute('data-wow-delay', '0s');
+    arr[i].setAttribute('data-wow-offset', '100');
+    arr[i].setAttribute('data-wow-iteration', '1');
+  }</script><script async="async">var arr = document.getElementsByClassName('bbTimeList container');
+for(var i = 0;i<arr.length;i++){
+    arr[i].classList.add('wow');
+    arr[i].classList.add('animate__zoomIn');
+    arr[i].setAttribute('data-wow-duration', '1s');
+    arr[i].setAttribute('data-wow-delay', '0s');
+    arr[i].setAttribute('data-wow-offset', '100');
+    arr[i].setAttribute('data-wow-iteration', '1');
+  }</script><script async="async">var arr = document.getElementsByClassName('flink-list-card');
+for(var i = 0;i<arr.length;i++){
+    arr[i].classList.add('wow');
+    arr[i].classList.add('animate__flipInY');
+    arr[i].setAttribute('data-wow-duration', '2s');
+    arr[i].setAttribute('data-wow-delay', '0s');
+    arr[i].setAttribute('data-wow-offset', '100');
+    arr[i].setAttribute('data-wow-iteration', '1');
+  }</script></div><script defer src="https://cdn.jsdelivr.net/gh/graingert/wow@1.3.0/dist/wow.min.js"></script><script defer src="https://cdn.jsdelivr.net/npm/hexo-butterfly-wowjs/lib/wow_init.min.js"></script><!-- hexo injector body_end end --></body></html>

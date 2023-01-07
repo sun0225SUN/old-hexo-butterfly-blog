@@ -1,0 +1,1427 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="dark"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>你的浏览器，何必是浏览器 | 小孙同学</title><meta name="keywords" content="浏览器"><meta name="author" content="小孙同学"><meta name="copyright" content="小孙同学"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#0d0d0d"><meta name="description" content="这篇博客主要阐述了浏览器的各种功能及其相关使用技巧。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="你的浏览器，何必是浏览器">
+<meta property="og:url" content="https://sunguoqi.com/posts/20843.html">
+<meta property="og:site_name" content="小孙同学">
+<meta property="og:description" content="这篇博客主要阐述了浏览器的各种功能及其相关使用技巧。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://i.loli.net/2021/03/11/817fOHu4X2bvhtx.jpg">
+<meta property="article:published_time" content="2021-03-03T16:00:00.000Z">
+<meta property="article:modified_time" content="2022-01-10T17:14:42.693Z">
+<meta property="article:author" content="小孙同学">
+<meta property="article:tag" content="浏览器">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.loli.net/2021/03/11/817fOHu4X2bvhtx.jpg"><link rel="shortcut icon" href="/"><link rel="canonical" href="https://sunguoqi.com/posts/20843"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//hm.baidu.com"/><link rel="preconnect" href="//s4.cnzz.com"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="manifest" href="/manifest.json"/><meta name="msapplication-TileColor" content="#ffffff"/><link rel="apple-touch-icon" sizes="180x180" href="/images/siteicon/apple-touch-icon.png"/><link rel="icon" type="image/png" sizes="32x32" href="/images/siteicon/favicon-32x32.png"/><link rel="icon" type="image/png" sizes="16x16" href="/images/siteicon/favicon-16x16.png"/><link rel="mask-icon" href="/images/siteicon/safari-pinned-tab.svg" color="#5bbad5"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.10.5/dist/instantsearch.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/instantsearch.js@2.10.5/dist/instantsearch.min.js" defer></script><script>var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?eb7ddd29e27906244e3cbd3f6b97dc44";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script><script async="async" data-pjax="data-pjax" src="https://s4.cnzz.com/z_stat.php?id=1280204826&amp;web_id=1280204826"></script><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: {"appId":"5C3XXH4EVO","apiKey":"b6895f5bd998a9ed8fc54ca3419ee782","indexName":"search","hits":{"per_page":6},"languages":{"input_placeholder":"搜索文章","hits_empty":"找不到您查询的内容：${query}","hits_stats":"找到 ${hits} 条结果，用时 ${time} 毫秒"}},
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: {"limitDay":365,"position":"top","messagePrev":"It has been","messageNext":"days since the last update, the content of the article may be outdated."},
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":250},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"你已切换为繁体","cht_to_chs":"你已切换为简体","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#49b1f5","bgDark":"#121212","position":"top-center"},
+  source: {
+    jQuery: 'https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js',
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+    },
+    fancybox: {
+      js: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css'
+    }
+  },
+  isPhotoFigcaption: true,
+  islazyload: false,
+  isanchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '你的浏览器，何必是浏览器',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2022-01-11 01:14:42'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          const now = new Date()
+          const hour = now.getHours()
+          const isNight = hour <= 6 || hour >= 18
+          if (t === undefined) isNight ? activateDarkMode() : activateLightMode()
+          else if (t === 'light') activateLightMode()
+          else activateDarkMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const fontSizeVal = saveToLocal.get('global-font-size')
+    if (fontSizeVal !== undefined) {
+      document.documentElement.style.setProperty('--global-font-size', fontSizeVal + 'px')
+    }
+    
+    const detectApple = () => {
+      if (GLOBAL_CONFIG_SITE.isHome && /iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    document.addEventListener('pjax:complete', detectApple)})(window)</script><link rel="stylesheet" href="//at.alicdn.com/t/font_2936154_tjif7y18l3j.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css"><style type="text/css">.app-refresh{position:fixed;top:-2.2rem;left:0;right:0;z-index:99999;padding:0 1rem;font-size:15px;height:2.2rem;transition:all .3s ease}.app-refresh-wrap{display:flex;color:#fff;height:100%;align-items:center;justify-content:center}.app-refresh-wrap a{color:#fff;text-decoration:underline;cursor:pointer}</style><link rel="stylesheet" href="/css/custom.css"  media="defer" onload="this.media='all'"><!-- hexo injector head_end start --><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Zfour/Butterfly-swiper/swiper/swiper.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Zfour/Butterfly-swiper/swiper/swiperstyle.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Zfour/Butterfly-card-history/baiduhistory/css/main.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-butterfly-clock/lib/clock.min.css"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" media="print" onload="this.media='screen'"><!-- hexo injector head_end end --><meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="小孙同学" type="application/atom+xml">
+</head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="iron-container iron-circle"><div class="iron-box1 iron-circle iron-center"></div><div class="iron-box2 iron-circle iron-center"></div><div class="iron-box3 iron-circle iron-center"></div><div class="iron-box4 iron-circle iron-center"></div><div class="iron-box5 iron-circle iron-center"></div><div class="iron-box6 iron-circle"><div class="iron-coil" style="--i: 0"></div><div class="iron-coil" style="--i: 1"></div><div class="iron-coil" style="--i: 2"></div><div class="iron-coil" style="--i: 3"></div><div class="iron-coil" style="--i: 4"></div><div class="iron-coil" style="--i: 5"></div><div class="iron-coil" style="--i: 6"></div><div class="iron-coil" style="--i: 7"></div></div></div></div><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/images/avatar.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">文章</div><div class="length-num">56</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">标签</div><div class="length-num">24</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">分类</div><div class="length-num">9</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-zhuye-"></use></svg><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-gonglve2"></use></svg><span> 文章</span><i class="fas fa-chevron-down expand hide"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/categories/"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-wenzhang"></use></svg><span> 分类</span></a></li><li><a class="site-page child" href="/tags/"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-biaoqian3"></use></svg><span> 标签</span></a></li><li><a class="site-page child" href="/archives/"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-dakaqiandao"></use></svg><span> 时间轴</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-tiyu"></use></svg><span> 生活</span><i class="fas fa-chevron-down expand hide"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/books/"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-lianxi"></use></svg><span> 书单</span></a></li><li><a class="site-page child" target="_blank" rel="noopener" href="https://720yun.com/t/0fbjvdyuru0?scene_id=18586179"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-GLOBE"></use></svg><span> 地图</span></a></li><li><a class="site-page child" target="_blank" rel="noopener" href="https://ssh-music.vercel.app/"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-yinle11"></use></svg><span> 音乐</span></a></li><li><a class="site-page child" target="_blank" rel="noopener" href="https://box.sunguoqi.com/shici"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-task_"></use></svg><span> 诗词</span></a></li><li><a class="site-page child" href="/movies/"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-dianshiju1"></use></svg><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-jiudian"></use></svg><span> 小黑屋</span><i class="fas fa-chevron-down expand hide"></i></a><ul class="menus_item_child"><li><a class="site-page child" target="_blank" rel="noopener" href="https://travellings.link/"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-fenxiang1"></use></svg><span> 任意门</span></a></li><li><a class="site-page child" target="_blank" rel="noopener" href="https://box.sunguoqi.com/kongtiao"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-kongtiao"></use></svg><span> 小空调</span></a></li><li><a class="site-page child" target="_blank" rel="noopener" href="https://sun0225sun.github.io/home/"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-diannao"></use></svg><span> 云电脑</span></a></li><li><a class="site-page child" target="_blank" rel="noopener" href="https://box.sunguoqi.com/wenan"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-zixun3"></use></svg><span> 文案馆</span></a></li><li><a class="site-page child" target="_blank" rel="noopener" href="https://box.sunguoqi.com/love"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-shoucang2"></use></svg><span> 收藏馆</span></a></li><li><a class="site-page child" target="_blank" rel="noopener" href="https://box.sunguoqi.com/games"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-youxi1"></use></svg><span> 游戏厅</span></a></li><li><a class="site-page child" href="/charts/"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-chanpin"></use></svg><span> 统计室</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-dengji"></use></svg><span> 友人帐</span></a></div><div class="menus_item"><a class="site-page" href="/comments/"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-liuyan"></use></svg><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-zhanghaoguanli"></use></svg><span> 关于我</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://i.loli.net/2021/03/11/817fOHu4X2bvhtx.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" onclick="btf.scrollToDest(0, 500)" data-title="这篇博客主要阐述了浏览器的各种功能及其相关使用技巧。">你的浏览器，何必是浏览器</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="iconfont icon-sousuo3"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-zhuye-"></use></svg><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-gonglve2"></use></svg><span> 文章</span><i class="fas fa-chevron-down expand hide"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/categories/"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-wenzhang"></use></svg><span> 分类</span></a></li><li><a class="site-page child" href="/tags/"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-biaoqian3"></use></svg><span> 标签</span></a></li><li><a class="site-page child" href="/archives/"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-dakaqiandao"></use></svg><span> 时间轴</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-tiyu"></use></svg><span> 生活</span><i class="fas fa-chevron-down expand hide"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/books/"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-lianxi"></use></svg><span> 书单</span></a></li><li><a class="site-page child" target="_blank" rel="noopener" href="https://720yun.com/t/0fbjvdyuru0?scene_id=18586179"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-GLOBE"></use></svg><span> 地图</span></a></li><li><a class="site-page child" target="_blank" rel="noopener" href="https://ssh-music.vercel.app/"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-yinle11"></use></svg><span> 音乐</span></a></li><li><a class="site-page child" target="_blank" rel="noopener" href="https://box.sunguoqi.com/shici"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-task_"></use></svg><span> 诗词</span></a></li><li><a class="site-page child" href="/movies/"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-dianshiju1"></use></svg><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-jiudian"></use></svg><span> 小黑屋</span><i class="fas fa-chevron-down expand hide"></i></a><ul class="menus_item_child"><li><a class="site-page child" target="_blank" rel="noopener" href="https://travellings.link/"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-fenxiang1"></use></svg><span> 任意门</span></a></li><li><a class="site-page child" target="_blank" rel="noopener" href="https://box.sunguoqi.com/kongtiao"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-kongtiao"></use></svg><span> 小空调</span></a></li><li><a class="site-page child" target="_blank" rel="noopener" href="https://sun0225sun.github.io/home/"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-diannao"></use></svg><span> 云电脑</span></a></li><li><a class="site-page child" target="_blank" rel="noopener" href="https://box.sunguoqi.com/wenan"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-zixun3"></use></svg><span> 文案馆</span></a></li><li><a class="site-page child" target="_blank" rel="noopener" href="https://box.sunguoqi.com/love"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-shoucang2"></use></svg><span> 收藏馆</span></a></li><li><a class="site-page child" target="_blank" rel="noopener" href="https://box.sunguoqi.com/games"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-youxi1"></use></svg><span> 游戏厅</span></a></li><li><a class="site-page child" href="/charts/"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-chanpin"></use></svg><span> 统计室</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-dengji"></use></svg><span> 友人帐</span></a></div><div class="menus_item"><a class="site-page" href="/comments/"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-liuyan"></use></svg><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-zhanghaoguanli"></use></svg><span> 关于我</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">你的浏览器，何必是浏览器</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2021-03-03T16:00:00.000Z" title="发表于 2021-03-04 00:00:00">2021-03-04</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2022-01-10T17:14:42.693Z" title="更新于 2022-01-11 01:14:42">2022-01-11</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E7%BB%8F%E9%AA%8C%E6%8A%80%E5%B7%A7/">经验技巧</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">8.8k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>28分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="你的浏览器，何必是浏览器"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span><span class="post-meta-separator">|</span><span class="post-meta-commentcount"><i class="far fa-comments fa-fw post-meta-icon"></i><span class="post-meta-label">评论数:</span><a href="/posts/20843.html#post-comment"><span id="twikoo-count"></span></a></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><p>&emsp;&emsp;<strong>我们都生活在阴沟里，但仍有人仰望星空。</strong></p>
+<hr>
+<div class="note blue icon flat"><i class="note-icon fas fa-bullhorn"></i><p>工欲善其事，必先利其器，作为大学生或者从业人员，如果能熟练地使用各种工具来提高自己的工作学习效率必然是一件好事！！！</p>
+<p>这篇博客较为系统的阐述了浏览器的一些实用功能以及其相关使用技巧，全文近10000字，原创实属不易！！！</p>
+</div>
+
+<hr>
+<h1 id="浏览器的选择"><a href="#浏览器的选择" class="headerlink" title="浏览器的选择"></a>浏览器的选择</h1><p>&emsp;&emsp;浏览器就像是一道通往新世界的大门，使用频率经常碾压其他类电脑软件。浏览器足够强大，一个功能完备的网页或者论坛就堪比一款精心设计的软件客户端。用好浏览器能大大提高我们工作学习的效率。</p>
+<p>&emsp;&emsp;不过…浏览器的种类繁多，我们应该入坑哪一款浏览器呢？</p>
+<p>&emsp;&emsp;博主强烈推荐的是谷歌浏览器，谷歌浏览器（Google chrome）无论是颜值外观，还是稳定性、流畅度方面都做的很好。chrome占据了浏览器市场的大半壁江山。（当然火狐（Firefox）和新版本的Microsoft edge浏览器都也很不错。国产浏览器就算了吧，虽然他能够满足一般人的使用，但是稍微有些许丑陋和垃圾）</p>
+<p><img src="https://img-blog.csdnimg.cn/img_convert/a787fe5a46364c582c14a44eadee50f9.png"></p>
+<hr>
+<h1 id="搜索引擎设置"><a href="#搜索引擎设置" class="headerlink" title="搜索引擎设置"></a>搜索引擎设置</h1><p>&emsp;&emsp;啊哦！！！未连接到互联网，大多数人第一次使用chrome浏览器都会遇到这个问题。</p>
+<p><img src="https://i.loli.net/2021/03/07/jPWqQ4GvDOeNJIr.jpg">&emsp;&emsp;因为众所周知的原因，Google搜索引擎在国内无法访问，我们在设置页面里将搜索引擎更改成<code>百度 </code> <code>搜狗</code>  <code>360</code>  或者<code>bing</code>即可。</p>
+<p><img src="https://i.loli.net/2021/03/07/djci8Wru1w7ph4P.jpg"></p>
+<hr>
+<h1 id="扩展程序及安装教程"><a href="#扩展程序及安装教程" class="headerlink" title="扩展程序及安装教程"></a>扩展程序及安装教程</h1><p>&emsp;&emsp;扩展程序（插件）的核心就是可以<strong>增加你浏览器的功能</strong></p>
+<blockquote>
+<p>扩展程序允许您为 Chrome 浏览器增加功能，而不需要深入研究本机代码。您可以使用您在网页开发中已经很熟悉的核心技术（HTML、CSS 与 JavaScript）为 Chrome 浏览器创建新的扩展程序。</p>
+</blockquote>
+<p>&emsp;&emsp;下面以安装CSDN助手插件为例演示扩展程序的安装方法，在演示之前，先推荐一个非常好用的插件网址 &ensp; <a target="_blank" rel="noopener" href="https://chrome.zzzmh.cn/index#index">点我进入</a></p>
+<p><img src="https://img-blog.csdnimg.cn/img_convert/066efdbc7861cb9d55087329c284e9c2.png"></p>
+<h2 id="下载插件"><a href="#下载插件" class="headerlink" title="下载插件"></a>下载插件</h2><p><img src="https://img-blog.csdnimg.cn/img_convert/3f576e60ef678ba51a0c39b010003df7.png"></p>
+<h2 id="拓展程序管理"><a href="#拓展程序管理" class="headerlink" title="拓展程序管理"></a>拓展程序管理</h2><p><img src="https://img-blog.csdnimg.cn/img_convert/d5eceeea75427f131f13df4c40bf2539.png"></p>
+<h2 id="拖动插件进行安装"><a href="#拖动插件进行安装" class="headerlink" title="拖动插件进行安装"></a>拖动插件进行安装</h2><p><img src="https://img-blog.csdnimg.cn/img_convert/a31dc9f128c774de843b44f81ae91e35.png"></p>
+<h2 id="添加扩展程序"><a href="#添加扩展程序" class="headerlink" title="添加扩展程序"></a>添加扩展程序</h2><p><img src="https://img-blog.csdnimg.cn/img_convert/28d6941fcce0308cca9fbe4f78a74366.png"></p>
+<hr>
+<h1 id="一些好用的插件推荐"><a href="#一些好用的插件推荐" class="headerlink" title="一些好用的插件推荐"></a>一些好用的插件推荐</h1><p>&emsp;&emsp;谷歌商店里有海量的浏览器扩展插件，这里我整理了<code>30款</code>个人认为非常好用的宝藏插件。</p>
+<p>&emsp;&emsp;插件的功能很强大，我只摘取了插件的部分简介并附上了简短的个人体验反馈，更多功能和使用技巧还需大家主动去探索。（如果各位大佬还有珍藏着的宝藏插件，欢迎在评论区留言、推荐！！！）</p>
+<hr>
+<h2 id="Adblock-Plus"><a href="#Adblock-Plus" class="headerlink" title="Adblock Plus"></a>Adblock Plus</h2><p>&emsp;&emsp;我们经常需要访问一些网页，但有时候网页非常的不整洁（比如某度！！！），经常会出现一些广告、弹窗，浏览体验极差！！！</p>
+<p>&emsp;&emsp;<strong>Adblock Plus</strong>是一款广告拦截插件，它可以过滤掉大多数来自网页的弹窗广告，<strong>Adblock Plus</strong> 广告拦截器下载量近10亿次，在全球范围内都有很高的使用评价。</p>
+<p><img src="https://img-blog.csdnimg.cn/img_convert/f4675eff80fcbf944e2477ff7adcf9a0.png"></p>
+<hr>
+<h2 id="Infinity-Pro"><a href="#Infinity-Pro" class="headerlink" title="Infinity Pro"></a>Infinity Pro</h2><p>&emsp;&emsp;<strong>Infinity Pro</strong>新标签页是一款基于html5的Chrome扩展程序，非常的优雅、漂亮。</p>
+<p>&emsp;&emsp;它重新定义了Chrome新标签页，开启页面添加时代，集成了天气，待办事项，笔记等功能，还有丰富的个性化设置。</p>
+<p><img src="https://img-blog.csdnimg.cn/img_convert/1d3365f121ae7038dc448bfb8d0febde.png"></p>
+<hr>
+<h2 id="One-Tab"><a href="#One-Tab" class="headerlink" title="One Tab"></a>One Tab</h2><p>&emsp;&emsp;<strong>One Tab</strong>的宣传口号是<strong>节省高达95％的内存，并减轻标签页混乱现象</strong>, 本质是通过关闭繁多的标签页，让浏览器占用内存变少，<strong>重新定义了浏览器的历史记录</strong>。（因为chrome每开一个标签页就像重新打开了一个软件一样，占用内存较高，而<strong>One Tab</strong>将这些标签页合并成一个，便使得浏览器的内存占用率大大减小）</p>
+<p><img src="https://img-blog.csdnimg.cn/img_convert/9eb754bd953cc77a440d2a778e109e92.png"></p>
+<hr>
+<h2 id="IE-Tab"><a href="#IE-Tab" class="headerlink" title="IE Tab"></a>IE Tab</h2><p>&emsp;&emsp;有些政府网站或者如网银支付等等比较落后，只支持IE，并不支持 Chrome 内核，当你在用使用Chrome的过程中遇到只能兼容IE的网站，<strong>IE Tab</strong>这个插件可以帮你一站式解决，不必再专门去开启那个实在没法用的 IE 浏览器了。</p>
+<p><img src="https://img-blog.csdnimg.cn/img_convert/c33694c6895846d8cdfe64cf819bc0be.png"></p>
+<hr>
+<h2 id="Dark-Reader"><a href="#Dark-Reader" class="headerlink" title="Dark Reader"></a>Dark Reader</h2><p>&emsp;&emsp;<strong>Dark Reader</strong> 是一个护眼扩展程序，他可以为每个网站实时生成黑色主题，一键开启夜间模式。 </p>
+<p><img src="https://img-blog.csdnimg.cn/img_convert/4c5d6145e07e1943c2b41c517318dd86.png"><img src="https://img-blog.csdnimg.cn/img_convert/47e735ab3462ab5a46b23d360bd1bdcd.png"></p>
+<hr>
+<h2 id="PhotoShow"><a href="#PhotoShow" class="headerlink" title="PhotoShow"></a>PhotoShow</h2><p>&emsp;&emsp;<strong>浮图秀</strong>是一款可以快速查看页面中缩略图对应的“大图”的浏览器插件。对于所支持的网站，用户鼠标悬停在缩略图时即可看到相应的高分辨率图片，可以不用打开相应的图片网址，就可以实现大图预览模式，优雅~</p>
+<p><img src="https://img-blog.csdnimg.cn/img_convert/e4bcdbdb2c20f0d74b6c509cb66ae006.png"></p>
+<hr>
+<h2 id="similarsites"><a href="#similarsites" class="headerlink" title="similarsites"></a>similarsites</h2><p>&emsp;&emsp;当你浏览一个很棒的站点的时候,，或许你会想到，和它”差不多”的站点有哪些？ 尤其是针对一些资源站点, 这个站点没有, 而它同类的站点”往往有”！</p>
+<p>&emsp;&emsp;<strong>SimilarSites</strong>插件实现了这个功能,，它的作用只有一个, 发现同类站点~，真的非常好用！！！</p>
+<p><img src="https://img-blog.csdnimg.cn/img_convert/6c121faf2858ea132b9fb029f245a877.png"></p>
+<hr>
+<h2 id="bilibili-helper"><a href="#bilibili-helper" class="headerlink" title="bilibili helper"></a>bilibili helper</h2><p>&emsp;&emsp;<strong>哔哩哔哩助手</strong>是针对B站的一款插件，开发者也一直保持着较高频率的更新，可以大幅度的提升你的B站使用体验，快来让我们更优雅的玩B站吧~</p>
+<p><img src="https://img-blog.csdnimg.cn/img_convert/b4fc84625653a5069a40cc52ac0d682f.png"></p>
+<hr>
+<h2 id="Stylus"><a href="#Stylus" class="headerlink" title="Stylus"></a>Stylus</h2><p>&emsp;&emsp;<strong>Stylus</strong> 是一个调整网页外观的用户样式管理器。可以为许多热门网站安装主题和皮肤。<br>&emsp;&emsp;大家可能会注意到我的B站网页下方多了两个可爱的妹子，没错，就是用下面这个插件实现的。</p>
+<p><img src="https://img-blog.csdnimg.cn/img_convert/785977a4e65227b9a5c559c6b49afda2.png"><br>&emsp;&emsp;不过因为这个插件可以直接修改网页，所以它能做的不仅如此，它还可以对网站进行优化，如去广告，网页宽屏，文章开启沉浸式的阅读模式等等，有很多大佬为此插件提供编写好的样式，当然，如果如果你熟悉前端开发的话，你也可以自己写。</p>
+<p><img src="https://img-blog.csdnimg.cn/img_convert/2faa884d63af013b4d0276c83f787cc2.png"><img src="https://img-blog.csdnimg.cn/img_convert/b191451635e471cc3ddbcbb00d9b56af.png"></p>
+<hr>
+<h2 id="Copyfish"><a href="#Copyfish" class="headerlink" title="Copyfish"></a>Copyfish</h2><p>&emsp;&emsp;倘若你非常喜欢一张图片里的文字，也许这个插件可以帮助到你。</p>
+<p>&emsp;&emsp;<strong>Copyfish</strong>可以识别图片、图标里面的文字。从图像，视频或PDF中提取文本，支持多种语言。</p>
+<p><img src="https://img-blog.csdnimg.cn/img_convert/63fe60bb5abf3ce05d74aa19813f2d25.png"></p>
+<hr>
+<h2 id="Weava-Highlighter"><a href="#Weava-Highlighter" class="headerlink" title="Weava Highlighter"></a>Weava Highlighter</h2><p>&emsp;&emsp;有没有想过像标记pdf一样标记网页内容呢？<strong>Weava Highlighter</strong>实现了这一功能，具体功能如下。</p>
+<ul>
+<li>突出显示具有多种颜色的网站或PDF。单击即可重新访问它们。</li>
+<li>将突出显示内容组织到文件夹和子文件夹中。</li>
+<li>自动为突出显示创建引文。</li>
+<li>自动同步到云。随时随地访问您的精彩片段。</li>
+</ul>
+<p><img src="https://img-blog.csdnimg.cn/img_convert/1e708e0612f9bb8c3096a6c98f4d7d24.png"></p>
+<hr>
+<h2 id="SimpRead"><a href="#SimpRead" class="headerlink" title="SimpRead"></a>SimpRead</h2><p>&emsp;&emsp;为网页开启阅读模式, 让我们更专注于内容。<strong>SimpRead</strong>简悦提供「如杂志般沉浸式阅读体验」，好家伙，我也是第一次用这个插件，功能太强大了，可以基本上直接把上面介绍的那个软件给抛弃了。</p>
+<p><img src="https://img-blog.csdnimg.cn/img_convert/df617d93344eb4a5a6c41141cfdf80f1.png"><img src="https://img-blog.csdnimg.cn/img_convert/b8af27aec4254210d6975f86b1381777.png"></p>
+<hr>
+<h2 id="Smallpdf"><a href="#Smallpdf" class="headerlink" title="Smallpdf"></a>Smallpdf</h2><p>&emsp;&emsp;<strong>Smallpdf</strong>是非常好用的PDF工具，他提供包括PDF 转 Word、Excel、PPT；Word、Excel、PPT 转 PDF；图片转 PDF；压缩PDF；合并、拆分、提取PDF等常用功能，如果你正巧需要此功能，那么用这个插件来完成真的是太棒了。</p>
+<p><img src="https://img-blog.csdnimg.cn/img_convert/b1c12a2675aa951aa44275898629fc16.png"></p>
+<hr>
+<h2 id="Print-Friendly-amp-PDF"><a href="#Print-Friendly-amp-PDF" class="headerlink" title="Print Friendly &amp; PDF"></a>Print Friendly &amp; PDF</h2><p>&emsp;&emsp;<strong>Print Friendly &amp; PDF</strong> 是一款网页打印或生成PDF的Chrome插件，他会在打印之前删除垃圾广告，导航和无用浮窗从而实现页面优化，比chrome自带的打印效果要好（但不是绝对的，最好都试一下，看哪个更好）</p>
+<p><img src="https://img-blog.csdnimg.cn/img_convert/08e335dac1d7478d4073e413d937152e.png"><img src="https://img-blog.csdnimg.cn/img_convert/51bf9432119d8bba5ac6b119907df33b.png"></p>
+<hr>
+<h2 id="划词翻译"><a href="#划词翻译" class="headerlink" title="划词翻译"></a>划词翻译</h2><p>&emsp;&emsp;我们经常需要阅读一些英文的资料，那么遇到不认识的英文怎么办，谷歌翻译是一个解决方案，但是这个插件比谷歌翻译更好用。</p>
+<p>&emsp;&emsp;<strong>划词翻译</strong>是一个短小强悍的划词翻译类插件。可以更方便的查看、复制和朗读不同引擎的翻译结果。支持几乎所有语言的翻译与阅读，并且同时支持国内百度翻译、有道翻译、谷歌翻译和DeepL翻译。（还有一个小技巧就是，如果遇到某些页面禁止复制文字的话，你可以用此插件选中文字，然后在上面的输入框中复制）</p>
+<p><img src="https://img-blog.csdnimg.cn/img_convert/672815f266fba153f282977f03f2ceec.png"></p>
+<hr>
+<h2 id="Google-Results-Previewer"><a href="#Google-Results-Previewer" class="headerlink" title="Google Results Previewer"></a>Google Results Previewer</h2><p>&emsp;&emsp;<strong>Google Results Previewer</strong> 插件可以在谷歌搜索结果页面出现一个预览的小窗口, 直接预览搜索结果的网页, 也可以通过预览窗口直接打开页面， 大幅提高搜索效率，真的很不戳哇！！！但似乎仅支持谷歌搜索！！！</p>
+<p><img src="https://img-blog.csdnimg.cn/img_convert/158b21144fb36ce7b21e4debd3b35ef1.png"></p>
+<hr>
+<h2 id="NooBox-以图搜图"><a href="#NooBox-以图搜图" class="headerlink" title="NooBox-以图搜图"></a>NooBox-以图搜图</h2><p>&emsp;&emsp;<strong>NooBox</strong> 二箱是一款实用的图片工具箱类扩展插件。</p>
+<ul>
+<li><p>实用功能一: 识别图片内容, 寻找图片相关信息的页面</p>
+</li>
+<li><p>实用功能二: 获取更高质量的图片</p>
+</li>
+<li><p>实用功能三: 根据部分图片获取完整图片</p>
+</li>
+</ul>
+<p><img src="https://img-blog.csdnimg.cn/img_convert/51c1b6bf73ec92fa6149034a07b80377.png"></p>
+<hr>
+<h2 id="BitWarden-密码管理"><a href="#BitWarden-密码管理" class="headerlink" title="BitWarden-密码管理"></a>BitWarden-密码管理</h2><p>&emsp;&emsp;对于各种帐号密码来说，虽然大多数人都会选择都使用同一个密码，但是因为某些原因，导致我们不得不使用多个不同的密码(比如在有些网站上要求密码必须包括字母大小写和数字等等)</p>
+<p>&emsp;&emsp;经常忘记某网页账号的登陆密码怎么办？我们有必要将自己的密码进行整理。</p>
+<p>&emsp;&emsp;<strong>Bitwarden</strong> 是一个安全且免费的跨平台密码管理器,我们可以将各类密码整理在这上面，并且支持网页调用及更新密码。</p>
+<p><img src="https://img-blog.csdnimg.cn/img_convert/0703d3b4457fa66274f4d4f49b4ae3d8.png"></p>
+<hr>
+<center><font size="6" color=#FF7F00 >以下插件更适用于开发者群体...</font></center>
+
+<hr>
+<h2 id="CSDN开发助手"><a href="#CSDN开发助手" class="headerlink" title="CSDN开发助手"></a>CSDN开发助手</h2><p>&emsp;&emsp;<strong>CSDN开发助手</strong>插件由CSDN官方开发，集成一键呼出搜索、万能快捷工具、个性化标签页和底层免广告四大功能，让您在工作学习场景中，告别繁琐复杂的切换，快速解决问题，打造专属你的效率神器！（CSDN官方插件免广告，我杀我自己，这操作没谁了）</p>
+<p>&emsp;&emsp;emmm，这个插件确实很不戳，不过让人头疼的是，如果你一打开浏览器就看到这些诸如CSDN，github、python3这类的网址，chrome瞬间就失去了一部分欢乐。</p>
+<p><img src="https://img-blog.csdnimg.cn/img_convert/8d79ba6bf2b092e80573bf5fd7b0737c.png"></p>
+<hr>
+<h2 id="WhatRuns"><a href="#WhatRuns" class="headerlink" title="WhatRuns"></a>WhatRuns</h2><p>&emsp;&emsp;<strong>WhatRuns</strong>是一个网站分析工具, 当你看到感兴趣的网站时点击扩展图标,即可一键分析网站技术栈(分析时间在5-10秒左右)</p>
+<p><img src="https://img-blog.csdnimg.cn/img_convert/75687e54f518af5c131e9ede54f5c4cb.png"></p>
+<hr>
+<h2 id="Code-Cola"><a href="#Code-Cola" class="headerlink" title="Code Cola"></a>Code Cola</h2><p>&emsp;&emsp;<strong>code cola</strong>插件可以对网页的颜色、背景、文字等提供修改，但并不是直接修改原版网页，而是利用遮罩在浏览器上添加一个虚幻的效果，一旦您使用其他浏览器打开相同的网页，特效就不存在了！</p>
+<p><img src="https://img-blog.csdnimg.cn/img_convert/ca397d18bcc78a4db7f1a32477d9dc56.png"></p>
+<hr>
+<h2 id="FeHelper-前端助手"><a href="#FeHelper-前端助手" class="headerlink" title="FeHelper(前端助手)"></a>FeHelper(前端助手)</h2><p>&emsp;&emsp;<strong>FeHelper</strong>的功能包括JSON格式化、二维码生成与解码、信息编解码、代码压缩、美化、页面取色、Markdown与HTML互转、网页滚动截屏、正则表达式、时间转换工具、编码规范检测、页面性能检测、Ajax接口调试、密码生成器、JSON比对工具、网页编码设置、便签笔记。</p>
+<p><img src="https://img-blog.csdnimg.cn/img_convert/9ff1390ca8b814cf16370749b1df0a96.png"></p>
+<hr>
+<h2 id="Markdown-here"><a href="#Markdown-here" class="headerlink" title="Markdown here"></a>Markdown here</h2><p>&emsp;&emsp;有些文章编辑器的东西，只支持富文本，怎样能一键直接把markdown文章转换到头条文章编辑器中呢，这款神器出现了—— <strong>markdown-here</strong>！插件具体有什么用途如下。</p>
+<ul>
+<li>用 Markdown 写邮件，然后转换为富文本</li>
+<li>Write a message with Markdown and convert to rich text</li>
+<li>用 Markdown 编辑微信后台内容</li>
+<li>Edit WeChat background content with Markdown</li>
+<li>在线博客搬家（比如简书 -&gt; 新浪头条）</li>
+<li>Online blog moving (such as jianshu -&gt; Sina)</li>
+</ul>
+<p><img src="https://img-blog.csdnimg.cn/img_convert/3319863335f1ca2cf6d676187c687773.png"></p>
+<hr>
+<h2 id="Github-加速器"><a href="#Github-加速器" class="headerlink" title="Github 加速器"></a>Github 加速器</h2><p>&emsp;&emsp;Github开源项目托管网站想必大家都很熟悉，但是没办法服务器在国外，国内Github下载速度很慢，有需求就会有解决方案，用上了Github 加速器这个插件后，下载速度嗖嗖嗖的~~！</p>
+<p><img src="https://img-blog.csdnimg.cn/img_convert/9c95a791c560307a8c960e1d72e06b1c.png"></p>
+<hr>
+<h2 id="Octotree-GitHub-code-tree"><a href="#Octotree-GitHub-code-tree" class="headerlink" title="Octotree - GitHub code tree"></a>Octotree - GitHub code tree</h2><p>&emsp;&emsp;<strong>octotree</strong> 是一款chrome插件，用于将 Github 项目代码以树形格式展示，方便查看各类文件，而且在展示的列表中，我们可以下载指定的文件，而不需要下载整个项目。非常nice！多去全球最大的“同性交友网站”github逛逛吧！</p>
+<p><img src="https://img-blog.csdnimg.cn/img_convert/8fb7cbfedac15fc4e009b9146b64f0fb.png"></p>
+<hr>
+<h2 id="Sourcegraph"><a href="#Sourcegraph" class="headerlink" title="Sourcegraph"></a>Sourcegraph</h2><p>&emsp;&emsp;Github以<strong>仓库</strong>为单位对<strong>开源项目</strong>进行管理,但github没有提供对单个仓库进行关键词在线搜索的功能(Github对英文搜索支持很棒, 但中文支持差一些)。阮一峰大佬在其开源项目《科技爱好者周刊》推荐了一款名为Sourcegraph的工具,对单个仓库的关键词进行搜索。</p>
+<p><img src="https://img-blog.csdnimg.cn/img_convert/83ecbc763d41a3209e7d807a5968ba53.png"></p>
+<hr>
+<h2 id="Open-in-vs-code"><a href="#Open-in-vs-code" class="headerlink" title="Open in vs code"></a>Open in vs code</h2><p>&emsp;&emsp;“看GitHub代码”还在网页上点点点？用开发工具看代码，不香吗？</p>
+<p>&emsp;&emsp;于是，它来了，它来了可以直接用VS Code方式打开GitHub代码的工具。</p>
+<p>&emsp;&emsp;这个项目叫做<strong>github1s</strong>，也正如其名，作者对其的解释是：毕竟代码嘛，在“原汁原味”的环境下看，还是比较舒服的。而且操作方式也是非常的简单，只需要在浏览器网址部分中的“github”后边，添加一个“<strong>1s</strong>”就可以了。在谷歌商店里也可以安装此扩展插件。</p>
+<p><img src="https://img-blog.csdnimg.cn/img_convert/e1ec31db393d1a6caa253bb48c484c1b.png"></p>
+<hr>
+<h2 id="Surf-GitHub-code-with-VS-Code"><a href="#Surf-GitHub-code-with-VS-Code" class="headerlink" title="Surf GitHub code with VS Code"></a>Surf GitHub code with VS Code</h2><p>&emsp;&emsp;基于<strong>github1s</strong>这个项目，还有大佬开发了更方便的“一键转换”的小工具——**surf.**。</p>
+<p>&emsp;&emsp;这个工具在谷歌商店里也有插件提供，安装过后，便直接会在GitHub页面生成“Surf”按钮，点击即可转换为VS Code。<strong>这个更方便，太优雅了！！！</strong></p>
+<p><img src="https://img-blog.csdnimg.cn/img_convert/6e8c6e32c5052896de39d5dd7f237b77.png"><img src="https://img-blog.csdnimg.cn/img_convert/b6a1bc43c46bdb4f007ccbbf938db0e0.png"></p>
+<hr>
+<h2 id="Enhanced-GitHub"><a href="#Enhanced-GitHub" class="headerlink" title="Enhanced GitHub"></a>Enhanced GitHub</h2><p>&emsp;&emsp;有了<strong>Enhanced Github</strong>这款插件, 我们可以下载Github优秀项目中最核心的代码文件进行学习, 而不是下载整个仓库作为藏品。</p>
+<p><img src="https://img-blog.csdnimg.cn/img_convert/92b52c7e2c30d043c899f1847424e6fc.png"></p>
+<hr>
+<h2 id="GitZip-for-github"><a href="#GitZip-for-github" class="headerlink" title="GitZip for github"></a>GitZip for github</h2><p>&emsp;&emsp;GitHub不能下载仓库中某个特定文件夹的内容，这可能与Git的思想有关系，你得到的永远是完整的。</p>
+<p>&emsp;&emsp;但很多时候我们只需要某个开源仓库的某个文件就可以了 ，使用这个插件的话你只需要在GitHub网页上对这个文件夹双击，文件即可被下载，非常nice！当然他看起来似乎和Enhanced GitHub很相似，但其实二者存在区别，可混合使用。</p>
+<p><img src="https://img-blog.csdnimg.cn/img_convert/66a708ead5c59b6a70194a60186dd7f1.png"></p>
+<hr>
+<h1 id="油猴脚本的使用及脚本推荐"><a href="#油猴脚本的使用及脚本推荐" class="headerlink" title="油猴脚本的使用及脚本推荐"></a>油猴脚本的使用及脚本推荐</h1><p>&emsp;&emsp;（太难了！！！30款谷歌插件终于介绍完了）</p>
+<p>&emsp;&emsp;谷歌插件的存在对浏览器的帮助很大，它就像手机和手机app的关系一样，实现了浏览器本身不具备的逆天功能。</p>
+<p>&emsp;&emsp;不过，在众多谷歌插件中，油猴插件需要单独拿出来说说，因为它太黑科技了。<br>&emsp;&emsp;<a target="_blank" rel="noopener" href="https://chrome.zzzmh.cn/info?token=dhdgffkkebhmkfjojejmpbldmpobfkfo">Tampermonkey</a>（油猴插件）是一款最为流行的用户脚本管理器，没有之一。并且经过全球各地无数开发者数年的积累，Tampermonkey目前有大量优秀现成的脚本可供用户选择。<br><img src="https://img-blog.csdnimg.cn/img_convert/8b3b1005437e67cc1b1fc698c4a83b74.png"></p>
+<hr>
+<p>&emsp;&emsp; 在介绍各种好用的脚本之前，同样需要先介绍一个脚本资源下载安装平台<a target="_blank" rel="noopener" href="https://greasyfork.org/zh-CN">Greasy Fork</a></p>
+<p>&emsp;&emsp; Greasy Fork是最受欢迎的脚本资源网站之一，里面提供了大量的黑科技脚本资源，确实黑科技！！！</p>
+<p><img src="https://img-blog.csdnimg.cn/img_convert/f75ab09e2d606a8601254afbf6757caf.png"></p>
+<center><font size="6" color=#FF7F00 >一些好用的油猴脚本推荐</font></center>
+
+<hr>
+<h2 id="AC-baidu-重定向优化"><a href="#AC-baidu-重定向优化" class="headerlink" title="AC-baidu-重定向优化"></a>AC-baidu-重定向优化</h2><p><img src="https://img-blog.csdnimg.cn/img_convert/d4fbe55956e00fd0631211f78ab6adae.png"><br>&emsp;&emsp;这个脚本真的是太优雅了，我们经常会用到百度搜索引擎，但是检索页面真的非常的丑陋，用了这个脚本之后，检索页面简直就像是整容了。右上角蓝色部分可以进行自定义设置，非常优雅！！！！！！！</p>
+<p>&emsp;&emsp;哦对，这个脚本还可以自动翻页，再也不用点下面的页数1 2 3 4 5了。</p>
+<p><img src="https://img-blog.csdnimg.cn/img_convert/2b019dd8732e44ad8f4d1d58ca395e45.png"></p>
+<hr>
+<h2 id="懒人专用多合一…"><a href="#懒人专用多合一…" class="headerlink" title="懒人专用多合一…"></a>懒人专用多合一…</h2><p>&emsp;&emsp;这个脚本集成了好多功能，全网去广告、Vip视频解析等等…具体介绍网站里描述很详细，不再赘述了。</p>
+<p><img src="https://img-blog.csdnimg.cn/img_convert/cf9111362a7187c66d6ce33f69392878.png"></p>
+<hr>
+<h2 id="百度文库、短视频下载…"><a href="#百度文库、短视频下载…" class="headerlink" title="百度文库、短视频下载…"></a>百度文库、短视频下载…</h2><p>&emsp;&emsp;这个脚本妥妥的黑科技，他可以让我们白嫖百度文库资源，解除复制下载限制，无水印下载抖音快手小视频等等，快去实践一下吧。</p>
+<p><img src="https://img-blog.csdnimg.cn/img_convert/d3565917b8cbc9f28d25910e4484fc6d.png"></p>
+<hr>
+<h2 id="豆瓣资源下载大师"><a href="#豆瓣资源下载大师" class="headerlink" title="豆瓣资源下载大师"></a>豆瓣资源下载大师</h2><p>&emsp;&emsp;豆瓣资源下载大师，这个脚本几乎可以白嫖豆瓣里所有的电影、音乐、图书资源，非常的nice。</p>
+<p><img src="https://img-blog.csdnimg.cn/img_convert/ccea184603393777ffab03dd4e2036da.png"><img src="https://img-blog.csdnimg.cn/img_convert/62855b7edaf5e9cd9361c3c605e4bd12.png"></p>
+<hr>
+<h2 id="bilibili播放器设置"><a href="#bilibili播放器设置" class="headerlink" title="bilibili播放器设置"></a>bilibili播放器设置</h2><p>&emsp;&emsp;也许bilibili助手满足不了你对播放器的设置需求，那么这个脚本绝对可以做到，它提供了对B站播放器的各种设置。</p>
+<p><img src="https://img-blog.csdnimg.cn/img_convert/174c11b7f7468ca5be658ad14ab03e86.png"><img src="https://img-blog.csdnimg.cn/img_convert/9f5acf98cc645d517cec326c4e64b567.png"></p>
+<hr>
+<h2 id="CSDN人性化脚本"><a href="#CSDN人性化脚本" class="headerlink" title="CSDN人性化脚本"></a>CSDN人性化脚本</h2><p>&emsp;&emsp;这个脚本也很好用，他可以让csdn更简洁，更人性化，当然如果你认真研究了上一目录的第9个Stylus这个插件，Stylus里的样式也有类似的功能。</p>
+<p><img src="https://img-blog.csdnimg.cn/img_convert/aaf78ef303849f9cf50ce582bf525b48.png"><img src="https://img-blog.csdnimg.cn/img_convert/c2ae911e5364f1538f8df621219870f0.png"></p>
+<hr>
+<h2 id="智慧树网课助手"><a href="#智慧树网课助手" class="headerlink" title="智慧树网课助手"></a>智慧树网课助手</h2><p>&emsp;&emsp;知道网课为什么很水很水很水吗，知道为什么有些人轻轻松松的就能把网课成绩刷到100分吗？</p>
+<p>&emsp;&emsp;智慧树网课助手这个脚本实现了自动挂机看智慧树MOOC等视频，支持屏蔽弹窗题目、自动切换下一节，章测试和考试支持自动答题等操作，真的是个大宝贝呢，致敬开发大佬！！！</p>
+<p><img src="https://img-blog.csdnimg.cn/img_convert/a053bbd2d24b1e49c9bcb180d21fcc60.png"></p>
+<hr>
+<h2 id="Userscript"><a href="#Userscript" class="headerlink" title="Userscript+"></a>Userscript+</h2><p>&emsp;&emsp;懒惰一定层面上也能促进人类的进步。想装油猴脚本又懒得动手找？Userscript+可以助长你的懒惰。</p>
+<p>&emsp;&emsp;Userscript+脚本会在右下角自动静默为你推荐脚本，并会在 10 秒后自动消失。</p>
+<p><img src="https://img-blog.csdnimg.cn/img_convert/c1fb7c12b52225bb49809e2e1cafc2ff.png"></p>
+<hr>
+<h1 id="万能命令"><a href="#万能命令" class="headerlink" title="万能命令"></a>万能命令</h1><p>&emsp;&emsp;了解了谷歌插件和油猴脚本的使用后，你的chrome浏览器基本上可以被你玩的飞起了，不过我下面介绍的操作可能会让产生一种相见恨晚的感觉！！！万能命令！！！</p>
+<p><img src="https://img-blog.csdnimg.cn/img_convert/ac11acc30f9146b42dd795fb172f5185.png"></p>
+<p><strong>&emsp;&emsp;看完图片中的介绍没，猜到他的强大之处了吗？没有？没有的话，我来演示一波吧。</strong></p>
+<p><img src="https://img-blog.csdnimg.cn/20210220203814274.jpeg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDkxNTQ2Mg==,size_16,color_FFFFFF,t_70#pic_center"></p>
+<center><font size="6" color=red >恭喜你！发现了新大陆...</font></center>
+
+<p><img src="https://img-blog.csdnimg.cn/img_convert/3185009f1f049c67f2d929750535ffbf.png"><br>&emsp;&emsp;怎么样，是不是有一种相见恨晚的感觉。真的是太宝藏了，很实用并且无需安装任何插件，直接在地址栏加入<code>wn.run\\</code>就可以了，<code>适用于每个网站，不过可惜的是，虽然功能选项很多，但很多确实不能用。</code></p>
+<hr>
+<h1 id="chrome-APP模式"><a href="#chrome-APP模式" class="headerlink" title="chrome APP模式"></a>chrome APP模式</h1><p>&emsp;&emsp;在博客最开始有提到的这样一个概念，一个功能完备的网页堪比一款精心设计的电脑客户端，确实如此，不过那么各位大佬们有没有产生过这样一个想法，可不可以直接将网页封装成桌面呢？也许这种需求没必要，不过在国外像Facebook、Twitter、Pinterest，Tiktok和一些Google APP似乎都在尝试web APP的模式）</p>
+<p>&emsp;&emsp;在chrome浏览器的更多工具设置栏中有创建快捷方式这样一个功能，这个功能可以直接将网页提取到桌面，然后以窗口应用模式打开，但是目前这个功能还不是完善，很多功能还是需要调用chrome浏览器来实现。</p>
+<p>&emsp;&emsp;如何创建一个特定网页的窗口应用呢？下面以csdn网站为例进行演示。</p>
+<p><img src="https://img-blog.csdnimg.cn/img_convert/464acdd90feee42b45f3eee63d0cc3e6.png"><img src="https://img-blog.csdnimg.cn/img_convert/18abf4439d45f556f5df56052ceae3a9.png"><img src="https://img-blog.csdnimg.cn/img_convert/3d1f1a865d9d5c8c433d505659c07b6d.png"></p>
+<hr>
+<h1 id="chrome快捷键"><a href="#chrome快捷键" class="headerlink" title="chrome快捷键"></a>chrome快捷键</h1><p>&emsp;&emsp;chrome浏览器的使用技巧有很多，如果你想提高你的效率，可以从<code>熟练使用各种快捷键</code>开始，<code>chrome快捷键整理见附录1</code></p>
+<hr>
+<h1 id="chrome地址栏命令"><a href="#chrome地址栏命令" class="headerlink" title="chrome地址栏命令"></a>chrome地址栏命令</h1><p>&emsp;&emsp;Chrome作为一个前端开发的标准浏览器，用来体验和测试日新月异的新特性，自然是没话说。</p>
+<p>&emsp;&emsp;不过Chrome 有很多的特性在界面菜单中是没有体现的，我们可以通过 <code>chrome:// </code>命令来访问。<code>hrome地址栏命令整理见附录2</code>**</p>
+<p>&emsp;&emsp;这里顺便提一个小彩蛋（也许程序员群体都拥有一个有趣的灵魂吧）chrome浏览器在断网情况下会出现这种画面。</p>
+<p><img src="https://img-blog.csdnimg.cn/img_convert/ab739618c11f6dbbd061e51a0ab36460.png"></p>
+<p>&emsp;&emsp;其实这个小恐龙是个隐藏的小彩蛋，只需按下空格键，就可以畅玩<code>超级恐龙</code>小游戏。</p>
+<p><img src="https://img-blog.csdnimg.cn/img_convert/737c7b6f964ec2dc73b81b57fb0dd179.png"><br>&emsp;&emsp;emmm，是不是要断网去玩游戏去了…其实在线也可以玩，在地址栏输入下面这行代码。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chrome:<span class="comment">//dino/</span></span><br></pre></td></tr></table></figure>
+<p><img src="https://img-blog.csdnimg.cn/img_convert/b19d43f313d70927a93ba43371cdbb19.png"></p>
+<hr>
+<h1 id="chrome实验室功能"><a href="#chrome实验室功能" class="headerlink" title="chrome实验室功能"></a>chrome实验室功能</h1><p>&emsp;&emsp;首先我们需要进入实验室，在谷歌浏览器的地址栏中输入<code>chrome://flags/</code>，回车后便能进入到谷歌浏览器实验室中。这里囊括了所有正在开发小功能。</p>
+<p><img src="https://img-blog.csdnimg.cn/img_convert/44c174d04242744fdb5352f71e39993d.png"></p>
+<p>&emsp;&emsp;下面推荐几款实用的小功能，实验性功能有很多，可自行探索！！！</p>
+<hr>
+<h2 id="标签悬停图像预览"><a href="#标签悬停图像预览" class="headerlink" title="标签悬停图像预览"></a>标签悬停图像预览</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chrome:<span class="comment">//flags/#tab-hover-card-images</span></span><br></pre></td></tr></table></figure>
+
+<p>&emsp;&emsp;在地址栏输入上面的代码后将<code>Default</code>改成<code>Enabled</code>，重启浏览器即可。</p>
+<p><img src="https://img-blog.csdnimg.cn/img_convert/5de666ab07d593629e8f5e924af35048.png"><br>&emsp;&emsp;当页面打开过多的时候，标签会挤在一起导致无法看清网页标题，增加了不必要的切换、返回、关闭某个页面工作量,这个功能可以预览打开的网页页面，还不错，虽然可能不经常用，但是个人喜欢。</p>
+<p><img src="https://img-blog.csdnimg.cn/img_convert/14e0b9dbb758cbff001d77ab93e3eaf8.png"></p>
+<hr>
+<h2 id="阅读模式"><a href="#阅读模式" class="headerlink" title="阅读模式"></a>阅读模式</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chrome:<span class="comment">//flags/#enable-reader-mode</span></span><br></pre></td></tr></table></figure>
+
+<p>&emsp;&emsp;阅读模式是浏览器为优化用户的阅读体验，自动隐藏网页的无关元素，如图片或贴片广告等，让页面变得简洁。（这个阅读效果似乎不是很好，之前有提到相关插件或者脚本，建议使用其他选择）</p>
+<p><img src="https://img-blog.csdnimg.cn/img_convert/d04afe4d8ed90b622ed5da976a546536.png"><img src="https://img-blog.csdnimg.cn/img_convert/9aed75e8523de6d29016cb40ef0a1b89.png"></p>
+<hr>
+<h2 id="多线程下载"><a href="#多线程下载" class="headerlink" title="多线程下载"></a>多线程下载</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chrome:<span class="comment">//flags/#enable-parallel-downloading</span></span><br></pre></td></tr></table></figure>
+<p>&emsp;&emsp;谷歌浏览器中默认的下载机制是使用保守的单线程，这就导致很多时候下载速度非常慢了，开启此功能即可畅想多线程下载，速度嗖嗖的！！！(当然著名的多线程下载器Internet Download Manager在这里就不做阐述了，有兴趣的童鞋可以研究下)</p>
+<p><img src="https://img-blog.csdnimg.cn/img_convert/50754085f32db6a538e3d522a9e330dc.png"></p>
+<hr>
+<h2 id="黑暗模式"><a href="#黑暗模式" class="headerlink" title="黑暗模式"></a>黑暗模式</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chrome:<span class="comment">//flags/#enable-force-dark</span></span><br></pre></td></tr></table></figure>
+
+<p>&emsp;&emsp;但是上面的标签栏并没有变颜色，想要标签栏并没有变颜色的话，建议在谷歌商店安装黑暗主题扩展，当然还有更多主题供你选择。<br><img src="https://img-blog.csdnimg.cn/img_convert/3231b606ae1972c7cb173fc82b469492.png"><img src="https://img-blog.csdnimg.cn/img_convert/3aebebe6f1836d9f9d06d0f455ac9363.png"></p>
+<hr>
+<h1 id="其他实用类技巧"><a href="#其他实用类技巧" class="headerlink" title="其他实用类技巧"></a>其他实用类技巧</h1><p>&emsp;&emsp;chrome浏览器的使用技巧还有很多很多，也许我介绍的并不是很全，如果大家还有更好的使用技巧，欢迎在评论区交流！！！</p>
+<h2 id="隐身模式"><a href="#隐身模式" class="headerlink" title="隐身模式"></a>隐身模式</h2><p>&emsp;&emsp;chrome隐身模式太强大了，我们可以使用快捷键<strong>Ctrl+Shift+N</strong>打开隐身模式窗口，在这个窗口下，浏览器不会记录你的任何行为，呃…嗯…啊…哦…懂得都懂！！！:smirk::smirk:</p>
+<p>&emsp;&emsp;正常情况下，一个浏览器是不能同时登陆某网站的两个账号的，而隐身模式的强大之处就在于他可以和你正常的chrome脱离开。所以开启隐身模式，你就可以登陆你某个网站的第二个账号了，而且鬼知道你用来干嘛，猥琐发育，别浪！！！</p>
+<p><img src="https://img-blog.csdnimg.cn/img_convert/d9ff52238cac5c21c3750f6ca9bfc746.png"></p>
+<hr>
+<h2 id="多媒体浏览"><a href="#多媒体浏览" class="headerlink" title="多媒体浏览"></a>多媒体浏览</h2><p>&emsp;&emsp;谷歌浏览器Chrome不仅仅是最好用的浏览器，而且实际上还是一个”多才多艺“的家伙。</p>
+<p>&emsp;&emsp;你可以将各种JPG、PNG、MP4、AVI等常见媒体格式文件拖进浏览器进行预览！！！</p>
+<p><img src="https://img-blog.csdnimg.cn/img_convert/67b9005351d1ad90989ea70c029d728f.png"><img src="https://img-blog.csdnimg.cn/img_convert/e5d85f8249484569a00398a2f8c21249.png"></p>
+<hr>
+<h2 id="画中画播放"><a href="#画中画播放" class="headerlink" title="画中画播放"></a>画中画播放</h2><p>&emsp;&emsp;当网页中有视频播放时，注意右上角工具栏的变化，你可以点击这个图标对视频进行控制！！！最常用的就是画中画播放功能了。</p>
+<p><img src="https://img-blog.csdnimg.cn/20210220204138128.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDkxNTQ2Mg==,size_16,color_FFFFFF,t_0#pic_center"></p>
+<h2 id="标签页右键"><a href="#标签页右键" class="headerlink" title="标签页右键"></a>标签页右键</h2><p>&emsp;&emsp;右键标签页，这里隐藏了我们可能不知道的好用的功能！！！</p>
+<p><img src="https://img-blog.csdnimg.cn/img_convert/ba8b2da71bf38339b5939abeb8f491a9.png"></p>
+<h2 id="网页右键"><a href="#网页右键" class="headerlink" title="网页右键"></a>网页右键</h2><p>&emsp;&emsp;在网页空白处右键，你会发现同样有很多工具选项！！！</p>
+<p><img src="https://img-blog.csdnimg.cn/20210220204226838.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDkxNTQ2Mg==,size_16,color_FFFFFF,t_7#pic_center"></p>
+<hr>
+<h2 id="页面自动滚动"><a href="#页面自动滚动" class="headerlink" title="页面自动滚动"></a>页面自动滚动</h2><p>&emsp;&emsp;用谷歌浏览器打开一个比较长的网页，在任意的地方按住鼠标中键，朝下轻微位移鼠标，页面就会自动滚动，非常方便。其中的技术要点是：鼠标位移的幅度决定了自动滚动的速度，控制起来也是比较方便的。</p>
+<p><img src="https://img-blog.csdnimg.cn/20210220205017745.gif"></p>
+<hr>
+<h2 id="网页输出PDF"><a href="#网页输出PDF" class="headerlink" title="网页输出PDF"></a>网页输出PDF</h2><p>&emsp;&emsp;有时我们需要将网页内容打印出来进行保存或发送给别人，这时候将网页输出成PDF格式再进行打印是一个很不错的选择。</p>
+<p><img src="https://img-blog.csdnimg.cn/img_convert/8c74319eb389e65009429ceb693a2a61.png"><img src="https://img-blog.csdnimg.cn/img_convert/ca2ed61660a05da8c8371c1fa75beda5.png"></p>
+<hr>
+<h2 id="网页长截图"><a href="#网页长截图" class="headerlink" title="网页长截图"></a>网页长截图</h2><p>&emsp;&emsp;网页导出的pdf有事会出现排版错乱的问题，这时候我们可以对网页进行长截图。下面是一种长截图的方法，如果你认真看完了这篇博客，你还会发现其余的途径。</p>
+<p>&emsp;&emsp;按 <code>F12</code> 弹出控制台，按 <code>ctrl+p</code> 弹出输入框,输入<code>&gt;capture</code>选择<code>capture full size screenshot</code>即可自动下载网页全图。</p>
+<p><img src="https://img-blog.csdnimg.cn/img_convert/1bf98662234fdae5a069a94b3144c4b2.png"></p>
+<hr>
+<h2 id="任务管理器"><a href="#任务管理器" class="headerlink" title="任务管理器"></a>任务管理器</h2><p>&emsp;&emsp;谷歌浏览器Chrome自带了一个任务管理器，像Windows的任务管理一样，可以看到每个进程、网页、插件、扩展程序占用的内存、CPU和网络。使用快捷键<code>Shift + ESC</code> 即可调出来。</p>
+<p><img src="https://img-blog.csdnimg.cn/img_convert/a190068baac1765dc0186556d47eb5ae.png"></p>
+<hr>
+<h2 id="写字板"><a href="#写字板" class="headerlink" title="写字板"></a>写字板</h2><ul>
+<li>在地址栏输入下面这行代码，浏览器会变成一个写字板。</li>
+</ul>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">data:text/html,<span class="tag">&lt;<span class="name">html</span> <span class="attr">contenteditable</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p><img src="https://img-blog.csdnimg.cn/img_convert/ccb1c6d99966f3536c46539972b7b75b.png"></p>
+<ul>
+<li>在浏览器地址栏输入下面的代码，你会得到一个更高级点的写字板。</li>
+</ul>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">data:text/html;charset=utf-8, <span class="tag">&lt;<span class="name">title</span>&gt;</span>Scratchpad<span class="tag">&lt;/<span class="name">title</span>&gt;</span><span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="css"><span class="selector-tag">body</span> &#123;<span class="attribute">padding</span>: <span class="number">5%</span>; <span class="attribute">font-size</span>: <span class="number">1.5em</span>; <span class="attribute">font-family</span>: Arial; &#125;”&gt;</span><span class="tag">&lt;/<span class="name">style</span>&gt;</span><span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">”shortcut</span> <span class="attr">icon</span>” <span class="attr">href</span>=<span class="string">”https://ssl.gstatic.com/docs/documents/images/kix-favicon6.ico”/</span>&gt;</span><span class="tag">&lt;<span class="name">body</span> <span class="attr">OnLoad</span>=<span class="string">’document.body.focus();’</span> <span class="attr">contenteditable</span> <span class="attr">spellcheck</span>=<span class="string">”true”</span> &gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>&emsp;&emsp;输入好代码后，将页面保存到书签栏以方便访问。</p>
+<p>&emsp;&emsp;这个编辑器支持对文本的格式设置（Ctrl+B为设置粗体，Ctrl+I为设置斜体，Ctrl+U为设置下划线）打开它，你可以直接开始打字——如果你想保存你的想法，以便以后检索，按ctrl+s进行保存。</p>
+<p><img src="https://img-blog.csdnimg.cn/img_convert/303490e464b77f3f266379e68ff68da7.png"></p>
+<hr>
+<h2 id="自由篡改网页信息（贼有意思）"><a href="#自由篡改网页信息（贼有意思）" class="headerlink" title="自由篡改网页信息（贼有意思）"></a>自由篡改网页信息（贼有意思）</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">document</span>.body.contentEditable=<span class="string">&#x27;true&#x27;</span>;</span><br></pre></td></tr></table></figure>
+
+<p>&emsp;&emsp;输入代码后我们就可以随意篡改网页上的文字了，很多虚假的网页新闻就是这样更改的，发挥你的想象力，快去整蛊恶搞下小伙伴吧！！！！（其实原理很简单，如果您熟悉前段开发的话）</p>
+<p><img src="https://img-blog.csdnimg.cn/img_convert/091ac495c6cb151903997cb6859f5964.png"><img src="https://img-blog.csdnimg.cn/img_convert/17e4c32b9af960675cc9fe86da69b9c9.png"></p>
+<hr>
+<h1 id="写在后面"><a href="#写在后面" class="headerlink" title="写在后面"></a>写在后面</h1><p>&emsp;&emsp;啊啊啊啊啊，终于写完了！！！</p>
+<p>&emsp;&emsp;🧡全文共<code>10775</code>个字（不包含字符标点）（未删减前），近百张截图，原创实属不易，评论支持一下吧，当然还有赞赏功能哦🧡 </p>
+<p><img src="https://img-blog.csdnimg.cn/img_convert/7d6d700a3cccf35d0ccdcfa6f2729b44.png"></p>
+<p>&emsp;&emsp;写完整篇博客，我也是被浏览器众多的功能震撼到了，这种震撼还不包括各种神级网页所带来的震撼（互联网发展至今，诞生了众多功能强大的网站，计划后期会搜集整理，单独写一篇博客，欢迎关注）</p>
+<p>&emsp;&emsp;电脑及各种硬件和软件的出现给我们的生活带来了翻天覆地的变化。浏览器如此强大震撼的功能，也使得我们的工作学习效率更加的高效。引水方知开源不易。这背后离不开全球各地开发人员们的不懈努力，我意识到，也许程序员真的是种一个伟大的职业，于是，我悄悄地埋下了一颗种子…</p>
+<hr>
+<h1 id="附录1：chrome快捷键整理"><a href="#附录1：chrome快捷键整理" class="headerlink" title="附录1：chrome快捷键整理"></a>附录1：chrome快捷键整理</h1><p>&emsp;&emsp;快捷键这个东西记住了会让你的工作效率倍增。</p>
+<h2 id="标签页快捷键"><a href="#标签页快捷键" class="headerlink" title="标签页快捷键"></a>标签页快捷键</h2><table>
+<thead>
+<tr>
+<th>快捷键</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Ctrl + n</td>
+<td>打开新窗口。</td>
+</tr>
+<tr>
+<td>Ctrl + shift + n</td>
+<td>在隐身模式下打开新窗口。</td>
+</tr>
+<tr>
+<td>Ctrl+Shift+O</td>
+<td>打开书签管理器</td>
+</tr>
+<tr>
+<td>Ctrl + t</td>
+<td>打开新的标签页。（<strong>常用</strong>）</td>
+</tr>
+<tr>
+<td>Ctrl + Shift + t</td>
+<td>重新打开最后关闭的标签页。</td>
+</tr>
+<tr>
+<td>Ctrl + Tab 或 Ctrl + Pgdn</td>
+<td>跳转到下一个打开的标签页，如果当前为最后一个标签页，则跳转到第一个标签页。</td>
+</tr>
+<tr>
+<td>Ctrl + Shift + Tab 或 Ctrl + Pgup</td>
+<td>跳转到上一个打开的标签页。（<strong>常用</strong>）</td>
+</tr>
+<tr>
+<td>Alt + ←</td>
+<td>打开历史记录中的上一页。（<strong>常用</strong>）</td>
+</tr>
+<tr>
+<td>Alt + →</td>
+<td>打开历史记录中的下一页。</td>
+</tr>
+<tr>
+<td>Ctrl + 1 到 Ctrl + 8</td>
+<td>跳转到指定索引号的标签页。（<strong>常用</strong>）</td>
+</tr>
+<tr>
+<td>Ctrl + 9</td>
+<td>跳转到最后一个标签页。（<strong>常用</strong>）</td>
+</tr>
+<tr>
+<td>Alt + home</td>
+<td>在当前标签页中打开主页。</td>
+</tr>
+<tr>
+<td>Ctrl + w 或 Ctrl + F4</td>
+<td>关闭当前标签页。（<strong>常用</strong>）</td>
+</tr>
+<tr>
+<td>Ctrl + Shift + w</td>
+<td>关闭所有已打开的标签页并关闭当前 Chrome 浏览器（如果开了多个浏览器，则只关闭当前的浏览器）。</td>
+</tr>
+<tr>
+<td>Ctrl + Shift + q 或 Alt + F4</td>
+<td>关闭所有 Chrome 浏览器。<strong>（慎用）</strong></td>
+</tr>
+</tbody></table>
+<hr>
+<h2 id="功能快捷键"><a href="#功能快捷键" class="headerlink" title="功能快捷键"></a>功能快捷键</h2><table>
+<thead>
+<tr>
+<th align="center">快捷键</th>
+<th align="center">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">Ctrl + h</td>
+<td align="center">在新标签页中打开”历史记录”页。（<strong>常用</strong>）</td>
+</tr>
+<tr>
+<td align="center">Ctrl + j</td>
+<td align="center">在新标签页中打开”下载内容”页。（<strong>常用</strong>）</td>
+</tr>
+<tr>
+<td align="center">Shift + Esc</td>
+<td align="center">打开 Chrome 任务管理器。</td>
+</tr>
+<tr>
+<td align="center">Ctrl + f 或 F3</td>
+<td align="center">打开关键字搜索框。（<strong>常用</strong>）</td>
+</tr>
+<tr>
+<td align="center">Ctrl + g</td>
+<td align="center">跳转到与关键字搜索框中的文本相匹配的下一条内容。</td>
+</tr>
+<tr>
+<td align="center">Ctrl + Shift + g</td>
+<td align="center">跳转到与关键字搜索框中的文本相匹配的上一条内容。</td>
+</tr>
+<tr>
+<td align="center">Alt + f 或 Alt + e 或 F10</td>
+<td align="center">打开右上角的菜单栏。F10 只是选择菜单栏的图标，还需要键入回车或空格后，才能完全打开。</td>
+</tr>
+<tr>
+<td align="center">Ctrl + Shift + b</td>
+<td align="center">显示或隐藏书签栏。</td>
+</tr>
+<tr>
+<td align="center">Ctrl + Shift + o</td>
+<td align="center">打开书签管理器。</td>
+</tr>
+<tr>
+<td align="center">Shift + Alt + t</td>
+<td align="center">把焦点放在 Chrome 工具栏的第一项上。</td>
+</tr>
+<tr>
+<td align="center">F6</td>
+<td align="center">在地址栏与书签栏之间向前切换焦点。（<strong>常用</strong>）</td>
+</tr>
+<tr>
+<td align="center">Shift + F6</td>
+<td align="center">在地址栏与书签栏之间向后切换焦点。</td>
+</tr>
+<tr>
+<td align="center">F12 或 Ctrl + Shift + j</td>
+<td align="center">打开 “开发者工具”。（<strong>常用</strong>）</td>
+</tr>
+<tr>
+<td align="center">Ctrl + Shift + Delete</td>
+<td align="center">打开 “清除浏览数据” 选项。</td>
+</tr>
+<tr>
+<td align="center">F1</td>
+<td align="center">打开 Chrome 帮助中心。</td>
+</tr>
+<tr>
+<td align="center">Ctrl + Shift + m</td>
+<td align="center">打开 Chrome 账户登陆对话框。</td>
+</tr>
+</tbody></table>
+<hr>
+<h2 id="网页快捷键"><a href="#网页快捷键" class="headerlink" title="网页快捷键"></a>网页快捷键</h2><table>
+<thead>
+<tr>
+<th>快捷键</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Ctrl + u</td>
+<td>显示当前网页的 HTML 源代码【不可修改】。（<strong>常用</strong>）</td>
+</tr>
+<tr>
+<td>Ctrl + d</td>
+<td>打开【将当前网页保存为书签】的对话框。（<strong>常用</strong>）</td>
+</tr>
+<tr>
+<td>Ctrl + Shift + d</td>
+<td>打开【将所有打开的标签页以书签的形式保存在新文件夹】的对话框。</td>
+</tr>
+<tr>
+<td>空格键或 Pgdn</td>
+<td>向下滚动网页，一次一个屏幕。（<strong>常用</strong>）</td>
+</tr>
+<tr>
+<td>Shift + 空格键或 PgUp</td>
+<td>向上滚动网页，一次一个屏幕。<em>Shift + 空格键实测不可用。</em></td>
+</tr>
+<tr>
+<td>Ctrl 和 +</td>
+<td>放大网页。</td>
+</tr>
+<tr>
+<td>Ctrl 和 -</td>
+<td>缩小网页。</td>
+</tr>
+<tr>
+<td>Ctrl + 0</td>
+<td>将网页恢复到默认大小。</td>
+</tr>
+<tr>
+<td>Esc</td>
+<td>停止加载网页。</td>
+</tr>
+<tr>
+<td>Ctrl + p</td>
+<td>打开打印选项。</td>
+</tr>
+<tr>
+<td>Ctrl + s</td>
+<td>保存当前网页。</td>
+</tr>
+<tr>
+<td>F5 或 Ctrl + r</td>
+<td>重新加载当前网页。（<strong>常用</strong>）</td>
+</tr>
+<tr>
+<td>Shift + F5 或 Ctrl + Shift + r</td>
+<td>重新加载当前网页（忽略缓存内容）。</td>
+</tr>
+<tr>
+<td>Tab</td>
+<td>浏览下一个可点击项。</td>
+</tr>
+<tr>
+<td>Shift + Tab</td>
+<td>浏览上一个可点击项。</td>
+</tr>
+<tr>
+<td>Ctrl + o</td>
+<td>打开选择文件框。</td>
+</tr>
+<tr>
+<td>F11</td>
+<td>开启或关闭全屏模式。（<strong>常用</strong>）</td>
+</tr>
+<tr>
+<td>home</td>
+<td>转到网页顶部。（<strong>常用</strong>）</td>
+</tr>
+<tr>
+<td>end</td>
+<td>转到网页底部。</td>
+</tr>
+<tr>
+<td>按住 Shift 并滚动鼠标滚轮</td>
+<td>在网页上水平滚动。</td>
+</tr>
+</tbody></table>
+<hr>
+<h2 id="鼠标快捷键"><a href="#鼠标快捷键" class="headerlink" title="鼠标快捷键"></a>鼠标快捷键</h2><table>
+<thead>
+<tr>
+<th>快捷键</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>按住 Ctrl 并点击网页链接</td>
+<td>在新的标签页中打开网页。（<strong>常用</strong>）</td>
+</tr>
+<tr>
+<td>按住 Alt 并点击网页链接</td>
+<td>下载链接目前的网页。</td>
+</tr>
+<tr>
+<td>将网页链接拖拽到标签栏的空白位置</td>
+<td>在新的标签页中打开网页。</td>
+</tr>
+<tr>
+<td>按住 Shift 并点击网页链接</td>
+<td>在新窗口中打开网页。</td>
+</tr>
+<tr>
+<td>将标签页拖出标签栏</td>
+<td>在新窗口中打开网页。</td>
+</tr>
+<tr>
+<td>将标签页拖进现有窗口</td>
+<td>将标签页移至当前窗口。</td>
+</tr>
+<tr>
+<td>双击标签栏的空白区域</td>
+<td>最大化或最小化当前窗口。</td>
+</tr>
+<tr>
+<td>按住 Ctrl 并向上滚动鼠标滚轮</td>
+<td>放大网页。</td>
+</tr>
+<tr>
+<td>按住 Ctrl 并向下滚动鼠标滚轮</td>
+<td>缩小网页。</td>
+</tr>
+</tbody></table>
+<hr>
+<h1 id="附录2：chrome地址栏命令"><a href="#附录2：chrome地址栏命令" class="headerlink" title="附录2：chrome地址栏命令"></a>附录2：chrome地址栏命令</h1><table>
+<thead>
+<tr>
+<th align="center">序号</th>
+<th align="center">命令</th>
+<th align="center">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">1</td>
+<td align="center">chrome://accessibility</td>
+<td align="center">查看浏览器当前访问的标签</td>
+</tr>
+<tr>
+<td align="center">2</td>
+<td align="center">chrome://appcache-internals</td>
+<td align="center">HTML5应用的离线存储管理</td>
+</tr>
+<tr>
+<td align="center">3</td>
+<td align="center">chrome://apps</td>
+<td align="center">应用启动器，他可让您直接从桌面启动自己喜爱的应用</td>
+</tr>
+<tr>
+<td align="center">4</td>
+<td align="center">chrome://blob-internals</td>
+<td align="center">二进制大型物件(BLOB)储存</td>
+</tr>
+<tr>
+<td align="center">5</td>
+<td align="center">chrome://bluetooth-internals</td>
+<td align="center">Web蓝牙</td>
+</tr>
+<tr>
+<td align="center">6</td>
+<td align="center">chrome://bookmarks</td>
+<td align="center">书签</td>
+</tr>
+<tr>
+<td align="center">7</td>
+<td align="center">chrome://cache</td>
+<td align="center">缓存</td>
+</tr>
+<tr>
+<td align="center">8</td>
+<td align="center">chrome://chrome</td>
+<td align="center">关于Chrome</td>
+</tr>
+<tr>
+<td align="center">9</td>
+<td align="center">chrome://chrome-urls</td>
+<td align="center">关于Chrome的相关功能</td>
+</tr>
+<tr>
+<td align="center">10</td>
+<td align="center">chrome://components</td>
+<td align="center">组件</td>
+</tr>
+<tr>
+<td align="center">11</td>
+<td align="center">chrome://conflicts</td>
+<td align="center">已加载主进程中的所有模块以及稍后要加载的模块</td>
+</tr>
+<tr>
+<td align="center">12</td>
+<td align="center">chrome://crashes</td>
+<td align="center">崩溃报告</td>
+</tr>
+<tr>
+<td align="center">13</td>
+<td align="center">chrome://credits</td>
+<td align="center">第三方软件许可证</td>
+</tr>
+<tr>
+<td align="center">14</td>
+<td align="center">chrome://device-log</td>
+<td align="center">设备日志</td>
+</tr>
+<tr>
+<td align="center">15</td>
+<td align="center">chrome://devices</td>
+<td align="center">网络中注册的设备，比如链接的打印机</td>
+</tr>
+<tr>
+<td align="center">16</td>
+<td align="center">chrome://discards</td>
+<td align="center">分页与内存状态</td>
+</tr>
+<tr>
+<td align="center">17</td>
+<td align="center">chrome://dns</td>
+<td align="center">dns记录</td>
+</tr>
+<tr>
+<td align="center">18</td>
+<td align="center">chrome://downloads</td>
+<td align="center">下载历史</td>
+</tr>
+<tr>
+<td align="center">19</td>
+<td align="center">chrome://extensions</td>
+<td align="center">扩展程序</td>
+</tr>
+<tr>
+<td align="center">20</td>
+<td align="center">chrome://flags</td>
+<td align="center">试验性功能</td>
+</tr>
+<tr>
+<td align="center">21</td>
+<td align="center">chrome://flash</td>
+<td align="center">flash信息</td>
+</tr>
+<tr>
+<td align="center">22</td>
+<td align="center">chrome://gcm-internals</td>
+<td align="center">消息推送</td>
+</tr>
+<tr>
+<td align="center">23</td>
+<td align="center">chrome://gpu</td>
+<td align="center">gpu信息</td>
+</tr>
+<tr>
+<td align="center">24</td>
+<td align="center">chrome://help</td>
+<td align="center">关于chrome，同chrome://chrome</td>
+</tr>
+<tr>
+<td align="center">25</td>
+<td align="center">chrome://histograms</td>
+<td align="center">显示某些性能的柱状图（符号形式）</td>
+</tr>
+<tr>
+<td align="center">26</td>
+<td align="center">chrome://history</td>
+<td align="center">历史记录</td>
+</tr>
+<tr>
+<td align="center">27</td>
+<td align="center">chrome://indexeddb-internals</td>
+<td align="center">html indexeddb</td>
+</tr>
+<tr>
+<td align="center">28</td>
+<td align="center">chrome://inspect</td>
+<td align="center">开发工具调试</td>
+</tr>
+<tr>
+<td align="center">29</td>
+<td align="center">chrome://invalidations</td>
+<td align="center">查看调试日志以及内部详细信息</td>
+</tr>
+<tr>
+<td align="center">30</td>
+<td align="center">chrome://media-internals</td>
+<td align="center">媒体内部数据，用来调试在线播放的一些数据，比如测试 音频流</td>
+</tr>
+<tr>
+<td align="center">31</td>
+<td align="center">chrome://nacl</td>
+<td align="center">本地客户端 Native Client 环境信息，包括浏览器、操作系统、就、插件等</td>
+</tr>
+<tr>
+<td align="center">32</td>
+<td align="center">chrome://net-internals</td>
+<td align="center">Chrome的http抓包工具</td>
+</tr>
+<tr>
+<td align="center">33</td>
+<td align="center">chrome://network-error</td>
+<td align="center">网络错误</td>
+</tr>
+<tr>
+<td align="center">34</td>
+<td align="center">chrome://network-errors</td>
+<td align="center">网络错误合集</td>
+</tr>
+<tr>
+<td align="center">35</td>
+<td align="center">chrome://newtab</td>
+<td align="center">新标签</td>
+</tr>
+<tr>
+<td align="center">36</td>
+<td align="center">chrome://omnibox</td>
+<td align="center">智能搜索</td>
+</tr>
+<tr>
+<td align="center">37</td>
+<td align="center">chrome://password-manager-internals</td>
+<td align="center">捕获密码管理日志</td>
+</tr>
+<tr>
+<td align="center">38</td>
+<td align="center">chrome://components</td>
+<td align="center">插件,原来的chrome://plugins</td>
+</tr>
+<tr>
+<td align="center">39</td>
+<td align="center">chrome://policy</td>
+<td align="center">编辑一些策略，比如 Allow Cross Origin Auth Prompt （允许跨域认证的提示）</td>
+</tr>
+<tr>
+<td align="center">40</td>
+<td align="center">chrome://predictors</td>
+<td align="center">URl输入命中率</td>
+</tr>
+<tr>
+<td align="center">41</td>
+<td align="center">chrome://print</td>
+<td align="center">打印</td>
+</tr>
+<tr>
+<td align="center">42</td>
+<td align="center">chrome://profiler</td>
+<td align="center">分析器，详细进程的描述都在这里</td>
+</tr>
+<tr>
+<td align="center">43</td>
+<td align="center">chrome://quota-internals</td>
+<td align="center">浏览器对磁盘使用的配额，显示详细可用空间以及各个网站的使用配额</td>
+</tr>
+<tr>
+<td align="center">44</td>
+<td align="center">chrome://serviceworker-internals</td>
+<td align="center">调试服务</td>
+</tr>
+<tr>
+<td align="center">45</td>
+<td align="center">chrome://settings</td>
+<td align="center">设置chrome://settings/content 隐私设置的内容设置</td>
+</tr>
+<tr>
+<td align="center">46</td>
+<td align="center">chrome://signin-internals</td>
+<td align="center">内部构建</td>
+</tr>
+<tr>
+<td align="center">47</td>
+<td align="center">chrome://suggestions</td>
+<td align="center">建议</td>
+</tr>
+<tr>
+<td align="center">48</td>
+<td align="center">chrome://supervised-user-internals</td>
+<td align="center">监督用户内部</td>
+</tr>
+<tr>
+<td align="center">49</td>
+<td align="center">chrome://sync-internals</td>
+<td align="center">各种同步记录</td>
+</tr>
+<tr>
+<td align="center">50</td>
+<td align="center">chrome://system</td>
+<td align="center">系统诊断数据</td>
+</tr>
+<tr>
+<td align="center">51</td>
+<td align="center">chrome://taskscheduler-internals</td>
+<td align="center">内部任务管理</td>
+</tr>
+<tr>
+<td align="center">52</td>
+<td align="center">chrome://terms</td>
+<td align="center">谷歌浏览器服务条款</td>
+</tr>
+<tr>
+<td align="center">53</td>
+<td align="center">chrome://thumbnails</td>
+<td align="center">返回近期浏览的网站的首页快照，以相册的形式</td>
+</tr>
+<tr>
+<td align="center">54</td>
+<td align="center">chrome://tracing</td>
+<td align="center">追踪访问URL，包括浏览和渲染的过程</td>
+</tr>
+<tr>
+<td align="center">55</td>
+<td align="center">chrome://translate-internals</td>
+<td align="center">内部翻译器，以及你的翻译记录</td>
+</tr>
+<tr>
+<td align="center">56</td>
+<td align="center">chrome://usb-internals</td>
+<td align="center">usb内部</td>
+</tr>
+<tr>
+<td align="center">57</td>
+<td align="center">chrome://user-actions</td>
+<td align="center">用户行为收集</td>
+</tr>
+<tr>
+<td align="center">58</td>
+<td align="center">chrome://version</td>
+<td align="center">版本信息</td>
+</tr>
+<tr>
+<td align="center">59</td>
+<td align="center">chrome://view-http-cache</td>
+<td align="center">查看http缓存</td>
+</tr>
+<tr>
+<td align="center">60</td>
+<td align="center">chrome://webrtc-internals</td>
+<td align="center">webrtc内部</td>
+</tr>
+</tbody></table>
+</article><div class="post-copyright"><div class="post-copyright__title"><span class="post-copyright-info"><h>你的浏览器，何必是浏览器</h></span></div><div class="post-copyright__type"><span class="post-copyright-info"><a href="https://sunguoqi.com/posts/20843.html">https://sunguoqi.com/posts/20843.html</a></span></div><div class="post-copyright-m"><div class="post-copyright-m-info"><div class="post-copyright-a"><h>作者</h><div class="post-copyright-cc-info"><h>小孙同学</h></div></div><div class="post-copyright-c"><h>发布于</h><div class="post-copyright-cc-info"><h>2021-03-04</h></div></div><div class="post-copyright-u"><h>更新于</h><div class="post-copyright-cc-info"><h>2022-01-11</h></div></div><div class="post-copyright-c"><h>许可协议</h><div class="post-copyright-cc-info"><a class="icon" rel="noopener" target="_blank" title="Creative Commons" href="https://creativecommons.org/"><i class="fab fa-creative-commons"></i></a><a rel="noopener" target="_blank" title="CC BY-NC-SA 4.0" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a></div></div></div></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E6%B5%8F%E8%A7%88%E5%99%A8/">浏览器</a></div><div class="post_share"><div class="social-share" data-image="https://i.loli.net/2021/03/11/817fOHu4X2bvhtx.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><div class="post-reward"><div class="reward-button button--animated"><i class="fas fa-qrcode"></i> 打赏</div><div class="reward-main"><ul class="reward-all"><li class="reward-item"><a href="/images/wechatpay.png" target="_blank"><img class="post-qr-code-img" src="/images/wechatpay.png" alt="wechat"/></a><div class="post-qr-code-desc">wechat</div></li><li class="reward-item"><a href="/images/alipay.png" target="_blank"><img class="post-qr-code-img" src="/images/alipay.png" alt="alipay"/></a><div class="post-qr-code-desc">alipay</div></li></ul></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/posts/54163.html"><img class="prev-cover" src="https://i.loli.net/2021/03/11/CNYazt2SgD3pL9v.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">如何拥有一个属于自己的网站</div></div></a></div><div class="next-post pull-right"><a href="/posts/52563.html"><img class="next-cover" src="https://i.loli.net/2021/03/11/1JaS4HO3o8ftZgy.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">C语言实现简单的图书馆小程序</div></div></a></div></nav><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="twikoo-wrap"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/images/avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">小孙同学</div><div class="author-info__description">一个理性的浪漫主义者</div></div><div class="card-info-data"><div class="card-info-data-item is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">56</div></a></div><div class="card-info-data-item is-center"><a href="/tags/"><div class="headline">标签</div><div class="length-num">24</div></a></div><div class="card-info-data-item is-center"><a href="/categories/"><div class="headline">分类</div><div class="length-num">9</div></a></div></div><a class="button--animated" id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/sun0225SUN"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://twitter.com/sun0225SUN" target="_blank" title="twitter"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-shejiaotubiao-20"></use></svg></a><a class="social-icon" href="https://gitee.com/sun0225/photos/raw/master/img/202108111357613.jpg" target="_blank" title="weixin"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-weixin2"></use></svg></a><a class="social-icon" href="https://github.com/sun0225SUN" target="_blank" title="GitHub"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-GitHub"></use></svg></a><a class="social-icon" href="https://weibo.com/p/1005057392882465/home?from=page_100505&amp;mod=TAB#place" target="_blank" title="weibo"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-weibo1"></use></svg></a><a class="social-icon" href="https://blog.csdn.net/weixin_50915462?spm=1010.2135.3001.5421" target="_blank" title="csdn"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-csdn"></use></svg></a></div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%B5%8F%E8%A7%88%E5%99%A8%E7%9A%84%E9%80%89%E6%8B%A9"><span class="toc-number">1.</span> <span class="toc-text">浏览器的选择</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8E%E8%AE%BE%E7%BD%AE"><span class="toc-number">2.</span> <span class="toc-text">搜索引擎设置</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%89%A9%E5%B1%95%E7%A8%8B%E5%BA%8F%E5%8F%8A%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B"><span class="toc-number">3.</span> <span class="toc-text">扩展程序及安装教程</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%8B%E8%BD%BD%E6%8F%92%E4%BB%B6"><span class="toc-number">3.1.</span> <span class="toc-text">下载插件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8B%93%E5%B1%95%E7%A8%8B%E5%BA%8F%E7%AE%A1%E7%90%86"><span class="toc-number">3.2.</span> <span class="toc-text">拓展程序管理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8B%96%E5%8A%A8%E6%8F%92%E4%BB%B6%E8%BF%9B%E8%A1%8C%E5%AE%89%E8%A3%85"><span class="toc-number">3.3.</span> <span class="toc-text">拖动插件进行安装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B7%BB%E5%8A%A0%E6%89%A9%E5%B1%95%E7%A8%8B%E5%BA%8F"><span class="toc-number">3.4.</span> <span class="toc-text">添加扩展程序</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%80%E4%BA%9B%E5%A5%BD%E7%94%A8%E7%9A%84%E6%8F%92%E4%BB%B6%E6%8E%A8%E8%8D%90"><span class="toc-number">4.</span> <span class="toc-text">一些好用的插件推荐</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Adblock-Plus"><span class="toc-number">4.1.</span> <span class="toc-text">Adblock Plus</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Infinity-Pro"><span class="toc-number">4.2.</span> <span class="toc-text">Infinity Pro</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#One-Tab"><span class="toc-number">4.3.</span> <span class="toc-text">One Tab</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#IE-Tab"><span class="toc-number">4.4.</span> <span class="toc-text">IE Tab</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Dark-Reader"><span class="toc-number">4.5.</span> <span class="toc-text">Dark Reader</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#PhotoShow"><span class="toc-number">4.6.</span> <span class="toc-text">PhotoShow</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#similarsites"><span class="toc-number">4.7.</span> <span class="toc-text">similarsites</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#bilibili-helper"><span class="toc-number">4.8.</span> <span class="toc-text">bilibili helper</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Stylus"><span class="toc-number">4.9.</span> <span class="toc-text">Stylus</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Copyfish"><span class="toc-number">4.10.</span> <span class="toc-text">Copyfish</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Weava-Highlighter"><span class="toc-number">4.11.</span> <span class="toc-text">Weava Highlighter</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#SimpRead"><span class="toc-number">4.12.</span> <span class="toc-text">SimpRead</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Smallpdf"><span class="toc-number">4.13.</span> <span class="toc-text">Smallpdf</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Print-Friendly-amp-PDF"><span class="toc-number">4.14.</span> <span class="toc-text">Print Friendly &amp; PDF</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%92%E8%AF%8D%E7%BF%BB%E8%AF%91"><span class="toc-number">4.15.</span> <span class="toc-text">划词翻译</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Google-Results-Previewer"><span class="toc-number">4.16.</span> <span class="toc-text">Google Results Previewer</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#NooBox-%E4%BB%A5%E5%9B%BE%E6%90%9C%E5%9B%BE"><span class="toc-number">4.17.</span> <span class="toc-text">NooBox-以图搜图</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#BitWarden-%E5%AF%86%E7%A0%81%E7%AE%A1%E7%90%86"><span class="toc-number">4.18.</span> <span class="toc-text">BitWarden-密码管理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CSDN%E5%BC%80%E5%8F%91%E5%8A%A9%E6%89%8B"><span class="toc-number">4.19.</span> <span class="toc-text">CSDN开发助手</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#WhatRuns"><span class="toc-number">4.20.</span> <span class="toc-text">WhatRuns</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Code-Cola"><span class="toc-number">4.21.</span> <span class="toc-text">Code Cola</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#FeHelper-%E5%89%8D%E7%AB%AF%E5%8A%A9%E6%89%8B"><span class="toc-number">4.22.</span> <span class="toc-text">FeHelper(前端助手)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Markdown-here"><span class="toc-number">4.23.</span> <span class="toc-text">Markdown here</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Github-%E5%8A%A0%E9%80%9F%E5%99%A8"><span class="toc-number">4.24.</span> <span class="toc-text">Github 加速器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Octotree-GitHub-code-tree"><span class="toc-number">4.25.</span> <span class="toc-text">Octotree - GitHub code tree</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Sourcegraph"><span class="toc-number">4.26.</span> <span class="toc-text">Sourcegraph</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Open-in-vs-code"><span class="toc-number">4.27.</span> <span class="toc-text">Open in vs code</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Surf-GitHub-code-with-VS-Code"><span class="toc-number">4.28.</span> <span class="toc-text">Surf GitHub code with VS Code</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Enhanced-GitHub"><span class="toc-number">4.29.</span> <span class="toc-text">Enhanced GitHub</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#GitZip-for-github"><span class="toc-number">4.30.</span> <span class="toc-text">GitZip for github</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%B2%B9%E7%8C%B4%E8%84%9A%E6%9C%AC%E7%9A%84%E4%BD%BF%E7%94%A8%E5%8F%8A%E8%84%9A%E6%9C%AC%E6%8E%A8%E8%8D%90"><span class="toc-number">5.</span> <span class="toc-text">油猴脚本的使用及脚本推荐</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#AC-baidu-%E9%87%8D%E5%AE%9A%E5%90%91%E4%BC%98%E5%8C%96"><span class="toc-number">5.1.</span> <span class="toc-text">AC-baidu-重定向优化</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%87%92%E4%BA%BA%E4%B8%93%E7%94%A8%E5%A4%9A%E5%90%88%E4%B8%80%E2%80%A6"><span class="toc-number">5.2.</span> <span class="toc-text">懒人专用多合一…</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%99%BE%E5%BA%A6%E6%96%87%E5%BA%93%E3%80%81%E7%9F%AD%E8%A7%86%E9%A2%91%E4%B8%8B%E8%BD%BD%E2%80%A6"><span class="toc-number">5.3.</span> <span class="toc-text">百度文库、短视频下载…</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%B1%86%E7%93%A3%E8%B5%84%E6%BA%90%E4%B8%8B%E8%BD%BD%E5%A4%A7%E5%B8%88"><span class="toc-number">5.4.</span> <span class="toc-text">豆瓣资源下载大师</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#bilibili%E6%92%AD%E6%94%BE%E5%99%A8%E8%AE%BE%E7%BD%AE"><span class="toc-number">5.5.</span> <span class="toc-text">bilibili播放器设置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CSDN%E4%BA%BA%E6%80%A7%E5%8C%96%E8%84%9A%E6%9C%AC"><span class="toc-number">5.6.</span> <span class="toc-text">CSDN人性化脚本</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%99%BA%E6%85%A7%E6%A0%91%E7%BD%91%E8%AF%BE%E5%8A%A9%E6%89%8B"><span class="toc-number">5.7.</span> <span class="toc-text">智慧树网课助手</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Userscript"><span class="toc-number">5.8.</span> <span class="toc-text">Userscript+</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%87%E8%83%BD%E5%91%BD%E4%BB%A4"><span class="toc-number">6.</span> <span class="toc-text">万能命令</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#chrome-APP%E6%A8%A1%E5%BC%8F"><span class="toc-number">7.</span> <span class="toc-text">chrome APP模式</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#chrome%E5%BF%AB%E6%8D%B7%E9%94%AE"><span class="toc-number">8.</span> <span class="toc-text">chrome快捷键</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#chrome%E5%9C%B0%E5%9D%80%E6%A0%8F%E5%91%BD%E4%BB%A4"><span class="toc-number">9.</span> <span class="toc-text">chrome地址栏命令</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#chrome%E5%AE%9E%E9%AA%8C%E5%AE%A4%E5%8A%9F%E8%83%BD"><span class="toc-number">10.</span> <span class="toc-text">chrome实验室功能</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A0%87%E7%AD%BE%E6%82%AC%E5%81%9C%E5%9B%BE%E5%83%8F%E9%A2%84%E8%A7%88"><span class="toc-number">10.1.</span> <span class="toc-text">标签悬停图像预览</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%98%85%E8%AF%BB%E6%A8%A1%E5%BC%8F"><span class="toc-number">10.2.</span> <span class="toc-text">阅读模式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A4%9A%E7%BA%BF%E7%A8%8B%E4%B8%8B%E8%BD%BD"><span class="toc-number">10.3.</span> <span class="toc-text">多线程下载</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%BB%91%E6%9A%97%E6%A8%A1%E5%BC%8F"><span class="toc-number">10.4.</span> <span class="toc-text">黑暗模式</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%85%B6%E4%BB%96%E5%AE%9E%E7%94%A8%E7%B1%BB%E6%8A%80%E5%B7%A7"><span class="toc-number">11.</span> <span class="toc-text">其他实用类技巧</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%9A%90%E8%BA%AB%E6%A8%A1%E5%BC%8F"><span class="toc-number">11.1.</span> <span class="toc-text">隐身模式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A4%9A%E5%AA%92%E4%BD%93%E6%B5%8F%E8%A7%88"><span class="toc-number">11.2.</span> <span class="toc-text">多媒体浏览</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%94%BB%E4%B8%AD%E7%94%BB%E6%92%AD%E6%94%BE"><span class="toc-number">11.3.</span> <span class="toc-text">画中画播放</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A0%87%E7%AD%BE%E9%A1%B5%E5%8F%B3%E9%94%AE"><span class="toc-number">11.4.</span> <span class="toc-text">标签页右键</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BD%91%E9%A1%B5%E5%8F%B3%E9%94%AE"><span class="toc-number">11.5.</span> <span class="toc-text">网页右键</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%A1%B5%E9%9D%A2%E8%87%AA%E5%8A%A8%E6%BB%9A%E5%8A%A8"><span class="toc-number">11.6.</span> <span class="toc-text">页面自动滚动</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BD%91%E9%A1%B5%E8%BE%93%E5%87%BAPDF"><span class="toc-number">11.7.</span> <span class="toc-text">网页输出PDF</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BD%91%E9%A1%B5%E9%95%BF%E6%88%AA%E5%9B%BE"><span class="toc-number">11.8.</span> <span class="toc-text">网页长截图</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%BB%E5%8A%A1%E7%AE%A1%E7%90%86%E5%99%A8"><span class="toc-number">11.9.</span> <span class="toc-text">任务管理器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%86%99%E5%AD%97%E6%9D%BF"><span class="toc-number">11.10.</span> <span class="toc-text">写字板</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%87%AA%E7%94%B1%E7%AF%A1%E6%94%B9%E7%BD%91%E9%A1%B5%E4%BF%A1%E6%81%AF%EF%BC%88%E8%B4%BC%E6%9C%89%E6%84%8F%E6%80%9D%EF%BC%89"><span class="toc-number">11.11.</span> <span class="toc-text">自由篡改网页信息（贼有意思）</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%86%99%E5%9C%A8%E5%90%8E%E9%9D%A2"><span class="toc-number">12.</span> <span class="toc-text">写在后面</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%99%84%E5%BD%951%EF%BC%9Achrome%E5%BF%AB%E6%8D%B7%E9%94%AE%E6%95%B4%E7%90%86"><span class="toc-number">13.</span> <span class="toc-text">附录1：chrome快捷键整理</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A0%87%E7%AD%BE%E9%A1%B5%E5%BF%AB%E6%8D%B7%E9%94%AE"><span class="toc-number">13.1.</span> <span class="toc-text">标签页快捷键</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8A%9F%E8%83%BD%E5%BF%AB%E6%8D%B7%E9%94%AE"><span class="toc-number">13.2.</span> <span class="toc-text">功能快捷键</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BD%91%E9%A1%B5%E5%BF%AB%E6%8D%B7%E9%94%AE"><span class="toc-number">13.3.</span> <span class="toc-text">网页快捷键</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%BC%A0%E6%A0%87%E5%BF%AB%E6%8D%B7%E9%94%AE"><span class="toc-number">13.4.</span> <span class="toc-text">鼠标快捷键</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%99%84%E5%BD%952%EF%BC%9Achrome%E5%9C%B0%E5%9D%80%E6%A0%8F%E5%91%BD%E4%BB%A4"><span class="toc-number">14.</span> <span class="toc-text">附录2：chrome地址栏命令</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/posts/2022811.html" title="冥冥之中，自有注定，但行好事，莫问前程！"><img src="https://cdn.jsdelivr.net/gh/sun0225SUN/photos/images/202208112334431.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="冥冥之中，自有注定，但行好事，莫问前程！"/></a><div class="content"><a class="title" href="/posts/2022811.html" title="冥冥之中，自有注定，但行好事，莫问前程！">冥冥之中，自有注定，但行好事，莫问前程！</a><time datetime="2022-08-11T12:00:00.000Z" title="发表于 2022-08-11 20:00:00">2022-08-11</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/20220225.html" title="人生21岁，版本更新日志！"><img src="https://cdn.jsdelivr.net/gh/sun0225SUN/photos/images/202202251932444.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="人生21岁，版本更新日志！"/></a><div class="content"><a class="title" href="/posts/20220225.html" title="人生21岁，版本更新日志！">人生21岁，版本更新日志！</a><time datetime="2022-02-25T12:00:00.000Z" title="发表于 2022-02-25 20:00:00">2022-02-25</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/fiddler.html" title="我终于学废用Fiddler抓包了！"><img src="https://cdn.jsdelivr.net/gh/sun0225SUN/photos/images/202201241655128.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="我终于学废用Fiddler抓包了！"/></a><div class="content"><a class="title" href="/posts/fiddler.html" title="我终于学废用Fiddler抓包了！">我终于学废用Fiddler抓包了！</a><time datetime="2022-01-24T09:00:00.000Z" title="发表于 2022-01-24 17:00:00">2022-01-24</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/4243.html" title="零基础快速上手云服务器"><img src="https://cdn.jsdelivr.net/gh/sun0225SUN/photos/images/202112171758778.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="零基础快速上手云服务器"/></a><div class="content"><a class="title" href="/posts/4243.html" title="零基础快速上手云服务器">零基础快速上手云服务器</a><time datetime="2022-01-09T04:00:00.000Z" title="发表于 2022-01-09 12:00:00">2022-01-09</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/33414.html" title="给GitHub首页添加一个有趣的贪吃蛇小动画"><img src="https://cdn.jsdelivr.net/gh/sun0225SUN/photos/images/202112311009126.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="给GitHub首页添加一个有趣的贪吃蛇小动画"/></a><div class="content"><a class="title" href="/posts/33414.html" title="给GitHub首页添加一个有趣的贪吃蛇小动画">给GitHub首页添加一个有趣的贪吃蛇小动画</a><time datetime="2022-01-08T16:00:00.000Z" title="发表于 2022-01-09 00:00:00">2022-01-09</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div id="workboard"></div><script async="async" src="/js/runtime.js"></script><div class="copyright">&copy;2021 - 2022 By 小孙同学</div><div class="footer_custom_text"><a href="https://sunguoqi.com/"><img class=""icp-icon"" src=""><a target="_blank" rel="noopener" href="http://beian.miit.gov.cn/"><img class="icp-icon" src=""><span>备案号：皖ICP备2021010058号&nbsp;&nbsp;</span></a><a target="_blank" rel="noopener" href="http://www.beian.gov.cn/portal/registerSystemInfo?spm=5176.19720258.J_9220772140.112.678b2c4afdwoRs"><img class="icp-icon" src="https://cdn.jsdelivr.net/gh/sun0225SUN/photos/images/202108190042278.png"><span>皖公网安备34040302000393号</span></a></div><p id="ghbdages"><a class="github-badge" target="_blank" href="https://hexo.io/" style="margin-inline:5px"><img src="https://img.shields.io/badge/Frame-Hexo-blue?style=flat&amp;logo=hexo"/></a><a class="github-badge" target="_blank" href="https://butterfly.js.org/" style="margin-inline:5px"><img src="https://img.shields.io/badge/Theme-Butterfly-6513df?style=flat&amp;logo=bitdefender"/></a><a class="github-badge" target="_blank" href="https://www.jsdelivr.com/" style="margin-inline:5px"><img src="https://img.shields.io/badge/CDN-jsDelivr-orange?style=flat&amp;logo=jsDelivr"/></a><a class="github-badge" target="_blank" href="https://coding.net/" style="margin-inline:5px"><img src="https://img.shields.io/badge/Hosted-Coding-0cedbe?style=flat&amp;logo=Codio"/></a><a class="github-badge" target="_blank" href="https://github.com/" style="margin-inline:5px"><img src="https://img.shields.io/badge/Source-Github-d021d6?style=flat&amp;logo=GitHub"/></a><a class="github-badge" target="_blank" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" style="margin-inline:5px"><img src="https://img.shields.io/badge/Copyright-BY--NC--SA%204.0-d42328?style=flat&amp;logo=Claris"/></a></p></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="font-plus" type="button" title="放大字体"><i class="fas fa-plus"></i></button><button id="font-minus" type="button" title="缩小字体"><i class="fas fa-minus"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="chat_btn" type="button" title="与我聊天"><i class="fas fa-sms"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="algolia-search"><div class="search-dialog"><div class="search-dialog__title" id="algolia-search-title">Algolia</div><div id="algolia-input-panel"><div id="algolia-search-input"></div></div><hr/><div id="algolia-search-results"><div id="algolia-hits"></div><div id="algolia-pagination"></div><div id="algolia-stats"></div></div><span class="search-close-button"><i class="fas fa-times"></i></span></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page/instantpage.min.js" type="module"></script><script src="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.js"></script><script>function panguFn () {
+  if (typeof pangu === 'object') pangu.autoSpacingPage()
+  else {
+    getScript('https://cdn.jsdelivr.net/npm/pangu/dist/browser/pangu.min.js')
+      .then(() => {
+        pangu.autoSpacingPage()
+      })
+  }
+}
+
+function panguInit () {
+  if (false){
+    GLOBAL_CONFIG_SITE.isPost && panguFn()
+  } else {
+    panguFn()
+  }
+}
+
+document.addEventListener('DOMContentLoaded', panguInit)</script><script src="/js/search/algolia.js"></script><script>var preloader = {
+  endLoading: () => {
+    document.body.style.overflow = 'auto';
+    document.getElementById('loading-box').classList.add("loaded")
+  },
+  initLoading: () => {
+    document.body.style.overflow = '';
+    document.getElementById('loading-box').classList.remove("loaded")
+
+  }
+}
+window.addEventListener('load',preloader.endLoading())</script><div class="js-pjax"><script>(()=>{
+  const $countDom = document.getElementById('twikoo-count')
+  const init = () => {
+    twikoo.init(Object.assign({
+      el: '#twikoo-wrap',
+      envId: 'https://vercel.sunguoqi.com/',
+      region: ''
+    }, null))
+  }
+
+  const getCount = () => {
+    twikoo.getCommentsCount({
+      envId: 'https://vercel.sunguoqi.com/',
+      region: '',
+      urls: [window.location.pathname],
+      includeReply: false
+    }).then(function (res) {
+      $countDom.innerText = res[0].count
+    }).catch(function (err) {
+      console.error(err);
+    });
+  }
+
+  const loadTwikoo = (bool = false) => {
+    if (typeof twikoo === 'object') {
+      init()
+      bool && $countDom && setTimeout(getCount,0)
+    } else {
+      getScript('https://cdn.jsdelivr.net/npm/twikoo/dist/twikoo.all.min.js').then(()=> {
+        init()
+        bool && $countDom && setTimeout(getCount,0)
+      })
+    }
+  }
+
+  if ('Twikoo' === 'Twikoo' || !false) {
+    if (false) btf.loadComment(document.getElementById('twikoo-wrap'), loadTwikoo)
+    else loadTwikoo(true)
+  } else {
+    window.loadOtherComment = () => {
+      loadTwikoo()
+    }
+  }
+})()</script></div><script>window.addEventListener('load', () => {
+  const changeContent = (content) => {
+    if (content === '') return content
+
+    content = content.replace(/<img.*?src="(.*?)"?[^\>]+>/ig, '[图片]') // replace image link
+    content = content.replace(/<a[^>]+?href=["']?([^"']+)["']?[^>]*>([^<]+)<\/a>/gi, '[链接]') // replace url
+    content = content.replace(/<pre><code>.*?<\/pre>/gi, '[代码]') // replace code
+    content = content.replace(/<[^>]+>/g,"") // remove html tag
+
+    if (content.length > 150) {
+      content = content.substring(0,150) + '...'
+    }
+    return content
+  }
+
+  const getComment = () => {
+    const runTwikoo = () => {
+      twikoo.getRecentComments({
+        envId: 'https://vercel.sunguoqi.com/',
+        region: '',
+        pageSize: 5,
+        includeReply: true
+      }).then(function (res) {
+        const twikooArray = res.map(e => {
+          return {
+            'content': changeContent(e.comment),
+            'avatar': e.avatar,
+            'nick': e.nick,
+            'url': e.url + '#' + e.id,
+            'date': new Date(e.created).toISOString()
+          }
+        })
+
+        saveToLocal.set('twikoo-newest-comments', JSON.stringify(twikooArray), 10/(60*24))
+        generateHtml(twikooArray)
+      }).catch(function (err) {
+        const $dom = document.querySelector('#card-newest-comments .aside-list')
+        $dom.innerHTML= "无法获取评论，请确认相关配置是否正确"
+      })
+    }
+
+    if (typeof twikoo === 'object') {
+      runTwikoo()
+    } else {
+      getScript('https://cdn.jsdelivr.net/npm/twikoo/dist/twikoo.all.min.js').then(runTwikoo)
+    }
+  }
+
+  const generateHtml = array => {
+    let result = ''
+
+    if (array.length) {
+      for (let i = 0; i < array.length; i++) {
+        result += '<div class=\'aside-list-item\'>'
+
+        if (true) {
+          const name = 'src'
+          result += `<a href='${array[i].url}' class='thumbnail'><img ${name}='${array[i].avatar}' alt='${array[i].nick}'></a>`
+        }
+        
+        result += `<div class='content'>
+        <a class='comment' href='${array[i].url}'>${array[i].content}</a>
+        <div class='name'><span>${array[i].nick} / </span><time datetime="${array[i].date}">${btf.diffDate(array[i].date, true)}</time></div>
+        </div></div>`
+      }
+    } else {
+      result += '没有评论'
+    }
+
+    let $dom = document.querySelector('#card-newest-comments .aside-list')
+    $dom.innerHTML= result
+    window.lazyLoadInstance && window.lazyLoadInstance.update()
+    window.pjax && window.pjax.refresh($dom)
+  }
+
+  const newestCommentInit = () => {
+    if (document.querySelector('#card-newest-comments .aside-list')) {
+      const data = saveToLocal.get('twikoo-newest-comments')
+      if (data) {
+        generateHtml(JSON.parse(data))
+      } else {
+        getComment()
+      }
+    }
+  }
+
+  newestCommentInit()
+  document.addEventListener('pjax:complete', newestCommentInit)
+})</script><script async src="//at.alicdn.com/t/font_2761907_kffukm2d5os.js"></script><script src="https://widget.qweather.net/simple/static/js/he-simple-common.js?v=2.0"></script><script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.js"></script><script src="https://myhkw.cn/api/player/162713484765" id="myhk" key="162713484765" m="1"></script><div class="app-refresh" id="app-refresh"> <div class="app-refresh-wrap"> <label>✨ 小孙同学更新啦 👉</label> <a href="javascript:void(0)" onclick="location.reload()">✨ 点击刷新 ✨</a> </div></div><script>function showNotification(){if(GLOBAL_CONFIG.Snackbar){var t="light"===document.documentElement.getAttribute("data-theme")?GLOBAL_CONFIG.Snackbar.bgLight:GLOBAL_CONFIG.Snackbar.bgDark,e=GLOBAL_CONFIG.Snackbar.position;Snackbar.show({text:"已更新最新版本",backgroundColor:t,duration:5e5,pos:e,actionText:"点击刷新",actionTextColor:"#fff",onActionClick:function(t){location.reload()}})}else{var o=`top: 0; background: ${"light"===document.documentElement.getAttribute("data-theme")?"#49b1f5":"#1f1f1f"};`;document.getElementById("app-refresh").style.cssText=o}}"serviceWorker"in navigator&&(navigator.serviceWorker.controller&&navigator.serviceWorker.addEventListener("controllerchange",function(){showNotification()}),window.addEventListener("load",function(){navigator.serviceWorker.register("/sw.js")}));</script><script defer src="/live2d-widget/autoload.js"></script><script async src="//at.alicdn.com/t/font_2264842_3izu8i5eoc2.js"></script><script async data-pjax src="/js/randombg.js"></script><script async src="/js/diytitle.js"></script><script async src="/js/weather.js"></script><script async src="/js/grayscale.js"></script><canvas class="fireworks" mobile="false"></canvas><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/fireworks.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = false;
+POWERMODE.mobile = true;
+document.body.addEventListener('input', POWERMODE);
+</script><script src="//code.tidio.co/xsgiwox79ontxmujvwby4loey9vmxt2u.js" async="async"></script><script>function onTidioChatApiReady() {
+  window.tidioChatApi.hide();
+  window.tidioChatApi.on("close", function() {
+    window.tidioChatApi.hide();
+  });
+}
+if (window.tidioChatApi) {
+  window.tidioChatApi.on("ready", onTidioChatApiReady);
+} else {
+  document.addEventListener("tidioChat-ready", onTidioChatApiReady);
+}
+
+var chatBtnFn = () => {
+  document.getElementById("chat_btn").addEventListener("click", function(){
+    window.tidioChatApi.show();
+    window.tidioChatApi.open();
+  });
+}
+chatBtnFn()
+</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script><script src="https://cdn.jsdelivr.net/gh/metowolf/MetingJS@1.2/dist/Meting.min.js"></script><script src="https://cdn.jsdelivr.net/npm/pjax/pjax.min.js"></script><script>let pjaxSelectors = [
+  'title',
+  '#config-diff',
+  '#body-wrap',
+  '#rightside-config-hide',
+  '#rightside-config-show',
+  '#web_bg',
+  '.js-pjax'
+]
+
+if (false) {
+  pjaxSelectors.unshift('meta[property="og:image"]', 'meta[property="og:title"]', 'meta[property="og:url"]')
+}
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+
+  // removeEventListener scroll 
+  window.removeEventListener('scroll', window.tocScrollFn)
+  window.removeEventListener('scroll', scrollCollect)
+
+  typeof preloader === 'object' && preloader.initLoading()
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof chatBtnFn === 'function' && chatBtnFn()
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // Analytics
+  if (false) {
+    MtaH5.pgv()
+  }
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+
+  typeof preloader === 'object' && preloader.endLoading()
+})
+
+document.addEventListener('pjax:error', (e) => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><div class="app-refresh" id="app-refresh" style="position: fixed;top: -2.2rem;left: 0;right: 0;z-index: 99999;padding: 0 1rem;font-size: 15px;height: 2.2rem;transition: all 0.3s ease;"><div class="app-refresh-wrap" style=" display: flex;color: #fff;height: 100%;align-items: center;justify-content: center;"><label>✨小孙同学更新啦！👉</label><a href="javascript:void(0)" onclick="location.reload()"><span style="color: #fff;text-decoration: underline;cursor: pointer;">🍭查看新品🍬</span></a></div></div><script>if ('serviceWorker' in navigator) {
+if (navigator.serviceWorker.controller) {
+navigator.serviceWorker.addEventListener('controllerchange', function() {
+showNotification()
+})
+}
+window.addEventListener('load', function() {
+navigator.serviceWorker.register('/sw.js')
+})
+}
+function showNotification() {
+if (GLOBAL_CONFIG.Snackbar) {
+var snackbarBg =
+document.documentElement.getAttribute('data-theme') === 'light' ?
+GLOBAL_CONFIG.Snackbar.bgLight :
+GLOBAL_CONFIG.Snackbar.bgDark
+var snackbarPos = GLOBAL_CONFIG.Snackbar.position
+Snackbar.show({
+text: '✨小孙同学更新啦！👉',
+backgroundColor: snackbarBg,
+duration: 500000,
+pos: snackbarPos,
+actionText: '🍭查看新品🍬',
+actionTextColor: '#fff',
+onActionClick: function(e) {
+location.reload()
+},
+})
+} else {
+var showBg =
+document.documentElement.getAttribute('data-theme') === 'light' ?
+'#49b1f5' :
+'#1f1f1f'
+var cssText = `top: 0; background: ${showBg};`
+document.getElementById('app-refresh').style.cssText = cssText
+}
+}</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div><!-- hexo injector body_end start --> <script data-pjax>if(document.getElementById('recent-posts') && location.pathname =='/'){
+    
+    var parent = document.getElementById('recent-posts');
+    var child = '<div class="recent-post-item" style="height: auto;width: 100%"><div class="blog-slider swiper-container-fade swiper-container-horizontal" id="swiper_container"><div class="blog-slider__wrp swiper-wrapper" style="transition-duration: 0ms"><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms"><div class="blog-slider__img"><img src="https://i.loli.net/2021/03/11/CNYazt2SgD3pL9v.jpg" alt="https://i.loli.net/2021/03/11/CNYazt2SgD3pL9v.jpg"/></div><div class="blog-slider__content"><span class="blog-slider__code">2021-03-05</span><a class="blog-slider__title" href="posts/54163.html">如何拥有一个属于自己的网站</a><div class="blog-slider__text">利用Hexo+GitHub Pages搭建一个属于自己的网站</div><a class="blog-slider__button" href="posts/54163.html">详情</a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms"><div class="blog-slider__img"><img src="https://cdn.jsdelivr.net/gh/sun0225SUN/photos/images/202108300119743.jpg" alt="https://cdn.jsdelivr.net/gh/sun0225SUN/photos/images/202108300119743.jpg"/></div><div class="blog-slider__content"><span class="blog-slider__code">2021-08-30</span><a class="blog-slider__title" href="posts/36473.html">Github首页美化教程</a><div class="blog-slider__text">代码可以不会敲，但是逼格一定要高！</div><a class="blog-slider__button" href="posts/36473.html">详情</a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms"><div class="blog-slider__img"><img src="https://i.loli.net/2021/03/11/817fOHu4X2bvhtx.jpg" alt="https://i.loli.net/2021/03/11/817fOHu4X2bvhtx.jpg"/></div><div class="blog-slider__content"><span class="blog-slider__code">2021-03-04</span><a class="blog-slider__title" href="posts/20843.html">你的浏览器，何必是浏览器</a><div class="blog-slider__text">浏览器的各种功能及其相关使用技巧总结。</div><a class="blog-slider__button" href="posts/20843.html">详情</a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms"><div class="blog-slider__img"><img src="https://cdn.jsdelivr.net/gh/sun0225SUN/photos/images/202112311132337.jpg" alt="https://cdn.jsdelivr.net/gh/sun0225SUN/photos/images/202112311132337.jpg"/></div><div class="blog-slider__content"><span class="blog-slider__code">2021-12-31</span><a class="blog-slider__title" href="posts/cuiqingcai.html">21年终总结&&关于我自学爬虫的点滴经历</a><div class="blog-slider__text">静静寻觅生活的美好！</div><a class="blog-slider__button" href="posts/cuiqingcai.html">详情</a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms"><div class="blog-slider__img"><img src="https://i.loli.net/2021/03/11/E28jk6UPACdMxGb.jpg" alt="https://i.loli.net/2021/03/11/E28jk6UPACdMxGb.jpg"/></div><div class="blog-slider__content"><span class="blog-slider__code">2021-02-14</span><a class="blog-slider__title" href="posts/7723.html">情人节表白专用代码</a><div class="blog-slider__text">如果你觉的我是一个有趣的人，我想那是最好不过的了</div><a class="blog-slider__button" href="posts/7723.html">详情</a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms"><div class="blog-slider__img"><img src="https://i.loli.net/2021/04/06/kFRXTx1rJ4giWPt.jpg" alt="https://i.loli.net/2021/04/06/kFRXTx1rJ4giWPt.jpg"/></div><div class="blog-slider__content"><span class="blog-slider__code">2021-04-25</span><a class="blog-slider__title" href="posts/34712.html">抖音火爆表白小程序（C#语言实现）</a><div class="blog-slider__text">小姐姐，我喜欢你很久了，做我女朋友好不好！</div><a class="blog-slider__button" href="posts/34712.html">详情</a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms"><div class="blog-slider__img"><img src="https://cdn.jsdelivr.net/gh/sun0225SUN/photos/images/202108300435148.jpg" alt="https://cdn.jsdelivr.net/gh/sun0225SUN/photos/images/202108300435148.jpg"/></div><div class="blog-slider__content"><span class="blog-slider__code">2021-08-19</span><a class="blog-slider__title" href="posts/38126.html">安装小孙同学</a><div class="blog-slider__text">安装小孙同学app，获得更好的浏览体验。</div><a class="blog-slider__button" href="posts/38126.html">详情</a></div></div></div><div class="blog-slider__pagination swiper-pagination-clickable swiper-pagination-bullets"></div></div></div>';
+    console.log('已挂载swiper')
+    parent.insertAdjacentHTML("afterbegin",child)}
+     </script>
+<script data-pjax src="https://cdn.jsdelivr.net/gh/Zfour/Butterfly-swiper/swiper/swiper.min.js"></script>
+<script data-pjax src="https://cdn.jsdelivr.net/gh/Zfour/Butterfly-swiper@0.18/swiper/swiperindex.js"></script>
+<style></style><script data-pjax>function history_calendar_injector_config(){
+                var parent_div_git = document.getElementsByClassName('sticky_layout')[0];
+                var item_html = '<div class="card-widget card-history"><div class="card-content"><div class="item-headline"><i class="fas fa-clock fa-spin"></i><span>那年今日</span></div><div id="history-baidu" style="height: 100px;overflow: hidden"><div class="history_swiper-container" id="history-container" style="width: 100%;height: 100%"><div class="swiper-wrapper" id="history_container_wrapper" style="height:20px"></div></div></div></div>';
+                console.log('已挂载history_calendar')
+                // parent_div_git.innerHTML=item_html+parent_div_git.innerHTML // 无报错，但不影响使用(支持pjax跳转)
+                parent_div_git.insertAdjacentHTML("afterbegin",item_html) // 有报错，但不影响使用(支持pjax跳转)
+            }if( document.getElementsByClassName('sticky_layout')[0] && (location.pathname ==='/'|| '/' ==='all')){
+
+            history_calendar_injector_config()
+        } </script><script data-pjax src="https://cdn.jsdelivr.net/gh/Zfour/Butterfly-card-history/baiduhistory/js/main.js"></script><script data-pjax>
+  function butterfly_clock_injector_config(){
+    var parent_div_git = document.getElementsByClassName('sticky_layout')[0];
+    var item_html = '<div class="card-widget card-clock"><div class="card-glass"><div class="card-background"><div class="card-content"><div id="hexo_electric_clock"><img class="entered loading" id="card-clock-loading" src="/img/loading.gif" style="height: 120px; width: 100%;" data-ll-status="loading"/></div></div></div></div></div>';
+    console.log('已挂载butterfly_clock')
+    parent_div_git.insertAdjacentHTML("afterbegin",item_html)
+    }
+  var elist = 'null'.split(',');
+  var cpage = location.pathname;
+  var epage = '/';
+  var flag = 0;
+
+  for (var i=0;i<elist.length;i++){
+    if (cpage.includes(elist[i])){
+      flag++;
+    }
+  }
+
+  if ((epage ==='all')&&(flag == 0)){
+    butterfly_clock_injector_config();
+  }
+  else if (epage === cpage){
+    butterfly_clock_injector_config();
+  }
+  </script><script src="https://pv.sohu.com/cityjson?ie=utf-8"></script><script data-pjax src="https://cdn.jsdelivr.net/npm/hexo-butterfly-clock/lib/clock.min.js"></script><div class="js-pjax"><script async="async">var arr = document.getElementsByClassName('recent-post-item');
+for(var i = 0;i<arr.length;i++){
+    arr[i].classList.add('wow');
+    arr[i].classList.add('animate__zoomIn');
+    arr[i].setAttribute('data-wow-duration', '1s');
+    arr[i].setAttribute('data-wow-delay', '0s');
+    arr[i].setAttribute('data-wow-offset', '100');
+    arr[i].setAttribute('data-wow-iteration', '1');
+  }</script><script async="async">var arr = document.getElementsByClassName('card-widget');
+for(var i = 0;i<arr.length;i++){
+    arr[i].classList.add('wow');
+    arr[i].classList.add('animate__zoomIn');
+    arr[i].setAttribute('data-wow-duration', '1s');
+    arr[i].setAttribute('data-wow-delay', '0s');
+    arr[i].setAttribute('data-wow-offset', '100');
+    arr[i].setAttribute('data-wow-iteration', '1');
+  }</script><script async="async">var arr = document.getElementsByClassName('bbTimeList container');
+for(var i = 0;i<arr.length;i++){
+    arr[i].classList.add('wow');
+    arr[i].classList.add('animate__zoomIn');
+    arr[i].setAttribute('data-wow-duration', '1s');
+    arr[i].setAttribute('data-wow-delay', '0s');
+    arr[i].setAttribute('data-wow-offset', '100');
+    arr[i].setAttribute('data-wow-iteration', '1');
+  }</script><script async="async">var arr = document.getElementsByClassName('flink-list-card');
+for(var i = 0;i<arr.length;i++){
+    arr[i].classList.add('wow');
+    arr[i].classList.add('animate__flipInY');
+    arr[i].setAttribute('data-wow-duration', '2s');
+    arr[i].setAttribute('data-wow-delay', '0s');
+    arr[i].setAttribute('data-wow-offset', '100');
+    arr[i].setAttribute('data-wow-iteration', '1');
+  }</script></div><script defer src="https://cdn.jsdelivr.net/gh/graingert/wow@1.3.0/dist/wow.min.js"></script><script defer src="https://cdn.jsdelivr.net/npm/hexo-butterfly-wowjs/lib/wow_init.min.js"></script><!-- hexo injector body_end end --></body></html>

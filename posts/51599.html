@@ -1,0 +1,611 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="dark"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Django 自动化测试 &amp;&amp; 静态文件的引入 | 小孙同学</title><meta name="keywords" content="Python,Django,Web 开发"><meta name="author" content="小孙同学"><meta name="copyright" content="小孙同学"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#0d0d0d"><meta name="description" content="个人学习笔记，参考 django 官方文档：https:&#x2F;&#x2F;docs.djangoproject.com&#x2F;zh-hans&#x2F;3.2&#x2F;  一、自动化测试&amp;emsp;&amp;emsp;测试代码，就是检查你的代码能否正常运行（废话）   &amp;emsp;&amp;emsp;实话说，就目前为止，我写程序都是运行——&gt;报错——&gt;然后看报错信息——&gt;print输入输出这样去测试的。但是项目毕竟是一个整体的项目">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Django 自动化测试 &amp;&amp; 静态文件的引入">
+<meta property="og:url" content="https://sunguoqi.com/posts/51599.html">
+<meta property="og:site_name" content="小孙同学">
+<meta property="og:description" content="个人学习笔记，参考 django 官方文档：https:&#x2F;&#x2F;docs.djangoproject.com&#x2F;zh-hans&#x2F;3.2&#x2F;  一、自动化测试&amp;emsp;&amp;emsp;测试代码，就是检查你的代码能否正常运行（废话）   &amp;emsp;&amp;emsp;实话说，就目前为止，我写程序都是运行——&gt;报错——&gt;然后看报错信息——&gt;print输入输出这样去测试的。但是项目毕竟是一个整体的项目">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/sun0225SUN/photos/images/202112062042725.jpg">
+<meta property="article:published_time" content="2021-12-10T15:00:00.000Z">
+<meta property="article:modified_time" content="2022-01-10T17:14:42.677Z">
+<meta property="article:author" content="小孙同学">
+<meta property="article:tag" content="Python">
+<meta property="article:tag" content="Django">
+<meta property="article:tag" content="Web 开发">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/sun0225SUN/photos/images/202112062042725.jpg"><link rel="shortcut icon" href="/"><link rel="canonical" href="https://sunguoqi.com/posts/51599"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//hm.baidu.com"/><link rel="preconnect" href="//s4.cnzz.com"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="manifest" href="/manifest.json"/><meta name="msapplication-TileColor" content="#ffffff"/><link rel="apple-touch-icon" sizes="180x180" href="/images/siteicon/apple-touch-icon.png"/><link rel="icon" type="image/png" sizes="32x32" href="/images/siteicon/favicon-32x32.png"/><link rel="icon" type="image/png" sizes="16x16" href="/images/siteicon/favicon-16x16.png"/><link rel="mask-icon" href="/images/siteicon/safari-pinned-tab.svg" color="#5bbad5"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.10.5/dist/instantsearch.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/instantsearch.js@2.10.5/dist/instantsearch.min.js" defer></script><script>var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?eb7ddd29e27906244e3cbd3f6b97dc44";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script><script async="async" data-pjax="data-pjax" src="https://s4.cnzz.com/z_stat.php?id=1280204826&amp;web_id=1280204826"></script><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: {"appId":"5C3XXH4EVO","apiKey":"b6895f5bd998a9ed8fc54ca3419ee782","indexName":"search","hits":{"per_page":6},"languages":{"input_placeholder":"搜索文章","hits_empty":"找不到您查询的内容：${query}","hits_stats":"找到 ${hits} 条结果，用时 ${time} 毫秒"}},
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: {"limitDay":365,"position":"top","messagePrev":"It has been","messageNext":"days since the last update, the content of the article may be outdated."},
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":250},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"你已切换为繁体","cht_to_chs":"你已切换为简体","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#49b1f5","bgDark":"#121212","position":"top-center"},
+  source: {
+    jQuery: 'https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js',
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+    },
+    fancybox: {
+      js: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css'
+    }
+  },
+  isPhotoFigcaption: true,
+  islazyload: false,
+  isanchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Django 自动化测试 && 静态文件的引入',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2022-01-11 01:14:42'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          const now = new Date()
+          const hour = now.getHours()
+          const isNight = hour <= 6 || hour >= 18
+          if (t === undefined) isNight ? activateDarkMode() : activateLightMode()
+          else if (t === 'light') activateLightMode()
+          else activateDarkMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const fontSizeVal = saveToLocal.get('global-font-size')
+    if (fontSizeVal !== undefined) {
+      document.documentElement.style.setProperty('--global-font-size', fontSizeVal + 'px')
+    }
+    
+    const detectApple = () => {
+      if (GLOBAL_CONFIG_SITE.isHome && /iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    document.addEventListener('pjax:complete', detectApple)})(window)</script><link rel="stylesheet" href="//at.alicdn.com/t/font_2936154_tjif7y18l3j.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css"><style type="text/css">.app-refresh{position:fixed;top:-2.2rem;left:0;right:0;z-index:99999;padding:0 1rem;font-size:15px;height:2.2rem;transition:all .3s ease}.app-refresh-wrap{display:flex;color:#fff;height:100%;align-items:center;justify-content:center}.app-refresh-wrap a{color:#fff;text-decoration:underline;cursor:pointer}</style><link rel="stylesheet" href="/css/custom.css"  media="defer" onload="this.media='all'"><!-- hexo injector head_end start --><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Zfour/Butterfly-swiper/swiper/swiper.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Zfour/Butterfly-swiper/swiper/swiperstyle.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Zfour/Butterfly-card-history/baiduhistory/css/main.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-butterfly-clock/lib/clock.min.css"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" media="print" onload="this.media='screen'"><!-- hexo injector head_end end --><meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="小孙同学" type="application/atom+xml">
+</head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="iron-container iron-circle"><div class="iron-box1 iron-circle iron-center"></div><div class="iron-box2 iron-circle iron-center"></div><div class="iron-box3 iron-circle iron-center"></div><div class="iron-box4 iron-circle iron-center"></div><div class="iron-box5 iron-circle iron-center"></div><div class="iron-box6 iron-circle"><div class="iron-coil" style="--i: 0"></div><div class="iron-coil" style="--i: 1"></div><div class="iron-coil" style="--i: 2"></div><div class="iron-coil" style="--i: 3"></div><div class="iron-coil" style="--i: 4"></div><div class="iron-coil" style="--i: 5"></div><div class="iron-coil" style="--i: 6"></div><div class="iron-coil" style="--i: 7"></div></div></div></div><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/images/avatar.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">文章</div><div class="length-num">56</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">标签</div><div class="length-num">24</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">分类</div><div class="length-num">9</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-zhuye-"></use></svg><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-gonglve2"></use></svg><span> 文章</span><i class="fas fa-chevron-down expand hide"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/categories/"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-wenzhang"></use></svg><span> 分类</span></a></li><li><a class="site-page child" href="/tags/"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-biaoqian3"></use></svg><span> 标签</span></a></li><li><a class="site-page child" href="/archives/"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-dakaqiandao"></use></svg><span> 时间轴</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-tiyu"></use></svg><span> 生活</span><i class="fas fa-chevron-down expand hide"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/books/"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-lianxi"></use></svg><span> 书单</span></a></li><li><a class="site-page child" target="_blank" rel="noopener" href="https://720yun.com/t/0fbjvdyuru0?scene_id=18586179"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-GLOBE"></use></svg><span> 地图</span></a></li><li><a class="site-page child" target="_blank" rel="noopener" href="https://ssh-music.vercel.app/"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-yinle11"></use></svg><span> 音乐</span></a></li><li><a class="site-page child" target="_blank" rel="noopener" href="https://box.sunguoqi.com/shici"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-task_"></use></svg><span> 诗词</span></a></li><li><a class="site-page child" href="/movies/"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-dianshiju1"></use></svg><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-jiudian"></use></svg><span> 小黑屋</span><i class="fas fa-chevron-down expand hide"></i></a><ul class="menus_item_child"><li><a class="site-page child" target="_blank" rel="noopener" href="https://travellings.link/"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-fenxiang1"></use></svg><span> 任意门</span></a></li><li><a class="site-page child" target="_blank" rel="noopener" href="https://box.sunguoqi.com/kongtiao"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-kongtiao"></use></svg><span> 小空调</span></a></li><li><a class="site-page child" target="_blank" rel="noopener" href="https://sun0225sun.github.io/home/"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-diannao"></use></svg><span> 云电脑</span></a></li><li><a class="site-page child" target="_blank" rel="noopener" href="https://box.sunguoqi.com/wenan"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-zixun3"></use></svg><span> 文案馆</span></a></li><li><a class="site-page child" target="_blank" rel="noopener" href="https://box.sunguoqi.com/love"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-shoucang2"></use></svg><span> 收藏馆</span></a></li><li><a class="site-page child" target="_blank" rel="noopener" href="https://box.sunguoqi.com/games"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-youxi1"></use></svg><span> 游戏厅</span></a></li><li><a class="site-page child" href="/charts/"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-chanpin"></use></svg><span> 统计室</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-dengji"></use></svg><span> 友人帐</span></a></div><div class="menus_item"><a class="site-page" href="/comments/"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-liuyan"></use></svg><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-zhanghaoguanli"></use></svg><span> 关于我</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://cdn.jsdelivr.net/gh/sun0225SUN/photos/images/202112062042725.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" onclick="btf.scrollToDest(0, 500)" data-title="小孙同学，祝您今天愉快">自动化测试 &amp;&amp; 静态文件的引入</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="iconfont icon-sousuo3"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-zhuye-"></use></svg><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-gonglve2"></use></svg><span> 文章</span><i class="fas fa-chevron-down expand hide"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/categories/"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-wenzhang"></use></svg><span> 分类</span></a></li><li><a class="site-page child" href="/tags/"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-biaoqian3"></use></svg><span> 标签</span></a></li><li><a class="site-page child" href="/archives/"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-dakaqiandao"></use></svg><span> 时间轴</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-tiyu"></use></svg><span> 生活</span><i class="fas fa-chevron-down expand hide"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/books/"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-lianxi"></use></svg><span> 书单</span></a></li><li><a class="site-page child" target="_blank" rel="noopener" href="https://720yun.com/t/0fbjvdyuru0?scene_id=18586179"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-GLOBE"></use></svg><span> 地图</span></a></li><li><a class="site-page child" target="_blank" rel="noopener" href="https://ssh-music.vercel.app/"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-yinle11"></use></svg><span> 音乐</span></a></li><li><a class="site-page child" target="_blank" rel="noopener" href="https://box.sunguoqi.com/shici"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-task_"></use></svg><span> 诗词</span></a></li><li><a class="site-page child" href="/movies/"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-dianshiju1"></use></svg><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-jiudian"></use></svg><span> 小黑屋</span><i class="fas fa-chevron-down expand hide"></i></a><ul class="menus_item_child"><li><a class="site-page child" target="_blank" rel="noopener" href="https://travellings.link/"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-fenxiang1"></use></svg><span> 任意门</span></a></li><li><a class="site-page child" target="_blank" rel="noopener" href="https://box.sunguoqi.com/kongtiao"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-kongtiao"></use></svg><span> 小空调</span></a></li><li><a class="site-page child" target="_blank" rel="noopener" href="https://sun0225sun.github.io/home/"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-diannao"></use></svg><span> 云电脑</span></a></li><li><a class="site-page child" target="_blank" rel="noopener" href="https://box.sunguoqi.com/wenan"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-zixun3"></use></svg><span> 文案馆</span></a></li><li><a class="site-page child" target="_blank" rel="noopener" href="https://box.sunguoqi.com/love"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-shoucang2"></use></svg><span> 收藏馆</span></a></li><li><a class="site-page child" target="_blank" rel="noopener" href="https://box.sunguoqi.com/games"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-youxi1"></use></svg><span> 游戏厅</span></a></li><li><a class="site-page child" href="/charts/"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-chanpin"></use></svg><span> 统计室</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-dengji"></use></svg><span> 友人帐</span></a></div><div class="menus_item"><a class="site-page" href="/comments/"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-liuyan"></use></svg><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-zhanghaoguanli"></use></svg><span> 关于我</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">Django 自动化测试 &amp;&amp; 静态文件的引入</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2021-12-10T15:00:00.000Z" title="发表于 2021-12-10 23:00:00">2021-12-10</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2022-01-10T17:14:42.677Z" title="更新于 2022-01-11 01:14:42">2022-01-11</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Django-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">Django 学习笔记</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">1.7k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>6分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="Django 自动化测试 &amp;&amp; 静态文件的引入"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span><span class="post-meta-separator">|</span><span class="post-meta-commentcount"><i class="far fa-comments fa-fw post-meta-icon"></i><span class="post-meta-label">评论数:</span><a href="/posts/51599.html#post-comment"><span id="twikoo-count"></span></a></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><blockquote>
+<p>个人学习笔记，参考 django 官方文档：<a target="_blank" rel="noopener" href="https://docs.djangoproject.com/zh-hans/3.2/">https://docs.djangoproject.com/zh-hans/3.2/</a></p>
+</blockquote>
+<h1 id="一、自动化测试"><a href="#一、自动化测试" class="headerlink" title="一、自动化测试"></a>一、自动化测试</h1><p>&emsp;&emsp;测试代码，就是检查你的代码能否正常运行（废话）  </p>
+<p>&emsp;&emsp;实话说，就目前为止，我写程序都是运行——&gt;报错——&gt;然后看报错信息——&gt;<code>print</code>输入输出这样去测试的。但是项目毕竟是一个整体的项目，这样测试未免太不专业了。</p>
+<p>&emsp;&emsp;自动化测试具有以下优点：</p>
+<ul>
+<li>测试将节约你的时间</li>
+<li>测试不仅能发现错误，而且能预防错误</li>
+<li>测试是你的代码更有吸引力</li>
+<li>测试有利于团队协作</li>
+</ul>
+<p>听起来不错，那就试试吧！</p>
+<h2 id="1、首先得有个-BUG"><a href="#1、首先得有个-BUG" class="headerlink" title="1、首先得有个 BUG"></a>1、首先得有个 BUG</h2><p>&emsp;&emsp;按照我们之前写的这个应用逻辑，当我们访问<code>index</code>这个页面时，我们应该会得到最近发布的五条投票，如果有五条的话。</p>
+<p>&emsp;&emsp;但是现在有一个小 bug 就是，如果我们的投票是定时到明天发布的，我们的想法是用户明天才能看到这条投票，<code>index</code>页面不应该显示这条数据，但按照目前的逻辑，<code>index</code>会立马显示这条数据。 </p>
+<p>&emsp;&emsp;<code>注意</code>：上面描述的确实是一个 BUG，但是还有一个重要的 BUG，就是之前我们再写数据模型时，我们根本没定义任何方法来显示一天内的数据。原谅我没有看到这个要求：Question 是在一天之内发布的。</p>
+<p>下面是 model 层现在的状态。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># django框架的接口模块，默认已经引入</span></span><br><span class="line"><span class="keyword">from</span> django.db <span class="keyword">import</span> models</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> datetime</span><br><span class="line"><span class="keyword">from</span> django.utils <span class="keyword">import</span> timezone</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># Create your models here.</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 创建了一个“问题”类（表），表里有两个字段。</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Question</span>(<span class="params">models.Model</span>):</span></span><br><span class="line">    <span class="comment"># 问题描述字段</span></span><br><span class="line">    question_text = models.CharField(max_length=<span class="number">200</span>)</span><br><span class="line">    <span class="comment"># 创建日期字段</span></span><br><span class="line">    pub_date = models.DateTimeField(<span class="string">&#x27;date published&#x27;</span>)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">was_published_recently</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="keyword">return</span> self.pub_date &gt;= timezone.now() - datetime.timedelta(days=<span class="number">1</span>)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># python魔法方法，显示调用该对象的时候的返回内容</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__str__</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="keyword">return</span> self.question_text</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 创建了一个选项类（表），表中包含三个字段。</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Choice</span>(<span class="params">models.Model</span>):</span></span><br><span class="line">    <span class="comment"># 这个表里定义了一个外键字段，因为一个问题可以有多个选项，每个问题对应每个问题的选项。</span></span><br><span class="line">    question = models.ForeignKey(Question, on_delete=models.CASCADE)</span><br><span class="line">    <span class="comment"># 选项描述字段</span></span><br><span class="line">    choice_text = models.CharField(max_length=<span class="number">200</span>)</span><br><span class="line">    <span class="comment"># 是否选取字段</span></span><br><span class="line">    votes = models.IntegerField(default=<span class="number">0</span>)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># python魔法方法，显示调用该对象的时候的返回内容</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__str__</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="keyword">return</span> self.choice_text</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="2、暴露这个-BUG"><a href="#2、暴露这个-BUG" class="headerlink" title="2、暴露这个 BUG"></a>2、暴露这个 BUG</h2><p>&emsp;&emsp;文字描述这个 BUG 确实有点苍白无力，下面我们用 <code>python </code><a target="_blank" rel="noopener" href="http://manage.py/">manage.py</a><code> shell</code> 命令来暴露这个 BUG。 </p>
+<p>&emsp;&emsp;在项目根目录下打开终端，输入<code>python manage.py shell</code> 进入交互式编译环境。</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; import datetime</span><br><span class="line">&gt;&gt;&gt; from django.utils import timezone</span><br><span class="line">&gt;&gt;&gt; from polls.models import Question</span><br><span class="line">&gt;&gt;&gt; <span class="comment"># 创建了一个实例对象，他的时间是未来的。</span></span><br><span class="line">&gt;&gt;&gt; future_question = Question(pub_date=timezone.now() + datetime.timedelta(days=<span class="number">30</span>))</span><br><span class="line">&gt;&gt;&gt; <span class="comment"># 会公开近期投票吗？</span></span><br><span class="line">&gt;&gt;&gt; future_question.was_published_recently()</span><br><span class="line">True</span><br></pre></td></tr></table></figure>
+
+<p>&emsp;&emsp;很显然现在应用会公开未来的投票，所以我们要修复这个 BUG，哦对了，这不是一个自动化测试，我们只是在交互式环境下测试的，我们应该把他写成一个文件，当项目运行时，执行自动化测试。</p>
+<h2 id="3、自动化测试"><a href="#3、自动化测试" class="headerlink" title="3、自动化测试"></a>3、自动化测试</h2><p>&emsp;&emsp;按照惯例，Django 应用的测试应该写在应用的 <code>tests.py</code> 文件里。测试系统会自动的在所有以 <code>tests</code> 开头的文件里寻找并执行测试代码。</p>
+<p><code>polls/tests.py</code></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Django自带的测试接口，默认已经引入</span></span><br><span class="line"><span class="keyword">from</span> django.test <span class="keyword">import</span> TestCase</span><br><span class="line"><span class="comment"># Create your tests here.</span></span><br><span class="line"><span class="comment"># 引入datatime模块</span></span><br><span class="line"><span class="keyword">import</span> datetime</span><br><span class="line"><span class="keyword">from</span> django.utils <span class="keyword">import</span> timezone</span><br><span class="line"><span class="comment"># 引入我们的数据表</span></span><br><span class="line"><span class="keyword">from</span> .models <span class="keyword">import</span> Question</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">QuestionModelTests</span>(<span class="params">TestCase</span>):</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">test_was_published_recently_with_future_question</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">        未来的一个时间他的返回值应该是False</span></span><br><span class="line"><span class="string">        &quot;&quot;&quot;</span></span><br><span class="line">        time = timezone.now() + datetime.timedelta(days=<span class="number">30</span>)</span><br><span class="line">        future_question = Question(pub_date=time)</span><br><span class="line">        self.assertIs(future_question.was_published_recently(), <span class="literal">False</span>)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="4、运行测试"><a href="#4、运行测试" class="headerlink" title="4、运行测试"></a>4、运行测试</h2><p>&emsp;&emsp;在终端执行测试命令<code>python manage.py test polls</code></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">PS J:\study_django\mysite&gt; python manage.py test polls</span><br><span class="line">Creating test database <span class="keyword">for</span> alias <span class="string">&#x27;default&#x27;</span>...</span><br><span class="line">System check identified no issues (<span class="number">0</span> silenced).</span><br><span class="line">E</span><br><span class="line">======================================================================</span><br><span class="line">ERROR: test_was_published_recently_with_future_question (polls.tests.QuestionModelTests)</span><br><span class="line">未来的一个时间他的返回值应该是<span class="literal">False</span></span><br><span class="line">----------------------------------------------------------------------</span><br><span class="line">Traceback (most recent call last):</span><br><span class="line">  File <span class="string">&quot;J:\study_django\mysite\polls\tests.py&quot;</span>, line <span class="number">19</span>, <span class="keyword">in</span> test_was_published_recently_with_future_question</span><br><span class="line">    self.assertIs(future_question.was_published_recently(), <span class="literal">False</span>)</span><br><span class="line">AttributeError: <span class="string">&#x27;Question&#x27;</span> <span class="built_in">object</span> has no attribute <span class="string">&#x27;was_published_recently&#x27;</span></span><br><span class="line"></span><br><span class="line">----------------------------------------------------------------------</span><br><span class="line">Ran <span class="number">1</span> test <span class="keyword">in</span> <span class="number">0.003</span>s</span><br><span class="line"></span><br><span class="line">FAILED (errors=<span class="number">1</span>)</span><br><span class="line">Destroying test database <span class="keyword">for</span> alias <span class="string">&#x27;default&#x27;</span>...</span><br><span class="line">PS J:\study_django\mysite&gt;</span><br></pre></td></tr></table></figure>
+
+<p>&emsp;&emsp;以下是自动化测试的运行过程：</p>
+<ul>
+<li><p><code>python manage.py test polls</code> 将会寻找 <code>polls</code> 应用里的测试代码</p>
+</li>
+<li><p>它找到了 <a target="_blank" rel="noopener" href="https://docs.djangoproject.com/zh-hans/3.2/topics/testing/tools/#django.test.TestCase">django.test.TestCase</a> 的一个子类</p>
+</li>
+<li><p>它创建一个特殊的数据库供测试使用</p>
+</li>
+<li><p>它在类中寻找测试方法——以 <code>test</code> 开头的方法。</p>
+</li>
+<li><p>在 <code>test_was_published_recently_with_future_question</code> 方法中，它创建了一个 <code>pub_date</code> 值为 30 天后的 <code>Question</code> 实例。</p>
+</li>
+<li><p>接着使用 <code>assertls()</code> 方法，发现 <code>was_published_recently()</code> 返回了 <code>True</code>，而我们期望它返回 <code>False</code>。</p>
+</li>
+</ul>
+<h2 id="5、修复这个-BUG"><a href="#5、修复这个-BUG" class="headerlink" title="5、修复这个 BUG"></a>5、修复这个 BUG</h2><p>&emsp;&emsp;当 <code>pub_date</code> 为未来某天时， <code>Question.was_published_recently()</code> 应该返回 <code>False</code>。修改 <code>models.py</code> 里的方法，让它只在日期是过去式的时候才返回 <code>True</code>：</p>
+<p><code>polls/models.py</code></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">was_published_recently</span>(<span class="params">self</span>):</span></span><br><span class="line">    now = timezone.now()</span><br><span class="line">    <span class="keyword">return</span> now - datetime.timedelta(days=<span class="number">1</span>) &lt;= self.pub_date &lt;= now</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+
+<h2 id="6、更全面的测试"><a href="#6、更全面的测试" class="headerlink" title="6、更全面的测试"></a>6、更全面的测试</h2><p>&emsp;&emsp;最好对过去、最近、将来都进行测试。于是把测试代码修改如下。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Django自带的测试接口，默认已经引入</span></span><br><span class="line"><span class="keyword">from</span> django.test <span class="keyword">import</span> TestCase</span><br><span class="line"><span class="comment"># Create your tests here.</span></span><br><span class="line"><span class="comment"># 引入datatime模块</span></span><br><span class="line"><span class="keyword">import</span> datetime</span><br><span class="line"><span class="keyword">from</span> django.utils <span class="keyword">import</span> timezone</span><br><span class="line"><span class="comment"># 引入我们的数据表</span></span><br><span class="line"><span class="keyword">from</span> .models <span class="keyword">import</span> Question</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">QuestionModelTests</span>(<span class="params">TestCase</span>):</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">test_was_published_recently_with_future_question</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">        未来的一个时间他的返回值应该是False</span></span><br><span class="line"><span class="string">        &quot;&quot;&quot;</span></span><br><span class="line">        time = timezone.now() + datetime.timedelta(days=<span class="number">30</span>)</span><br><span class="line">        future_question = Question(pub_date=time)</span><br><span class="line">        self.assertIs(future_question.was_published_recently(), <span class="literal">False</span>)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">test_was_published_recently_with_old_question</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">        最近一天的</span></span><br><span class="line"><span class="string">        &quot;&quot;&quot;</span></span><br><span class="line">        time = timezone.now() - datetime.timedelta(days=<span class="number">1</span>, seconds=<span class="number">1</span>)</span><br><span class="line">        old_question = Question(pub_date=time)</span><br><span class="line">        self.assertIs(old_question.was_published_recently(), <span class="literal">False</span>)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">test_was_published_recently_with_recent_question</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">        过去的</span></span><br><span class="line"><span class="string">        &quot;&quot;&quot;</span></span><br><span class="line">        time = timezone.now() - datetime.timedelta(hours=<span class="number">23</span>, minutes=<span class="number">59</span>, seconds=<span class="number">59</span>)</span><br><span class="line">        recent_question = Question(pub_date=time)</span><br><span class="line">        self.assertIs(recent_question.was_published_recently(), <span class="literal">True</span>)</span><br></pre></td></tr></table></figure>
+
+<h2 id="7、其他方案"><a href="#7、其他方案" class="headerlink" title="7、其他方案"></a>7、其他方案</h2><p>&emsp;&emsp;还有一个解决思路就是，我们不应该显示未来的投票，那么我们在视图显示时，就应该过滤掉<code>过去</code>和<code>未来</code>这个我没有继续研究。</p>
+<h1 id="二、静态文件的引入"><a href="#二、静态文件的引入" class="headerlink" title="二、静态文件的引入"></a>二、静态文件的引入</h1><p>&emsp;&emsp;首先，在 <code>polls</code> 目录下创建一个名为 <code>static</code> 的目录。Django 将在该目录下查找静态文件，这种方式和 Diango 在 <code>polls/templates/</code> 目录下查找 template 的方式类似。</p>
+<h2 id="1、新建-css-样式"><a href="#1、新建-css-样式" class="headerlink" title="1、新建 css 样式"></a>1、新建 css 样式</h2><p>在静态文件目录下新建样式。</p>
+<p><code>static/style.css</code></p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">li</span> <span class="selector-tag">a</span> &#123;</span><br><span class="line">  <span class="attribute">color</span>: green;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="2、引入静态文件"><a href="#2、引入静态文件" class="headerlink" title="2、引入静态文件"></a>2、引入静态文件</h2><p>在模板中引入静态文件。</p>
+<p><code>index.html</code></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123;% load static %&#125;</span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">&quot;stylesheet&quot;</span> <span class="attr">type</span>=<span class="string">&quot;text/css&quot;</span> <span class="attr">href</span>=<span class="string">&quot;&#123;% static &#x27;style.css&#x27; %&#125;&quot;</span> /&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="3、运行项目"><a href="#3、运行项目" class="headerlink" title="3、运行项目"></a>3、运行项目</h2><p><img src="https://cdn.jsdelivr.net/gh/sun0225SUN/photos/images/202112102259664.jpg"></p>
+</article><div class="post-copyright"><div class="post-copyright__title"><span class="post-copyright-info"><h>Django 自动化测试 &amp;&amp; 静态文件的引入</h></span></div><div class="post-copyright__type"><span class="post-copyright-info"><a href="https://sunguoqi.com/posts/51599.html">https://sunguoqi.com/posts/51599.html</a></span></div><div class="post-copyright-m"><div class="post-copyright-m-info"><div class="post-copyright-a"><h>作者</h><div class="post-copyright-cc-info"><h>小孙同学</h></div></div><div class="post-copyright-c"><h>发布于</h><div class="post-copyright-cc-info"><h>2021-12-10</h></div></div><div class="post-copyright-u"><h>更新于</h><div class="post-copyright-cc-info"><h>2022-01-11</h></div></div><div class="post-copyright-c"><h>许可协议</h><div class="post-copyright-cc-info"><a class="icon" rel="noopener" target="_blank" title="Creative Commons" href="https://creativecommons.org/"><i class="fab fa-creative-commons"></i></a><a rel="noopener" target="_blank" title="CC BY-NC-SA 4.0" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a></div></div></div></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Python/">Python</a><a class="post-meta__tags" href="/tags/Django/">Django</a><a class="post-meta__tags" href="/tags/Web-%E5%BC%80%E5%8F%91/">Web 开发</a></div><div class="post_share"><div class="social-share" data-image="https://cdn.jsdelivr.net/gh/sun0225SUN/photos/images/202112062042725.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><div class="post-reward"><div class="reward-button button--animated"><i class="fas fa-qrcode"></i> 打赏</div><div class="reward-main"><ul class="reward-all"><li class="reward-item"><a href="/images/wechatpay.png" target="_blank"><img class="post-qr-code-img" src="/images/wechatpay.png" alt="wechat"/></a><div class="post-qr-code-desc">wechat</div></li><li class="reward-item"><a href="/images/alipay.png" target="_blank"><img class="post-qr-code-img" src="/images/alipay.png" alt="alipay"/></a><div class="post-qr-code-desc">alipay</div></li></ul></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/posts/35809.html"><img class="prev-cover" src="https://cdn.jsdelivr.net/gh/sun0225SUN/photos/images/202112062042725.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">Django 自定义后台</div></div></a></div><div class="next-post pull-right"><a href="/posts/4904.html"><img class="next-cover" src="https://cdn.jsdelivr.net/gh/sun0225SUN/photos/images/202112062042725.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">First Django App！</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/posts/17846.html" title="Hello Django！"><img class="cover" src="https://cdn.jsdelivr.net/gh/sun0225SUN/photos/images/202112061918963.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-12-06</div><div class="title">Hello Django！</div></div></a></div><div><a href="/posts/4904.html" title="First Django App！"><img class="cover" src="https://cdn.jsdelivr.net/gh/sun0225SUN/photos/images/202112062042725.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-12-09</div><div class="title">First Django App！</div></div></a></div><div><a href="/posts/35809.html" title="Django 自定义后台"><img class="cover" src="https://cdn.jsdelivr.net/gh/sun0225SUN/photos/images/202112062042725.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-12-14</div><div class="title">Django 自定义后台</div></div></a></div><div><a href="/posts/19630.html" title="Django 项目部署"><img class="cover" src="https://cdn.jsdelivr.net/gh/sun0225SUN/photos/images/202112141540851.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-12-15</div><div class="title">Django 项目部署</div></div></a></div></div></div><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="twikoo-wrap"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/images/avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">小孙同学</div><div class="author-info__description">一个理性的浪漫主义者</div></div><div class="card-info-data"><div class="card-info-data-item is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">56</div></a></div><div class="card-info-data-item is-center"><a href="/tags/"><div class="headline">标签</div><div class="length-num">24</div></a></div><div class="card-info-data-item is-center"><a href="/categories/"><div class="headline">分类</div><div class="length-num">9</div></a></div></div><a class="button--animated" id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/sun0225SUN"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://twitter.com/sun0225SUN" target="_blank" title="twitter"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-shejiaotubiao-20"></use></svg></a><a class="social-icon" href="https://gitee.com/sun0225/photos/raw/master/img/202108111357613.jpg" target="_blank" title="weixin"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-weixin2"></use></svg></a><a class="social-icon" href="https://github.com/sun0225SUN" target="_blank" title="GitHub"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-GitHub"></use></svg></a><a class="social-icon" href="https://weibo.com/p/1005057392882465/home?from=page_100505&amp;mod=TAB#place" target="_blank" title="weibo"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-weibo1"></use></svg></a><a class="social-icon" href="https://blog.csdn.net/weixin_50915462?spm=1010.2135.3001.5421" target="_blank" title="csdn"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-csdn"></use></svg></a></div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95"><span class="toc-text">一、自动化测试</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1%E3%80%81%E9%A6%96%E5%85%88%E5%BE%97%E6%9C%89%E4%B8%AA-BUG"><span class="toc-text">1、首先得有个 BUG</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2%E3%80%81%E6%9A%B4%E9%9C%B2%E8%BF%99%E4%B8%AA-BUG"><span class="toc-text">2、暴露这个 BUG</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3%E3%80%81%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95"><span class="toc-text">3、自动化测试</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4%E3%80%81%E8%BF%90%E8%A1%8C%E6%B5%8B%E8%AF%95"><span class="toc-text">4、运行测试</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5%E3%80%81%E4%BF%AE%E5%A4%8D%E8%BF%99%E4%B8%AA-BUG"><span class="toc-text">5、修复这个 BUG</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6%E3%80%81%E6%9B%B4%E5%85%A8%E9%9D%A2%E7%9A%84%E6%B5%8B%E8%AF%95"><span class="toc-text">6、更全面的测试</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7%E3%80%81%E5%85%B6%E4%BB%96%E6%96%B9%E6%A1%88"><span class="toc-text">7、其他方案</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E9%9D%99%E6%80%81%E6%96%87%E4%BB%B6%E7%9A%84%E5%BC%95%E5%85%A5"><span class="toc-text">二、静态文件的引入</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1%E3%80%81%E6%96%B0%E5%BB%BA-css-%E6%A0%B7%E5%BC%8F"><span class="toc-text">1、新建 css 样式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2%E3%80%81%E5%BC%95%E5%85%A5%E9%9D%99%E6%80%81%E6%96%87%E4%BB%B6"><span class="toc-text">2、引入静态文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3%E3%80%81%E8%BF%90%E8%A1%8C%E9%A1%B9%E7%9B%AE"><span class="toc-text">3、运行项目</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/posts/2022811.html" title="冥冥之中，自有注定，但行好事，莫问前程！"><img src="https://cdn.jsdelivr.net/gh/sun0225SUN/photos/images/202208112334431.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="冥冥之中，自有注定，但行好事，莫问前程！"/></a><div class="content"><a class="title" href="/posts/2022811.html" title="冥冥之中，自有注定，但行好事，莫问前程！">冥冥之中，自有注定，但行好事，莫问前程！</a><time datetime="2022-08-11T12:00:00.000Z" title="发表于 2022-08-11 20:00:00">2022-08-11</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/20220225.html" title="人生21岁，版本更新日志！"><img src="https://cdn.jsdelivr.net/gh/sun0225SUN/photos/images/202202251932444.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="人生21岁，版本更新日志！"/></a><div class="content"><a class="title" href="/posts/20220225.html" title="人生21岁，版本更新日志！">人生21岁，版本更新日志！</a><time datetime="2022-02-25T12:00:00.000Z" title="发表于 2022-02-25 20:00:00">2022-02-25</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/fiddler.html" title="我终于学废用Fiddler抓包了！"><img src="https://cdn.jsdelivr.net/gh/sun0225SUN/photos/images/202201241655128.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="我终于学废用Fiddler抓包了！"/></a><div class="content"><a class="title" href="/posts/fiddler.html" title="我终于学废用Fiddler抓包了！">我终于学废用Fiddler抓包了！</a><time datetime="2022-01-24T09:00:00.000Z" title="发表于 2022-01-24 17:00:00">2022-01-24</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/4243.html" title="零基础快速上手云服务器"><img src="https://cdn.jsdelivr.net/gh/sun0225SUN/photos/images/202112171758778.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="零基础快速上手云服务器"/></a><div class="content"><a class="title" href="/posts/4243.html" title="零基础快速上手云服务器">零基础快速上手云服务器</a><time datetime="2022-01-09T04:00:00.000Z" title="发表于 2022-01-09 12:00:00">2022-01-09</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/33414.html" title="给GitHub首页添加一个有趣的贪吃蛇小动画"><img src="https://cdn.jsdelivr.net/gh/sun0225SUN/photos/images/202112311009126.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="给GitHub首页添加一个有趣的贪吃蛇小动画"/></a><div class="content"><a class="title" href="/posts/33414.html" title="给GitHub首页添加一个有趣的贪吃蛇小动画">给GitHub首页添加一个有趣的贪吃蛇小动画</a><time datetime="2022-01-08T16:00:00.000Z" title="发表于 2022-01-09 00:00:00">2022-01-09</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div id="workboard"></div><script async="async" src="/js/runtime.js"></script><div class="copyright">&copy;2021 - 2022 By 小孙同学</div><div class="footer_custom_text"><a href="https://sunguoqi.com/"><img class=""icp-icon"" src=""><a target="_blank" rel="noopener" href="http://beian.miit.gov.cn/"><img class="icp-icon" src=""><span>备案号：皖ICP备2021010058号&nbsp;&nbsp;</span></a><a target="_blank" rel="noopener" href="http://www.beian.gov.cn/portal/registerSystemInfo?spm=5176.19720258.J_9220772140.112.678b2c4afdwoRs"><img class="icp-icon" src="https://cdn.jsdelivr.net/gh/sun0225SUN/photos/images/202108190042278.png"><span>皖公网安备34040302000393号</span></a></div><p id="ghbdages"><a class="github-badge" target="_blank" href="https://hexo.io/" style="margin-inline:5px"><img src="https://img.shields.io/badge/Frame-Hexo-blue?style=flat&amp;logo=hexo"/></a><a class="github-badge" target="_blank" href="https://butterfly.js.org/" style="margin-inline:5px"><img src="https://img.shields.io/badge/Theme-Butterfly-6513df?style=flat&amp;logo=bitdefender"/></a><a class="github-badge" target="_blank" href="https://www.jsdelivr.com/" style="margin-inline:5px"><img src="https://img.shields.io/badge/CDN-jsDelivr-orange?style=flat&amp;logo=jsDelivr"/></a><a class="github-badge" target="_blank" href="https://coding.net/" style="margin-inline:5px"><img src="https://img.shields.io/badge/Hosted-Coding-0cedbe?style=flat&amp;logo=Codio"/></a><a class="github-badge" target="_blank" href="https://github.com/" style="margin-inline:5px"><img src="https://img.shields.io/badge/Source-Github-d021d6?style=flat&amp;logo=GitHub"/></a><a class="github-badge" target="_blank" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" style="margin-inline:5px"><img src="https://img.shields.io/badge/Copyright-BY--NC--SA%204.0-d42328?style=flat&amp;logo=Claris"/></a></p></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="font-plus" type="button" title="放大字体"><i class="fas fa-plus"></i></button><button id="font-minus" type="button" title="缩小字体"><i class="fas fa-minus"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="chat_btn" type="button" title="与我聊天"><i class="fas fa-sms"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="algolia-search"><div class="search-dialog"><div class="search-dialog__title" id="algolia-search-title">Algolia</div><div id="algolia-input-panel"><div id="algolia-search-input"></div></div><hr/><div id="algolia-search-results"><div id="algolia-hits"></div><div id="algolia-pagination"></div><div id="algolia-stats"></div></div><span class="search-close-button"><i class="fas fa-times"></i></span></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page/instantpage.min.js" type="module"></script><script src="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.js"></script><script>function panguFn () {
+  if (typeof pangu === 'object') pangu.autoSpacingPage()
+  else {
+    getScript('https://cdn.jsdelivr.net/npm/pangu/dist/browser/pangu.min.js')
+      .then(() => {
+        pangu.autoSpacingPage()
+      })
+  }
+}
+
+function panguInit () {
+  if (false){
+    GLOBAL_CONFIG_SITE.isPost && panguFn()
+  } else {
+    panguFn()
+  }
+}
+
+document.addEventListener('DOMContentLoaded', panguInit)</script><script src="/js/search/algolia.js"></script><script>var preloader = {
+  endLoading: () => {
+    document.body.style.overflow = 'auto';
+    document.getElementById('loading-box').classList.add("loaded")
+  },
+  initLoading: () => {
+    document.body.style.overflow = '';
+    document.getElementById('loading-box').classList.remove("loaded")
+
+  }
+}
+window.addEventListener('load',preloader.endLoading())</script><div class="js-pjax"><script>(()=>{
+  const $countDom = document.getElementById('twikoo-count')
+  const init = () => {
+    twikoo.init(Object.assign({
+      el: '#twikoo-wrap',
+      envId: 'https://vercel.sunguoqi.com/',
+      region: ''
+    }, null))
+  }
+
+  const getCount = () => {
+    twikoo.getCommentsCount({
+      envId: 'https://vercel.sunguoqi.com/',
+      region: '',
+      urls: [window.location.pathname],
+      includeReply: false
+    }).then(function (res) {
+      $countDom.innerText = res[0].count
+    }).catch(function (err) {
+      console.error(err);
+    });
+  }
+
+  const loadTwikoo = (bool = false) => {
+    if (typeof twikoo === 'object') {
+      init()
+      bool && $countDom && setTimeout(getCount,0)
+    } else {
+      getScript('https://cdn.jsdelivr.net/npm/twikoo/dist/twikoo.all.min.js').then(()=> {
+        init()
+        bool && $countDom && setTimeout(getCount,0)
+      })
+    }
+  }
+
+  if ('Twikoo' === 'Twikoo' || !false) {
+    if (false) btf.loadComment(document.getElementById('twikoo-wrap'), loadTwikoo)
+    else loadTwikoo(true)
+  } else {
+    window.loadOtherComment = () => {
+      loadTwikoo()
+    }
+  }
+})()</script></div><script>window.addEventListener('load', () => {
+  const changeContent = (content) => {
+    if (content === '') return content
+
+    content = content.replace(/<img.*?src="(.*?)"?[^\>]+>/ig, '[图片]') // replace image link
+    content = content.replace(/<a[^>]+?href=["']?([^"']+)["']?[^>]*>([^<]+)<\/a>/gi, '[链接]') // replace url
+    content = content.replace(/<pre><code>.*?<\/pre>/gi, '[代码]') // replace code
+    content = content.replace(/<[^>]+>/g,"") // remove html tag
+
+    if (content.length > 150) {
+      content = content.substring(0,150) + '...'
+    }
+    return content
+  }
+
+  const getComment = () => {
+    const runTwikoo = () => {
+      twikoo.getRecentComments({
+        envId: 'https://vercel.sunguoqi.com/',
+        region: '',
+        pageSize: 5,
+        includeReply: true
+      }).then(function (res) {
+        const twikooArray = res.map(e => {
+          return {
+            'content': changeContent(e.comment),
+            'avatar': e.avatar,
+            'nick': e.nick,
+            'url': e.url + '#' + e.id,
+            'date': new Date(e.created).toISOString()
+          }
+        })
+
+        saveToLocal.set('twikoo-newest-comments', JSON.stringify(twikooArray), 10/(60*24))
+        generateHtml(twikooArray)
+      }).catch(function (err) {
+        const $dom = document.querySelector('#card-newest-comments .aside-list')
+        $dom.innerHTML= "无法获取评论，请确认相关配置是否正确"
+      })
+    }
+
+    if (typeof twikoo === 'object') {
+      runTwikoo()
+    } else {
+      getScript('https://cdn.jsdelivr.net/npm/twikoo/dist/twikoo.all.min.js').then(runTwikoo)
+    }
+  }
+
+  const generateHtml = array => {
+    let result = ''
+
+    if (array.length) {
+      for (let i = 0; i < array.length; i++) {
+        result += '<div class=\'aside-list-item\'>'
+
+        if (true) {
+          const name = 'src'
+          result += `<a href='${array[i].url}' class='thumbnail'><img ${name}='${array[i].avatar}' alt='${array[i].nick}'></a>`
+        }
+        
+        result += `<div class='content'>
+        <a class='comment' href='${array[i].url}'>${array[i].content}</a>
+        <div class='name'><span>${array[i].nick} / </span><time datetime="${array[i].date}">${btf.diffDate(array[i].date, true)}</time></div>
+        </div></div>`
+      }
+    } else {
+      result += '没有评论'
+    }
+
+    let $dom = document.querySelector('#card-newest-comments .aside-list')
+    $dom.innerHTML= result
+    window.lazyLoadInstance && window.lazyLoadInstance.update()
+    window.pjax && window.pjax.refresh($dom)
+  }
+
+  const newestCommentInit = () => {
+    if (document.querySelector('#card-newest-comments .aside-list')) {
+      const data = saveToLocal.get('twikoo-newest-comments')
+      if (data) {
+        generateHtml(JSON.parse(data))
+      } else {
+        getComment()
+      }
+    }
+  }
+
+  newestCommentInit()
+  document.addEventListener('pjax:complete', newestCommentInit)
+})</script><script async src="//at.alicdn.com/t/font_2761907_kffukm2d5os.js"></script><script src="https://widget.qweather.net/simple/static/js/he-simple-common.js?v=2.0"></script><script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.js"></script><script src="https://myhkw.cn/api/player/162713484765" id="myhk" key="162713484765" m="1"></script><div class="app-refresh" id="app-refresh"> <div class="app-refresh-wrap"> <label>✨ 小孙同学更新啦 👉</label> <a href="javascript:void(0)" onclick="location.reload()">✨ 点击刷新 ✨</a> </div></div><script>function showNotification(){if(GLOBAL_CONFIG.Snackbar){var t="light"===document.documentElement.getAttribute("data-theme")?GLOBAL_CONFIG.Snackbar.bgLight:GLOBAL_CONFIG.Snackbar.bgDark,e=GLOBAL_CONFIG.Snackbar.position;Snackbar.show({text:"已更新最新版本",backgroundColor:t,duration:5e5,pos:e,actionText:"点击刷新",actionTextColor:"#fff",onActionClick:function(t){location.reload()}})}else{var o=`top: 0; background: ${"light"===document.documentElement.getAttribute("data-theme")?"#49b1f5":"#1f1f1f"};`;document.getElementById("app-refresh").style.cssText=o}}"serviceWorker"in navigator&&(navigator.serviceWorker.controller&&navigator.serviceWorker.addEventListener("controllerchange",function(){showNotification()}),window.addEventListener("load",function(){navigator.serviceWorker.register("/sw.js")}));</script><script defer src="/live2d-widget/autoload.js"></script><script async src="//at.alicdn.com/t/font_2264842_3izu8i5eoc2.js"></script><script async data-pjax src="/js/randombg.js"></script><script async src="/js/diytitle.js"></script><script async src="/js/weather.js"></script><script async src="/js/grayscale.js"></script><canvas class="fireworks" mobile="false"></canvas><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/fireworks.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = false;
+POWERMODE.mobile = true;
+document.body.addEventListener('input', POWERMODE);
+</script><script src="//code.tidio.co/xsgiwox79ontxmujvwby4loey9vmxt2u.js" async="async"></script><script>function onTidioChatApiReady() {
+  window.tidioChatApi.hide();
+  window.tidioChatApi.on("close", function() {
+    window.tidioChatApi.hide();
+  });
+}
+if (window.tidioChatApi) {
+  window.tidioChatApi.on("ready", onTidioChatApiReady);
+} else {
+  document.addEventListener("tidioChat-ready", onTidioChatApiReady);
+}
+
+var chatBtnFn = () => {
+  document.getElementById("chat_btn").addEventListener("click", function(){
+    window.tidioChatApi.show();
+    window.tidioChatApi.open();
+  });
+}
+chatBtnFn()
+</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script><script src="https://cdn.jsdelivr.net/gh/metowolf/MetingJS@1.2/dist/Meting.min.js"></script><script src="https://cdn.jsdelivr.net/npm/pjax/pjax.min.js"></script><script>let pjaxSelectors = [
+  'title',
+  '#config-diff',
+  '#body-wrap',
+  '#rightside-config-hide',
+  '#rightside-config-show',
+  '#web_bg',
+  '.js-pjax'
+]
+
+if (false) {
+  pjaxSelectors.unshift('meta[property="og:image"]', 'meta[property="og:title"]', 'meta[property="og:url"]')
+}
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+
+  // removeEventListener scroll 
+  window.removeEventListener('scroll', window.tocScrollFn)
+  window.removeEventListener('scroll', scrollCollect)
+
+  typeof preloader === 'object' && preloader.initLoading()
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof chatBtnFn === 'function' && chatBtnFn()
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // Analytics
+  if (false) {
+    MtaH5.pgv()
+  }
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+
+  typeof preloader === 'object' && preloader.endLoading()
+})
+
+document.addEventListener('pjax:error', (e) => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><div class="app-refresh" id="app-refresh" style="position: fixed;top: -2.2rem;left: 0;right: 0;z-index: 99999;padding: 0 1rem;font-size: 15px;height: 2.2rem;transition: all 0.3s ease;"><div class="app-refresh-wrap" style=" display: flex;color: #fff;height: 100%;align-items: center;justify-content: center;"><label>✨小孙同学更新啦！👉</label><a href="javascript:void(0)" onclick="location.reload()"><span style="color: #fff;text-decoration: underline;cursor: pointer;">🍭查看新品🍬</span></a></div></div><script>if ('serviceWorker' in navigator) {
+if (navigator.serviceWorker.controller) {
+navigator.serviceWorker.addEventListener('controllerchange', function() {
+showNotification()
+})
+}
+window.addEventListener('load', function() {
+navigator.serviceWorker.register('/sw.js')
+})
+}
+function showNotification() {
+if (GLOBAL_CONFIG.Snackbar) {
+var snackbarBg =
+document.documentElement.getAttribute('data-theme') === 'light' ?
+GLOBAL_CONFIG.Snackbar.bgLight :
+GLOBAL_CONFIG.Snackbar.bgDark
+var snackbarPos = GLOBAL_CONFIG.Snackbar.position
+Snackbar.show({
+text: '✨小孙同学更新啦！👉',
+backgroundColor: snackbarBg,
+duration: 500000,
+pos: snackbarPos,
+actionText: '🍭查看新品🍬',
+actionTextColor: '#fff',
+onActionClick: function(e) {
+location.reload()
+},
+})
+} else {
+var showBg =
+document.documentElement.getAttribute('data-theme') === 'light' ?
+'#49b1f5' :
+'#1f1f1f'
+var cssText = `top: 0; background: ${showBg};`
+document.getElementById('app-refresh').style.cssText = cssText
+}
+}</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div><!-- hexo injector body_end start --> <script data-pjax>if(document.getElementById('recent-posts') && location.pathname =='/'){
+    
+    var parent = document.getElementById('recent-posts');
+    var child = '<div class="recent-post-item" style="height: auto;width: 100%"><div class="blog-slider swiper-container-fade swiper-container-horizontal" id="swiper_container"><div class="blog-slider__wrp swiper-wrapper" style="transition-duration: 0ms"><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms"><div class="blog-slider__img"><img src="https://i.loli.net/2021/03/11/CNYazt2SgD3pL9v.jpg" alt="https://i.loli.net/2021/03/11/CNYazt2SgD3pL9v.jpg"/></div><div class="blog-slider__content"><span class="blog-slider__code">2021-03-05</span><a class="blog-slider__title" href="posts/54163.html">如何拥有一个属于自己的网站</a><div class="blog-slider__text">利用Hexo+GitHub Pages搭建一个属于自己的网站</div><a class="blog-slider__button" href="posts/54163.html">详情</a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms"><div class="blog-slider__img"><img src="https://cdn.jsdelivr.net/gh/sun0225SUN/photos/images/202108300119743.jpg" alt="https://cdn.jsdelivr.net/gh/sun0225SUN/photos/images/202108300119743.jpg"/></div><div class="blog-slider__content"><span class="blog-slider__code">2021-08-30</span><a class="blog-slider__title" href="posts/36473.html">Github首页美化教程</a><div class="blog-slider__text">代码可以不会敲，但是逼格一定要高！</div><a class="blog-slider__button" href="posts/36473.html">详情</a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms"><div class="blog-slider__img"><img src="https://i.loli.net/2021/03/11/817fOHu4X2bvhtx.jpg" alt="https://i.loli.net/2021/03/11/817fOHu4X2bvhtx.jpg"/></div><div class="blog-slider__content"><span class="blog-slider__code">2021-03-04</span><a class="blog-slider__title" href="posts/20843.html">你的浏览器，何必是浏览器</a><div class="blog-slider__text">浏览器的各种功能及其相关使用技巧总结。</div><a class="blog-slider__button" href="posts/20843.html">详情</a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms"><div class="blog-slider__img"><img src="https://cdn.jsdelivr.net/gh/sun0225SUN/photos/images/202112311132337.jpg" alt="https://cdn.jsdelivr.net/gh/sun0225SUN/photos/images/202112311132337.jpg"/></div><div class="blog-slider__content"><span class="blog-slider__code">2021-12-31</span><a class="blog-slider__title" href="posts/cuiqingcai.html">21年终总结&&关于我自学爬虫的点滴经历</a><div class="blog-slider__text">静静寻觅生活的美好！</div><a class="blog-slider__button" href="posts/cuiqingcai.html">详情</a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms"><div class="blog-slider__img"><img src="https://i.loli.net/2021/03/11/E28jk6UPACdMxGb.jpg" alt="https://i.loli.net/2021/03/11/E28jk6UPACdMxGb.jpg"/></div><div class="blog-slider__content"><span class="blog-slider__code">2021-02-14</span><a class="blog-slider__title" href="posts/7723.html">情人节表白专用代码</a><div class="blog-slider__text">如果你觉的我是一个有趣的人，我想那是最好不过的了</div><a class="blog-slider__button" href="posts/7723.html">详情</a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms"><div class="blog-slider__img"><img src="https://i.loli.net/2021/04/06/kFRXTx1rJ4giWPt.jpg" alt="https://i.loli.net/2021/04/06/kFRXTx1rJ4giWPt.jpg"/></div><div class="blog-slider__content"><span class="blog-slider__code">2021-04-25</span><a class="blog-slider__title" href="posts/34712.html">抖音火爆表白小程序（C#语言实现）</a><div class="blog-slider__text">小姐姐，我喜欢你很久了，做我女朋友好不好！</div><a class="blog-slider__button" href="posts/34712.html">详情</a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms"><div class="blog-slider__img"><img src="https://cdn.jsdelivr.net/gh/sun0225SUN/photos/images/202108300435148.jpg" alt="https://cdn.jsdelivr.net/gh/sun0225SUN/photos/images/202108300435148.jpg"/></div><div class="blog-slider__content"><span class="blog-slider__code">2021-08-19</span><a class="blog-slider__title" href="posts/38126.html">安装小孙同学</a><div class="blog-slider__text">安装小孙同学app，获得更好的浏览体验。</div><a class="blog-slider__button" href="posts/38126.html">详情</a></div></div></div><div class="blog-slider__pagination swiper-pagination-clickable swiper-pagination-bullets"></div></div></div>';
+    console.log('已挂载swiper')
+    parent.insertAdjacentHTML("afterbegin",child)}
+     </script>
+<script data-pjax src="https://cdn.jsdelivr.net/gh/Zfour/Butterfly-swiper/swiper/swiper.min.js"></script>
+<script data-pjax src="https://cdn.jsdelivr.net/gh/Zfour/Butterfly-swiper@0.18/swiper/swiperindex.js"></script>
+<style></style><script data-pjax>function history_calendar_injector_config(){
+                var parent_div_git = document.getElementsByClassName('sticky_layout')[0];
+                var item_html = '<div class="card-widget card-history"><div class="card-content"><div class="item-headline"><i class="fas fa-clock fa-spin"></i><span>那年今日</span></div><div id="history-baidu" style="height: 100px;overflow: hidden"><div class="history_swiper-container" id="history-container" style="width: 100%;height: 100%"><div class="swiper-wrapper" id="history_container_wrapper" style="height:20px"></div></div></div></div>';
+                console.log('已挂载history_calendar')
+                // parent_div_git.innerHTML=item_html+parent_div_git.innerHTML // 无报错，但不影响使用(支持pjax跳转)
+                parent_div_git.insertAdjacentHTML("afterbegin",item_html) // 有报错，但不影响使用(支持pjax跳转)
+            }if( document.getElementsByClassName('sticky_layout')[0] && (location.pathname ==='/'|| '/' ==='all')){
+
+            history_calendar_injector_config()
+        } </script><script data-pjax src="https://cdn.jsdelivr.net/gh/Zfour/Butterfly-card-history/baiduhistory/js/main.js"></script><script data-pjax>
+  function butterfly_clock_injector_config(){
+    var parent_div_git = document.getElementsByClassName('sticky_layout')[0];
+    var item_html = '<div class="card-widget card-clock"><div class="card-glass"><div class="card-background"><div class="card-content"><div id="hexo_electric_clock"><img class="entered loading" id="card-clock-loading" src="/img/loading.gif" style="height: 120px; width: 100%;" data-ll-status="loading"/></div></div></div></div></div>';
+    console.log('已挂载butterfly_clock')
+    parent_div_git.insertAdjacentHTML("afterbegin",item_html)
+    }
+  var elist = 'null'.split(',');
+  var cpage = location.pathname;
+  var epage = '/';
+  var flag = 0;
+
+  for (var i=0;i<elist.length;i++){
+    if (cpage.includes(elist[i])){
+      flag++;
+    }
+  }
+
+  if ((epage ==='all')&&(flag == 0)){
+    butterfly_clock_injector_config();
+  }
+  else if (epage === cpage){
+    butterfly_clock_injector_config();
+  }
+  </script><script src="https://pv.sohu.com/cityjson?ie=utf-8"></script><script data-pjax src="https://cdn.jsdelivr.net/npm/hexo-butterfly-clock/lib/clock.min.js"></script><div class="js-pjax"><script async="async">var arr = document.getElementsByClassName('recent-post-item');
+for(var i = 0;i<arr.length;i++){
+    arr[i].classList.add('wow');
+    arr[i].classList.add('animate__zoomIn');
+    arr[i].setAttribute('data-wow-duration', '1s');
+    arr[i].setAttribute('data-wow-delay', '0s');
+    arr[i].setAttribute('data-wow-offset', '100');
+    arr[i].setAttribute('data-wow-iteration', '1');
+  }</script><script async="async">var arr = document.getElementsByClassName('card-widget');
+for(var i = 0;i<arr.length;i++){
+    arr[i].classList.add('wow');
+    arr[i].classList.add('animate__zoomIn');
+    arr[i].setAttribute('data-wow-duration', '1s');
+    arr[i].setAttribute('data-wow-delay', '0s');
+    arr[i].setAttribute('data-wow-offset', '100');
+    arr[i].setAttribute('data-wow-iteration', '1');
+  }</script><script async="async">var arr = document.getElementsByClassName('bbTimeList container');
+for(var i = 0;i<arr.length;i++){
+    arr[i].classList.add('wow');
+    arr[i].classList.add('animate__zoomIn');
+    arr[i].setAttribute('data-wow-duration', '1s');
+    arr[i].setAttribute('data-wow-delay', '0s');
+    arr[i].setAttribute('data-wow-offset', '100');
+    arr[i].setAttribute('data-wow-iteration', '1');
+  }</script><script async="async">var arr = document.getElementsByClassName('flink-list-card');
+for(var i = 0;i<arr.length;i++){
+    arr[i].classList.add('wow');
+    arr[i].classList.add('animate__flipInY');
+    arr[i].setAttribute('data-wow-duration', '2s');
+    arr[i].setAttribute('data-wow-delay', '0s');
+    arr[i].setAttribute('data-wow-offset', '100');
+    arr[i].setAttribute('data-wow-iteration', '1');
+  }</script></div><script defer src="https://cdn.jsdelivr.net/gh/graingert/wow@1.3.0/dist/wow.min.js"></script><script defer src="https://cdn.jsdelivr.net/npm/hexo-butterfly-wowjs/lib/wow_init.min.js"></script><!-- hexo injector body_end end --></body></html>
